@@ -201,7 +201,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1233534390}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1836424390}
+        m_TargetAssemblyTypeName: GMTK25.MainMenu, GMTK25
+        m_MethodName: OnPlayButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &30626633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -929,7 +941,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1091768092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1836424390}
+        m_TargetAssemblyTypeName: GMTK25.MainMenu, GMTK25
+        m_MethodName: OnQuitButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1574903150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -980,6 +1004,7 @@ GameObject:
   - component: {fileID: 1836424388}
   - component: {fileID: 1836424387}
   - component: {fileID: 1836424386}
+  - component: {fileID: 1836424390}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1044,7 +1069,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 0
+  m_VertexColorAlwaysGammaSpace: 1
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
@@ -1071,6 +1096,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1836424390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836424385}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f87f6f781215f074587c2b7acaf98667, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2054314196
 GameObject:
   m_ObjectHideFlags: 0
