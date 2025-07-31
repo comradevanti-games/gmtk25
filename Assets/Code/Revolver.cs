@@ -8,7 +8,9 @@ namespace GMTK25 {
         [SerializeField] private RevolverDrumKeeper drumKeeper = null!;
         [SerializeField] private GameObject bulletSpawnPoint = null!;
         [SerializeField] private float minMouseDistanceToShoot = 0;
+        [SerializeField] private float shootCooldown = 0;
         private InputHandler? inputHandler;
+        private float lastShotTime = 0;
 
         private void Awake() {
             inputHandler = FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>();
@@ -22,7 +24,11 @@ namespace GMTK25 {
                 return;
             }
 
-            Shoot();
+            if (Time.time - lastShotTime >= shootCooldown) {
+                Shoot();
+                lastShotTime = Time.time;
+            }
+
         }
 
         private void Shoot() {

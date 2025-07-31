@@ -11,7 +11,7 @@ namespace GMTK25 {
 
         public void OnDespawnTimeReached();
 
-        public void OnCollisionEnter2D(Collision2D other);
+        public void OnTriggerEnter2D(Collider2D other);
 
         public void Despawn();
 
