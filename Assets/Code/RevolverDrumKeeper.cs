@@ -1,3 +1,6 @@
+using System;
+using System.Linq;
+using TMPro;
 using UnityEngine;
 
 namespace GMTK25
@@ -6,10 +9,26 @@ namespace GMTK25
     {
         [SerializeField] private int drumSize;
         [SerializeField] private BulletType initialBulletType = null!;
+        [SerializeField] private TMP_Text displayText = null!;
 
         private LoopQueue<BulletType> bullets = null!;
 
         public BulletType? ChamberedBulletType => bullets.Peek();
+
+        private void UpdateDisplay()
+        {
+            var head = ChamberedBulletType is { } chambered
+                ? $"<u>{char.ToUpper(chambered.name[0])}</u> "
+                : "";
+
+            var tail = string.Join(" ",
+                bullets
+                    .Skip(1)
+                    .Select(type => type.name[0])
+                    .Select(char.ToUpper));
+
+            displayText.text = head + tail;
+        }
 
         /// <summary>
         /// Ejects the current <see cref="ChamberedBulletType"/> (if any).
@@ -17,6 +36,7 @@ namespace GMTK25
         public void EjectBullet()
         {
             bullets.Dequeue();
+            UpdateDisplay();
         }
 
         /// <summary>
@@ -27,6 +47,7 @@ namespace GMTK25
         public void PushBullet(BulletType type)
         {
             bullets.Enqueue(type);
+            UpdateDisplay();
         }
 
         private void Awake()
@@ -34,6 +55,11 @@ namespace GMTK25
             bullets = new LoopQueue<BulletType>(drumSize);
             for (var i = 0; i < drumSize; i++)
                 bullets.Enqueue(initialBulletType);
+        }
+
+        private void Start()
+        {
+            UpdateDisplay();
         }
     }
 }

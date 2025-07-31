@@ -1,9 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace GMTK25
 {
-    public class LoopQueue<T>
+    public class LoopQueue<T> : IEnumerable<T>
     {
         private readonly int capacity;
         private readonly Queue<T> items;
@@ -36,6 +37,16 @@ namespace GMTK25
         {
             if (items.Count == 0) return;
             items.Enqueue(items.Dequeue());
+        }
+
+        public IEnumerator<T> GetEnumerator()
+        {
+            return items.GetEnumerator();
+        }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }
