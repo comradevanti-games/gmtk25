@@ -1,4 +1,5 @@
 using System;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -19,12 +20,13 @@ namespace GMTK25
             return new Color(c.r, c.g, c.b, a);
         }
 
-        private async Task DelayedActivate(GameObject enemy)
+        private async Task DelayedActivate(GameObject enemy,
+            CancellationToken ct)
         {
             var enemyRenderer = enemy.GetComponent<SpriteRenderer>();
             enemyRenderer.color = WithAlpha(enemyRenderer.color, 0.25f);
 
-            await Task.Delay(ActivationDelay, destroyCancellationToken);
+            await Task.Delay(ActivationDelay, ct);
 
             enemy.GetComponent<EnemyBrain>().enabled = true;
             enemy.GetComponent<Collider2D>().enabled = true;
@@ -44,7 +46,7 @@ namespace GMTK25
             Debug.Log($"New enemy spawned 👶", enemy);
             enemy.GetComponent<SpriteRenderer>().color = color.Color;
 
-            this.RunTask(() => DelayedActivate(enemy));
+            this.RunTask((ct) => DelayedActivate(enemy, ct));
         }
 
         private void Awake()

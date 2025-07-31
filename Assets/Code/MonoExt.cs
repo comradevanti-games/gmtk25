@@ -1,4 +1,6 @@
 using System;
+using System.Runtime.CompilerServices;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -7,11 +9,13 @@ namespace GMTK25
     public static class MonoExt
     {
         public static async void RunTask(this MonoBehaviour mono,
-            Func<Task> startTask)
+            Func<CancellationToken, Task> startTask)
         {
             try
             {
-                await startTask();
+                if (!mono) return;
+                var token = mono.destroyCancellationToken;
+                await startTask(token);
             }
             catch (OperationCanceledException)
             {

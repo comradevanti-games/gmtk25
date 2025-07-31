@@ -50,9 +50,9 @@ namespace GMTK25
                 this);
             ExecuteAction(action);
 
-            this.RunTask(async () =>
+            this.RunTask(async (ct) =>
             {
-                await Task.Delay(duration, destroyCancellationToken);
+                await Task.Delay(duration, ct);
                 PickAction();
             });
         }

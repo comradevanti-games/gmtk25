@@ -1,4 +1,5 @@
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using UnityEngine;
 
@@ -10,7 +11,7 @@ namespace GMTK25
 
         private EnemySpawner enemySpawner = null!;
 
-        private async Task RunWave(int waveIndex)
+        private async Task RunWave(int waveIndex, CancellationToken ct)
         {
             Debug.Log($"Start wave {waveIndex}", this);
             var wave = waveDescription.Waves[waveIndex];
@@ -26,7 +27,7 @@ namespace GMTK25
                     for (var i = 0; i < group.Count; i++)
                         enemySpawner.SpawnEnemy(group.Type);
 
-                await Task.Delay(subWave.Duration, destroyCancellationToken);
+                await Task.Delay(subWave.Duration, ct);
             }
 
             Debug.Log($"End wave {waveIndex}", this);
@@ -34,8 +35,8 @@ namespace GMTK25
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
                 Debug.Log($"Next wave starts in {wave.Delay}");
-                await Task.Delay(wave.Delay, destroyCancellationToken);
-                _ = RunWave(waveIndex + 1);
+                await Task.Delay(wave.Delay, ct);
+                _ = RunWave(waveIndex + 1, ct);
             }
             else
             {
@@ -45,7 +46,7 @@ namespace GMTK25
 
         private void Start()
         {
-            this.RunTask(() => RunWave(0));
+            this.RunTask((ct) => RunWave(0, ct));
         }
 
         private void Awake()
