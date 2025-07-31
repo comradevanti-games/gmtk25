@@ -5,7 +5,7 @@ using UnityEngine;
 namespace GMTK25
 {
     [Serializable]
-    public class EnemyGroup
+    public class SubWave
     {
         [SerializeField] private float durationSeconds;
 
@@ -15,12 +15,11 @@ namespace GMTK25
     [Serializable]
     public class Wave
     {
-        [SerializeField]
-        private EnemyGroup[] enemyGroups = Array.Empty<EnemyGroup>();
+        [SerializeField] private SubWave[] subWaves = Array.Empty<SubWave>();
 
         [SerializeField] private float delaySeconds;
 
-        public IReadOnlyList<EnemyGroup> EnemyGroups => enemyGroups;
+        public IReadOnlyList<SubWave> SubWaves => subWaves;
 
         public TimeSpan Delay => TimeSpan.FromSeconds(delaySeconds);
     }

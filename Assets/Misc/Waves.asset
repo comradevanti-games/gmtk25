@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Waves
   m_EditorClassIdentifier: 
   waves:
-  - enemyGroups:
+  - subWaves:
     - durationSeconds: 10
-    - durationSeconds: 20
+    - durationSeconds: 5
     delaySeconds: 5
-  - enemyGroups:
+  - subWaves:
     - durationSeconds: 10
     delaySeconds: 0

@@ -14,15 +14,15 @@ namespace GMTK25
         {
             Debug.Log($"Start wave {waveIndex}", this);
             var wave = waveDescription.Waves[waveIndex];
-            var remainingGroups = wave.EnemyGroups.ToList();
+            var remainingSubWaves = wave.SubWaves.ToList();
 
-            while (remainingGroups.Count > 0)
+            while (remainingSubWaves.Count > 0)
             {
-                var group = remainingGroups.RemoveRandom();
-                Debug.Log($"Start group ({group.Duration} until next)",
+                var subWave = remainingSubWaves.RemoveRandom();
+                Debug.Log($"Start sub-wave ({subWave.Duration} until next)",
                     this);
 
-                await Task.Delay(group.Duration, destroyCancellationToken);
+                await Task.Delay(subWave.Duration, destroyCancellationToken);
             }
 
             Debug.Log($"End wave {waveIndex}", this);
