@@ -343,11 +343,26 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 242702702}
+    - target: {fileID: 4634333608436793700, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+--- !u!114 &460659709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8554157266319967134, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+  m_PrefabInstance: {fileID: 460659708}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1795197696
 GameObject:
   m_ObjectHideFlags: 0
@@ -518,6 +533,10 @@ PrefabInstance:
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
       value: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
       objectReference: {fileID: 0}
+    - target: {fileID: 7846508905358984964, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: displayText
+      value: 
+      objectReference: {fileID: 460659709}
     - target: {fileID: 8606504435851384275, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
