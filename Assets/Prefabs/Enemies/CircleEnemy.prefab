@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -3183499311322674695, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
+      propertyPath: thinkingTimeSeconds
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 96287052354082269, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -55,6 +59,10 @@ PrefabInstance:
     - target: {fileID: 1507269307965459346, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967371659423618781, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
+      propertyPath: baseForce
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4221283437057175955, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_Name
