@@ -52,10 +52,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: BasicBullet
       objectReference: {fileID: 0}
-    - target: {fileID: 8100467414083175091, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -11,11 +11,12 @@ namespace GMTK25 {
         public event Action<BulletType>? HasDespawned;
 
         private void Update() {
-            timeAlive += Time.deltaTime;
 
-            if (timeAlive >= despawnTime) {
-                KillBullet();
+            if (timeAlive <= despawnTime) {
+                timeAlive += Time.deltaTime;
             }
+
+            KillBullet();
 
         }
 
