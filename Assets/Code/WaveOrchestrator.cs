@@ -10,40 +10,44 @@ namespace GMTK25
     {
         [SerializeField] private WaveDescription waveDescription = null!;
 
-        private int waveIndex = 0;
 
-        private async Task RunWave(Wave wave)
+        private async Task RunWave(int waveIndex)
         {
             Debug.Log($"Start wave {waveIndex}", this);
+            var wave = waveDescription.Waves[waveIndex];
             var remainingGroups = wave.EnemyGroups.ToList();
 
             while (remainingGroups.Count > 0)
             {
                 var group = remainingGroups.RemoveRandom();
-                Debug.Log($"Start group ({group.Duration} until next)",this);
+                Debug.Log($"Start group ({group.Duration} until next)",
+                    this);
 
                 await Task.Delay(group.Duration, destroyCancellationToken);
             }
 
-            Debug.Log($"End wave {waveIndex}",this);
+            Debug.Log($"End wave {waveIndex}", this);
+
+            if (waveIndex < waveDescription.Waves.Count - 1)
+                _ = RunWave(waveIndex + 1);
+            else
+                Debug.Log("Last wave completed. We are done 🥳", this);
         }
 
-        private async void StartWave()
+        private async void Start()
         {
             try
             {
-                var wave = waveDescription.Waves[waveIndex];
-                await RunWave(wave);
+                await RunWave(0);
+            }
+            catch (OperationCanceledException)
+            {
+                // Nothing
             }
             catch (Exception e)
             {
                 Debug.LogException(e);
             }
-        }
-
-        private void Start()
-        {
-            StartWave();
         }
     }
 }
