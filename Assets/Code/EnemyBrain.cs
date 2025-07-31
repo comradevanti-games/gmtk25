@@ -1,29 +1,57 @@
 using System;
 using System.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GMTK25
 {
     [RequireComponent(typeof(TargetFollower))]
     public sealed class EnemyBrain : MonoBehaviour
     {
-        [SerializeField] private float thinkingTimeSeconds;
+        private abstract record EnemyAction
+        {
+            public sealed record Idle : EnemyAction;
+
+            public sealed record FollowPlayer : EnemyAction;
+        }
+
+        [SerializeField] private float minActionDurationSeconds;
+        [SerializeField] private float maxActionDurationSeconds;
 
         private TargetFollower targetFollower = null!;
 
-        private TimeSpan ThinkingTime =>
-            TimeSpan.FromSeconds(thinkingTimeSeconds);
+        private TimeSpan PickActionDuration()
+        {
+            return TimeSpan.FromSeconds(Random.Range(minActionDurationSeconds,
+                maxActionDurationSeconds));
+        }
+
+        private void ExecuteAction(EnemyAction action)
+        {
+            targetFollower.enabled = action switch
+            {
+                EnemyAction.Idle => false,
+                EnemyAction.FollowPlayer => true,
+                _ => throw new ArgumentOutOfRangeException(nameof(action),
+                    action, null)
+            };
+        }
 
         private async void PickAction()
         {
             try
             {
-                Debug.Log("Thinking about next action 🤔", this);
-                await Task.Delay(ThinkingTime, destroyCancellationToken);
+                var duration = PickActionDuration();
+                EnemyAction action = Random.Range(0, 1f) < 0.25
+                    ? new EnemyAction.Idle()
+                    : new EnemyAction.FollowPlayer();
 
-                // For now, we just always follow the player
-                targetFollower.enabled = true;
+                Debug.Log(
+                    $"Executing action {action.GetType().Name} for {duration} 🫡",
+                    this);
+                ExecuteAction(action);
 
+                await Task.Delay(duration, destroyCancellationToken);
                 PickAction();
             }
             catch (OperationCanceledException)
