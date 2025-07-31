@@ -7,7 +7,23 @@ namespace GMTK25
     [Serializable]
     public class EnemyGroup
     {
+        [SerializeField] private EnemyType type = null!;
+        [SerializeField] private int count;
+
+        public EnemyType Type => type;
+
+        public int Count => count;
+    }
+
+    [Serializable]
+    public class SubWave
+    {
+        [SerializeField]
+        private EnemyGroup[] groups = Array.Empty<EnemyGroup>();
+
         [SerializeField] private float durationSeconds;
+
+        public IReadOnlyCollection<EnemyGroup> Groups => groups;
 
         public TimeSpan Duration => TimeSpan.FromSeconds(durationSeconds);
     }
@@ -15,12 +31,12 @@ namespace GMTK25
     [Serializable]
     public class Wave
     {
-        [SerializeField]
-        private EnemyGroup[] enemyGroups = Array.Empty<EnemyGroup>();
+        [SerializeField] private SubWave[] subWaves = Array.Empty<SubWave>();
 
         [SerializeField] private float delaySeconds;
 
-        public IReadOnlyList<EnemyGroup> EnemyGroups => enemyGroups;
+        public IReadOnlyList<SubWave> SubWaves => subWaves;
+
         public TimeSpan Delay => TimeSpan.FromSeconds(delaySeconds);
     }
 
