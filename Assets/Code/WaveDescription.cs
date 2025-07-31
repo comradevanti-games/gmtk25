@@ -18,7 +18,10 @@ namespace GMTK25
         [SerializeField]
         private EnemyGroup[] enemyGroups = Array.Empty<EnemyGroup>();
 
+        [SerializeField] private float delaySeconds;
+
         public IReadOnlyList<EnemyGroup> EnemyGroups => enemyGroups;
+        public TimeSpan Delay => TimeSpan.FromSeconds(delaySeconds);
     }
 
     [CreateAssetMenu(fileName = "New Wave-description",

@@ -16,3 +16,7 @@ MonoBehaviour:
   - enemyGroups:
     - durationSeconds: 10
     - durationSeconds: 20
+    delaySeconds: 5
+  - enemyGroups:
+    - durationSeconds: 10
+    delaySeconds: 0

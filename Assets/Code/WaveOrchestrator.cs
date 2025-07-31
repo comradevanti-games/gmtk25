@@ -29,9 +29,15 @@ namespace GMTK25
             Debug.Log($"End wave {waveIndex}", this);
 
             if (waveIndex < waveDescription.Waves.Count - 1)
+            {
+                Debug.Log($"Next wave starts in {wave.Delay}");
+                await Task.Delay(wave.Delay, destroyCancellationToken);
                 _ = RunWave(waveIndex + 1);
+            }
             else
+            {
                 Debug.Log("Last wave completed. We are done 🥳", this);
+            }
         }
 
         private async void Start()
