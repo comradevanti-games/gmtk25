@@ -6,6 +6,20 @@
     "com.unity.inputsystem": "1.14.1",
     "com.unity.render-pipelines.universal": "17.1.0",
     "com.unity.toolchain.linux-x86_64": "2.0.10",
-    "com.unity.ugui": "2.0.0"
-  }
+    "com.unity.ugui": "2.0.0",
+    "org.nuget.system.collections.immutable": "9.0.7"
+  },
+  "scopedRegistries": [
+    {
+      "name": "package.openupm.com",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "org.nuget.system.buffers",
+        "org.nuget.system.collections.immutable",
+        "org.nuget.system.memory",
+        "org.nuget.system.numerics.vectors",
+        "org.nuget.system.runtime.compilerservices.unsafe"
+      ]
+    }
+  ]
 }
