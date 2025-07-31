@@ -44,4 +44,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5884e2fa01ea4196a04a8d17fc448d20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  drumSize: 7
   initialBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
