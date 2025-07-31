@@ -21,12 +21,16 @@ namespace GMTK25
 
                 health = Mathf.Max(value, 0);
 
-                if (health == 0) died.Invoke();
+                if (health != 0) return;
+
+                Debug.Log("I died 💀", this);
+                died.Invoke();
             }
         }
 
         public void TakeDamage(float amount)
         {
+            Debug.Log("I took damage 🤕", this);
             Health -= amount;
         }
 
