@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 4984527910545026504, guid: d92e35d9966100b699089ae3daa0e9f0, type: 3}
   backSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  initialSpeed: 1000
