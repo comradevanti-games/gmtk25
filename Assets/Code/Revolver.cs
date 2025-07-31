@@ -13,10 +13,12 @@ namespace GMTK25 {
         [SerializeField] private AudioSource audioSrc = null!;
         private InputHandler? inputHandler;
         private float lastShotTime = 0;
+        private ScreenShake? screenShaker;
 
         private void Awake() {
             inputHandler = FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>();
             inputHandler.ShootInputHandled += OnShootInput;
+            screenShaker = Singletons.Require<ScreenShake>();
         }
 
         private void OnShootInput() {
@@ -57,6 +59,8 @@ namespace GMTK25 {
 
             audioSrc.Play();
             audioSrc.pitch = Random.Range(0.9f, 1.1f);
+
+            screenShaker!.Shake(0.1f, 1.2f, 1.2f, 5);
 
             drumKeeper.EjectBullet();
         }

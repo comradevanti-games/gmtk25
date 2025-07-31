@@ -573,6 +573,7 @@ GameObject:
   - component: {fileID: 1795197699}
   - component: {fileID: 1795197701}
   - component: {fileID: 1795197700}
+  - component: {fileID: 1795197704}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -737,10 +738,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc31ae5ea35466ebcc1306be4f8b15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 52
-  height: 30
+  width: 50
+  height: 28
   player: {fileID: 8594667588222593131}
   minFreeDistance: 3
+--- !u!114 &1795197704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a38a5ef994540db49b6e7407dccb47fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0
