@@ -39,9 +39,11 @@ namespace GMTK25 {
 
             GameObject bullet = Instantiate(newBullet.Prefab, bulletSpawnPoint.transform.position,
                 bulletSpawnPoint.transform.rotation);
+            bullet.GetComponent<Bullet>().SetBulletType(newBullet);
             Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();
             Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
             bulletBody.AddForce(newBullet.InitialSpeed * shootDirection.normalized);
+
             drumKeeper.EjectBullet();
         }
 
