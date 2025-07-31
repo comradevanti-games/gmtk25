@@ -7,7 +7,9 @@
     "com.unity.render-pipelines.universal": "17.1.0",
     "com.unity.toolchain.linux-x86_64": "2.0.10",
     "com.unity.ugui": "2.0.0",
-    "org.nuget.system.collections.immutable": "9.0.7"
+    "org.nuget.system.collections.immutable": "9.0.7",
+    "com.unity.modules.audio": "1.0.0",
+    "com.unity.modules.particlesystem": "1.0.0"
   },
   "scopedRegistries": [
     {

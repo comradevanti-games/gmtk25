@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GMTK25 {
 
@@ -9,6 +10,7 @@ namespace GMTK25 {
         [SerializeField] private GameObject bulletSpawnPoint = null!;
         [SerializeField] private float minMouseDistanceToShoot = 0;
         [SerializeField] private float shootCooldown = 0;
+        [SerializeField] private AudioSource audioSrc = null!;
         private InputHandler? inputHandler;
         private float lastShotTime = 0;
 
@@ -52,6 +54,9 @@ namespace GMTK25 {
             Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
             Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
             bulletBody.AddForce(newBullet.InitialSpeed * shootDirection.normalized);
+
+            audioSrc.Play();
+            audioSrc.pitch = Random.Range(0.9f, 1.1f);
 
             drumKeeper.EjectBullet();
         }

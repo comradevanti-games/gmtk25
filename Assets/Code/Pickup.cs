@@ -11,7 +11,9 @@ namespace GMTK25 {
 
             if (other.gameObject.CompareTag("Player")) {
                 Debug.Log("Collected your bullet again! Phew! 😰");
-                other.GetComponentInChildren<RevolverDrumKeeper>().PushBullet(BulletType);
+                RevolverDrumKeeper rdk = other.GetComponentInChildren<RevolverDrumKeeper>();
+                rdk.PushBullet(BulletType);
+                rdk.PlaySfx("Pickup");
                 Destroy(gameObject);
             }
 

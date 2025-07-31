@@ -2,20 +2,20 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 
-namespace GMTK25
-{
-    public sealed class RevolverDrumKeeper : MonoBehaviour
-    {
+namespace GMTK25 {
+
+    public sealed class RevolverDrumKeeper : MonoBehaviour {
+
         [SerializeField] private int drumSize;
         [SerializeField] private BulletType initialBulletType = null!;
         [SerializeField] private TMP_Text displayText = null!;
+        [SerializeField] private AudioSource audioSrc = null!;
 
         private LoopQueue<BulletType> bullets = null!;
 
         public BulletType? ChamberedBulletType => bullets.Peek();
 
-        private void UpdateDisplay()
-        {
+        private void UpdateDisplay() {
             var head = ChamberedBulletType is { } chambered
                 ? $"<u>{char.ToUpper(chambered.name[0])}</u> "
                 : "";
@@ -32,8 +32,7 @@ namespace GMTK25
         /// <summary>
         /// Ejects the current <see cref="ChamberedBulletType"/> (if any).
         /// </summary>
-        public void EjectBullet()
-        {
+        public void EjectBullet() {
             bullets.Dequeue();
             UpdateDisplay();
         }
@@ -43,22 +42,31 @@ namespace GMTK25
         /// <see cref="ChamberedBulletType"/> if the drum is full.
         /// The pushed bullet will be the last in the drum.
         /// </summary>
-        public void PushBullet(BulletType type)
-        {
+        public void PushBullet(BulletType type) {
             bullets.Enqueue(type);
             UpdateDisplay();
         }
 
-        private void Awake()
-        {
+        public void PlaySfx(string sfxName) {
+
+            switch (sfxName) {
+                case "Pickup":
+                    audioSrc.Play();
+                    break;
+            }
+
+        }
+
+        private void Awake() {
             bullets = new LoopQueue<BulletType>(drumSize);
             for (var i = 0; i < drumSize; i++)
                 bullets.Enqueue(initialBulletType);
         }
 
-        private void Start()
-        {
+        private void Start() {
             UpdateDisplay();
         }
+
     }
+
 }
