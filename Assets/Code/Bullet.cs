@@ -11,6 +11,8 @@ namespace GMTK25 {
 
         public event Action<BulletType>? HasHitWall;
 
+        public event Action<BulletType>? HasHitEnemy;
+
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
@@ -27,6 +29,11 @@ namespace GMTK25 {
             if (other.gameObject.layer == 8) {
                 Debug.Log("Hit the wall! 🧱");
                 HasHitWall?.Invoke(CurrentBulletType!);
+            }
+
+            if (other.gameObject.layer == 9) {
+                Debug.Log("Hit the enemy! 👽");
+                HasHitEnemy?.Invoke(CurrentBulletType!);
             }
         }
 
