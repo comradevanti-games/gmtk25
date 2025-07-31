@@ -21,6 +21,7 @@ namespace GMTK25
         [SerializeField] private float delaySeconds;
 
         public IReadOnlyList<EnemyGroup> EnemyGroups => enemyGroups;
+
         public TimeSpan Delay => TimeSpan.FromSeconds(delaySeconds);
     }
 
