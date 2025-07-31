@@ -14,9 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - subWaves:
-    - durationSeconds: 10
-    - durationSeconds: 5
+    - groups:
+      - type: {fileID: 11400000, guid: 6389de3398d24187387c4d98fc4173aa, type: 2}
+        count: 3
+      durationSeconds: 10
+    - groups:
+      - type: {fileID: 11400000, guid: 6389de3398d24187387c4d98fc4173aa, type: 2}
+        count: 2
+      durationSeconds: 5
     delaySeconds: 5
   - subWaves:
-    - durationSeconds: 10
+    - groups:
+      - type: {fileID: 11400000, guid: 6389de3398d24187387c4d98fc4173aa, type: 2}
+        count: 10
+      durationSeconds: 10
     delaySeconds: 0
