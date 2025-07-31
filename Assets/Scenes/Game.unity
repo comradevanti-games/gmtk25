@@ -600,7 +600,7 @@ MonoBehaviour:
   width: 56
   height: 32
   player: {fileID: 8594667588222593131}
-  minFreeDistance: 6
+  minFreeDistance: 3
 --- !u!1001 &8594667588222593130
 PrefabInstance:
   m_ObjectHideFlags: 0
