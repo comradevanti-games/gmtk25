@@ -38,30 +38,23 @@ namespace GMTK25
             };
         }
 
-        private async void PickAction()
+        private void PickAction()
         {
-            try
+            var duration = PickActionDuration();
+            EnemyAction action = Random.Range(0, 1f) < 0.25
+                ? new EnemyAction.Idle()
+                : new EnemyAction.FollowPlayer();
+
+            Debug.Log(
+                $"Executing action {action.GetType().Name} for {duration} 🫡",
+                this);
+            ExecuteAction(action);
+
+            this.RunTask(async () =>
             {
-                var duration = PickActionDuration();
-                EnemyAction action = Random.Range(0, 1f) < 0.25
-                    ? new EnemyAction.Idle()
-                    : new EnemyAction.FollowPlayer();
-
-                Debug.Log(
-                    $"Executing action {action.GetType().Name} for {duration} 🫡",
-                    this);
-                ExecuteAction(action);
-
                 await Task.Delay(duration, destroyCancellationToken);
                 PickAction();
-            }
-            catch (OperationCanceledException)
-            {
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
+            });
         }
 
         private void Start()

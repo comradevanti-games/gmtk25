@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
@@ -44,20 +43,9 @@ namespace GMTK25
             }
         }
 
-        private async void Start()
+        private void Start()
         {
-            try
-            {
-                await RunWave(0);
-            }
-            catch (OperationCanceledException)
-            {
-                // Nothing
-            }
-            catch (Exception e)
-            {
-                Debug.LogException(e);
-            }
+            this.RunTask(() => RunWave(0));
         }
 
         private void Awake()
