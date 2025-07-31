@@ -14,6 +14,18 @@ namespace GMTK25
         private MovementForce movementForce = null!;
 
 
+        private void OnEnable()
+        {
+            Debug.Log(
+                $"{gameObject.name} is following {targetTransform.name} 🏃‍");
+        }
+
+        private void OnDisable()
+        {
+            Debug.Log(
+                $"{gameObject.name} stopped following {targetTransform.name} 🖐");
+        }
+
         private void FixedUpdate()
         {
             var dir = (targetTransform.position - transform.position)
