@@ -9,6 +9,7 @@ namespace GMTK25
     {
         [SerializeField] private WaveDescription waveDescription = null!;
 
+        private EnemySpawner enemySpawner = null!;
 
         private async Task RunWave(int waveIndex)
         {
@@ -21,6 +22,10 @@ namespace GMTK25
                 var subWave = remainingSubWaves.RemoveRandom();
                 Debug.Log($"Start sub-wave ({subWave.Duration} until next)",
                     this);
+
+                foreach (var group in subWave.Groups)
+                    for (var i = 0; i < group.Count; i++)
+                        enemySpawner.SpawnEnemy(group.Type);
 
                 await Task.Delay(subWave.Duration, destroyCancellationToken);
             }
@@ -53,6 +58,11 @@ namespace GMTK25
             {
                 Debug.LogException(e);
             }
+        }
+
+        private void Awake()
+        {
+            enemySpawner = Singletons.Require<EnemySpawner>();
         }
     }
 }

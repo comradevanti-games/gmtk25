@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 1795197698}
   - component: {fileID: 1795197697}
   - component: {fileID: 1795197699}
+  - component: {fileID: 1795197701}
   - component: {fileID: 1795197700}
   m_Layer: 0
   m_Name: Singletons
@@ -384,6 +385,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
+--- !u!114 &1795197701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0153260e53a44d72a40d936c7348960a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8594667588222593130
 PrefabInstance:
   m_ObjectHideFlags: 0
