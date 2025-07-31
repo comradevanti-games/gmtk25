@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GMTK25
 {
-    [CreateAssetMenu(fileName = "New Bullet-type", menuName = "GTMK25/Bullet-type")]
+    [CreateAssetMenu(fileName = "New Bullet-type", menuName = "GMTK25/Bullet-type")]
     public sealed class BulletType : ScriptableObject
     {
         [SerializeField] private GameObject prefab = null!;
