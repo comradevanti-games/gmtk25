@@ -8,11 +8,18 @@ namespace GMTK25 {
 
         public event Action<Vector2>? MovementInputHandled;
 
+        public event Action<Vector2>? RotationInputHandled;
+
         public void OnMovementInputReceived(InputAction.CallbackContext ctx) {
 
             Vector2 value = ctx.ReadValue<Vector2>();
             MovementInputHandled?.Invoke(value);
 
+        }
+
+        public void OnMousePositionInputReceived(InputAction.CallbackContext ctx) {
+            Vector2 value = ctx.ReadValue<Vector2>();
+            RotationInputHandled?.Invoke(value);
         }
 
     }

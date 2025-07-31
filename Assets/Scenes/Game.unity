@@ -333,6 +333,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 9b9dc8e3-bdce-45a4-aaa5-da9b21651679
     m_ActionName: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1795197697}
+        m_TargetAssemblyTypeName: GMTK25.InputHandler, GMTK25
+        m_MethodName: OnMousePositionInputReceived
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 63bbb4a9-1050-4d97-a2a1-e021ed64a959
+    m_ActionName: 'Player/Look[/Mouse/position]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: MKB
   m_DefaultActionMap: Player

@@ -8,6 +8,8 @@ namespace GMTK25 {
         [SerializeField] private Rigidbody2D body = null!;
         [SerializeField] private float movementSpeed = 10f;
 
+        public event Action? Moved;
+
         private Vector2 MovementDirection { get; set; }
 
         private void Awake() {
@@ -21,6 +23,7 @@ namespace GMTK25 {
             }
 
             body.MovePosition(body.position + MovementDirection * (Time.fixedDeltaTime * movementSpeed));
+            Moved?.Invoke();
         }
 
         private void OnMovementInput(Vector2 dir) {
