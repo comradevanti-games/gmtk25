@@ -258,6 +258,7 @@ GameObject:
   - component: {fileID: 1795197698}
   - component: {fileID: 1795197697}
   - component: {fileID: 1795197699}
+  - component: {fileID: 1795197700}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -354,6 +355,19 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1795197700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3907ad1c4bf497386bd43102b3583e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
 --- !u!1001 &8594667588222593130
 PrefabInstance:
   m_ObjectHideFlags: 0
