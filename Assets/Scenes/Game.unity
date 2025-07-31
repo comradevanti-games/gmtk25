@@ -376,6 +376,7 @@ GameObject:
   - component: {fileID: 1795197699}
   - component: {fileID: 1795197701}
   - component: {fileID: 1795197700}
+  - component: {fileID: 1795197702}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -514,6 +515,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activationDelaySeconds: 2
+--- !u!114 &1795197702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79aba4f7ddaad044eb552e999ae42f12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1897914377066632160
 PrefabInstance:
   m_ObjectHideFlags: 0

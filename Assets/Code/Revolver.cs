@@ -37,14 +37,21 @@ namespace GMTK25 {
                 return;
             }
 
-            GameObject bullet = Instantiate(newBullet.Prefab, bulletSpawnPoint.transform.position,
+            GameObject bulletGameObject = Instantiate(newBullet.Prefab, bulletSpawnPoint.transform.position,
                 bulletSpawnPoint.transform.rotation);
-            bullet.GetComponent<Bullet>().SetBulletType(newBullet);
-            Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();
+            IBullet bullet = bulletGameObject.GetComponent<IBullet>();
+            bullet.CurrentBulletType = newBullet;
+            bullet.SuccessHit += OnSuccessHit;
+
+            Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
             Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
             bulletBody.AddForce(newBullet.InitialSpeed * shootDirection.normalized);
 
             drumKeeper.EjectBullet();
+        }
+
+        private void OnSuccessHit(BulletType successHitType) {
+            drumKeeper.PushBullet(successHitType);
         }
 
     }
