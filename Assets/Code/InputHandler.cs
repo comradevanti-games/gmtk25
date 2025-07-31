@@ -6,7 +6,7 @@ namespace GMTK25 {
 
     public class InputHandler : MonoBehaviour {
 
-        public event Action<Vector2> MovementInputHandled;
+        public event Action<Vector2>? MovementInputHandled;
 
         public void OnMovementInputReceived(InputAction.CallbackContext ctx) {
 
