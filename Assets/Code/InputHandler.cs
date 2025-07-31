@@ -26,9 +26,12 @@ namespace GMTK25 {
         }
 
         public void OnMousePositionInputReceived(InputAction.CallbackContext ctx) {
-            Vector2 value = ctx.ReadValue<Vector2>();
-            MouseScreenPosition = mainCamera!.ScreenToWorldPoint(value);
-            RotationInputHandled?.Invoke(MouseScreenPosition);
+
+            if (ctx.performed) {
+                Vector2 value = ctx.ReadValue<Vector2>();
+                MouseScreenPosition = mainCamera!.ScreenToWorldPoint(value);
+                RotationInputHandled?.Invoke(MouseScreenPosition);
+            }
         }
 
         public void OnShootInputReceived(InputAction.CallbackContext ctx) {

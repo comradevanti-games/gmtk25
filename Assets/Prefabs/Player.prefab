@@ -287,6 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   drumKeeper: {fileID: 7846508905358984964}
   bulletSpawnPoint: {fileID: 1597665277256716111}
+  minMouseDistanceToShoot: 0.9
 --- !u!50 &8847059097071604878
 Rigidbody2D:
   serializedVersion: 5

@@ -7,6 +7,7 @@ namespace GMTK25 {
 
         [SerializeField] private RevolverDrumKeeper drumKeeper = null!;
         [SerializeField] private GameObject bulletSpawnPoint = null!;
+        [SerializeField] private float minMouseDistanceToShoot = 0;
         private InputHandler? inputHandler;
 
         private void Awake() {
@@ -15,7 +16,12 @@ namespace GMTK25 {
         }
 
         private void OnShootInput() {
-            Debug.Log("Peng! 🔫");
+
+            if (Vector2.Distance(inputHandler!.MouseScreenPosition, transform.position) <
+                minMouseDistanceToShoot) {
+                return;
+            }
+
             Shoot();
         }
 
@@ -36,6 +42,7 @@ namespace GMTK25 {
             Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();
             Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
             bulletBody.AddForce(newBullet.InitialSpeed * shootDirection.normalized);
+            drumKeeper.EjectBullet();
         }
 
     }
