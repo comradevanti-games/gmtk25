@@ -35,6 +35,8 @@ namespace GMTK25
             await Task.Delay(ActivationDelay, destroyCancellationToken);
 
             enemy.GetComponent<EnemyBrain>().enabled = true;
+            enemy.GetComponent<Collider2D>().enabled = true;
+
             enemyRenderer.color = WithAlpha(enemyRenderer.color, 1);
             Debug.Log($"Enemy activated", enemy);
         }
