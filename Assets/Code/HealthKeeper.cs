@@ -1,13 +1,15 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GMTK25
 {
     public sealed class HealthKeeper : MonoBehaviour
     {
-        public event Action? Died;
+        public UnityEvent died = new UnityEvent();
 
         [SerializeField] private float initialHealth;
+
         private float health;
 
         public float Health
@@ -19,7 +21,7 @@ namespace GMTK25
 
                 health = Mathf.Max(value, 0);
 
-                if (health == 0) Died?.Invoke();
+                if (health == 0) died.Invoke();
             }
         }
 
