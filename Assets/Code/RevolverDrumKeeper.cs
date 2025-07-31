@@ -19,6 +19,16 @@ namespace GMTK25
             bullets.Dequeue();
         }
 
+        /// <summary>
+        /// Adds a bullet to this drum. This will eject the
+        /// <see cref="ChamberedBulletType"/> if the drum is full.
+        /// The pushed bullet will be the last in the drum.
+        /// </summary>
+        public void PushBullet(BulletType type)
+        {
+            bullets.Enqueue(type);
+        }
+
         private void Awake()
         {
             bullets = new LoopQueue<BulletType>(drumSize);
