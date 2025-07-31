@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: thinkingTimeSeconds
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -3183499311322674695, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
+      propertyPath: maxActionDurationSeconds
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -3183499311322674695, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
+      propertyPath: minActionDurationSeconds
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 96287052354082269, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_Sprite
       value: 

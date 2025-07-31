@@ -15,6 +15,7 @@ namespace GMTK25
 
         private void OnEnable()
         {
+            if (!targetTransform) return;
             Debug.Log(
                 $"Following {targetTransform.name} 🏃‍",
                 this);
@@ -22,8 +23,9 @@ namespace GMTK25
 
         private void OnDisable()
         {
+            if (!targetTransform) return;
             Debug.Log(
-                $"Following {targetTransform.name} 🖐",
+                $"Stopped following {targetTransform.name} 🖐",
                 this);
         }
 
