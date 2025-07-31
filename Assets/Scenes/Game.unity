@@ -259,8 +259,8 @@ GameObject:
   - component: {fileID: 1795197697}
   - component: {fileID: 1795197699}
   m_Layer: 0
-  m_Name: InputHandler
-  m_TagString: Untagged
+  m_Name: Singletons
+  m_TagString: Singletons
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -412,5 +412,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 242702703}
-  - {fileID: 8594667588222593130}
   - {fileID: 1795197698}
+  - {fileID: 8594667588222593130}
