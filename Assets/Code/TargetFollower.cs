@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace GMTK25
@@ -17,13 +16,15 @@ namespace GMTK25
         private void OnEnable()
         {
             Debug.Log(
-                $"{gameObject.name} is following {targetTransform.name} 🏃‍");
+                $"Following {targetTransform.name} 🏃‍",
+                this);
         }
 
         private void OnDisable()
         {
             Debug.Log(
-                $"{gameObject.name} stopped following {targetTransform.name} 🖐");
+                $"Following {targetTransform.name} 🖐",
+                this);
         }
 
         private void FixedUpdate()

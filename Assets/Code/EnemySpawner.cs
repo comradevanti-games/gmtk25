@@ -21,11 +21,10 @@ namespace GMTK25
             var color = colors.GetRandom();
             var position = PickSpawnPosition();
 
-            Debug.Log(
-                $"New enemy spawned at {position} ⚡ ({color.name}, {type.name})",
-                this);
-
             var enemy = Instantiate(type.Prefab, position, Quaternion.identity);
+            enemy.name = $"{color.name} {type.name} {Random.Range(0, 1000)}";
+
+            Debug.Log($"New enemy spawned 👶", enemy);
 
             enemy.GetComponent<SpriteRenderer>().color = color.Color;
         }

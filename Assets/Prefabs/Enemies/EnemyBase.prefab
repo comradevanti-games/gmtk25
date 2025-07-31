@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 486699524624182777}
   - component: {fileID: 96287052354082269}
   - component: {fileID: 1967371659423618781}
+  - component: {fileID: -3183499311322674695}
   - component: {fileID: -4720559054260992600}
   m_Layer: 0
   m_Name: EnemyBase
@@ -124,13 +125,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4221283437057175955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0d2228461ff14b268193f8ac4a96f6f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   baseForce: 0
---- !u!114 &-4720559054260992600
+--- !u!114 &-3183499311322674695
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,6 +139,19 @@ MonoBehaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4221283437057175955}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 122da9a321ff4891b6949d811a1443c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thinkingTimeSeconds: 0
+--- !u!114 &-4720559054260992600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4221283437057175955}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d43467fd6a55461e828230a186d5f1bf, type: 3}
   m_Name: 
