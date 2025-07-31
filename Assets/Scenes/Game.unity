@@ -585,6 +585,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aba4f7ddaad044eb552e999ae42f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ---- !u!114 &1795197702
+  locationFinder: {fileID: 1795197703}
+  pickupPrefab: {fileID: 1427523892009127365, guid: 39034311ce63e68458cdf1c7b29dea5c, type: 3}
 --- !u!114 &1795197703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,8 +599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efc31ae5ea35466ebcc1306be4f8b15d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  width: 56
-  height: 32
+  width: 52
+  height: 30
   player: {fileID: 8594667588222593131}
   minFreeDistance: 3
 --- !u!1001 &8594667588222593130

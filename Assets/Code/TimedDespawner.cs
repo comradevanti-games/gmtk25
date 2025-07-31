@@ -7,24 +7,26 @@ namespace GMTK25 {
 
         [SerializeField] private float despawnTime = 0f;
         private float timeAlive = 0f;
+        private float initialTime = 0f;
+        private bool shouldElapse = true;
 
         public event Action? Elapsed;
 
-        private void Update() {
-
-            if (timeAlive <= despawnTime) {
-                timeAlive += Time.deltaTime;
-
-                return;
-            }
-
-            Despawn();
-
+        private void Awake() {
+            initialTime = Time.time;
         }
 
-        private void Despawn() {
-            Elapsed?.Invoke();
-            Destroy(gameObject);
+        private void Update() {
+
+            if (!shouldElapse) return;
+
+            if (initialTime + timeAlive >= initialTime + despawnTime) {
+                Elapsed?.Invoke();
+                shouldElapse = false;
+            }
+
+            timeAlive += Time.deltaTime;
+
         }
 
     }

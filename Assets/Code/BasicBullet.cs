@@ -5,6 +5,8 @@ namespace GMTK25 {
 
     public class BasicBullet : MonoBehaviour, IBullet {
 
+        [SerializeField] private float damage = 0f;
+
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
@@ -15,6 +17,7 @@ namespace GMTK25 {
 
         public void OnDespawnTimeReached() {
             Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+            Despawn();
         }
 
         public void OnTriggerEnter2D(Collider2D other) {
@@ -27,6 +30,7 @@ namespace GMTK25 {
 
             if (other.gameObject.layer == 9) {
                 Debug.Log("Hit the enemy! 👽");
+                other.GetComponent<HealthKeeper>().TakeDamage(1);
                 SuccessHit?.Invoke(CurrentBulletType);
                 Despawn();
             }
