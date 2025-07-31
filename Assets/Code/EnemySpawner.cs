@@ -8,7 +8,7 @@ namespace GMTK25
     public sealed class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private float activationDelaySeconds;
-
+        private StageLocationFinder locationFinder = null!;
         private EnemyColor[] colors = Array.Empty<EnemyColor>();
 
         private TimeSpan ActivationDelay =>
@@ -17,14 +17,6 @@ namespace GMTK25
         private static Color WithAlpha(Color c, float a)
         {
             return new Color(c.r, c.g, c.b, a);
-        }
-
-        private Vector2 PickSpawnPosition()
-        {
-            return new Vector2(
-                Random.Range(-10f, 10),
-                Random.Range(-10f, 10)
-            );
         }
 
         private async Task DelayedActivate(GameObject enemy)
@@ -44,7 +36,7 @@ namespace GMTK25
         public void SpawnEnemy(EnemyType type)
         {
             var color = colors.GetRandom();
-            var position = PickSpawnPosition();
+            var position = locationFinder.PickRandomFreeLocation();
 
             var enemy = Instantiate(type.Prefab, position, Quaternion.identity);
             enemy.name = $"{color.name} {type.name} {Random.Range(0, 1000)}";
@@ -58,6 +50,7 @@ namespace GMTK25
         private void Awake()
         {
             colors = Resources.LoadAll<EnemyColor>("EnemyColors");
+            locationFinder = Singletons.Require<StageLocationFinder>();
         }
     }
 }

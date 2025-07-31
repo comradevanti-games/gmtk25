@@ -373,10 +373,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1795197698}
   - component: {fileID: 1795197697}
+  - component: {fileID: 1795197702}
+  - component: {fileID: 1795197703}
   - component: {fileID: 1795197699}
   - component: {fileID: 1795197701}
   - component: {fileID: 1795197700}
-  - component: {fileID: 1795197702}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -526,64 +527,23 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79aba4f7ddaad044eb552e999ae42f12, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &1897914377066632160
-PrefabInstance:
+  m_EditorClassIdentifier: ---- !u!114 &1795197702
+--- !u!114 &1795197703
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 767183630180220423, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_Name
-      value: Borders
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4999965864734756841, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cfb06e35fcc99914f824c791040f9dd5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc31ae5ea35466ebcc1306be4f8b15d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  width: 56
+  height: 32
+  player: {fileID: 8594667588222593131}
+  minFreeDistance: 6
 --- !u!1001 &8594667588222593130
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -657,6 +617,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+--- !u!4 &8594667588222593131 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8606504435851384275, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+  m_PrefabInstance: {fileID: 8594667588222593130}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -665,4 +630,3 @@ SceneRoots:
   - {fileID: 1795197698}
   - {fileID: 8594667588222593130}
   - {fileID: 460659708}
-  - {fileID: 1897914377066632160}
