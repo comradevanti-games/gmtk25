@@ -28,6 +28,7 @@ namespace GMTK25
 
         private void ExecuteAction(EnemyAction action)
         {
+            if (!targetFollower) return;
             targetFollower.enabled = action switch
             {
                 EnemyAction.Idle => false,
