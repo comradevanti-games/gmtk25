@@ -7,16 +7,11 @@ namespace GMTK25 {
         [SerializeField] private Rigidbody2D body = null!;
         [SerializeField] private PlayerMovement playerMovement = null!;
 
-        private Camera? mainCam;
         private InputHandler? inputHandler;
 
         private Vector2 LastKnownMousePosition { get; set; }
 
         private void Awake() {
-
-            if (Camera.main != null) {
-                mainCam = Camera.main;
-            }
 
             inputHandler = FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>();
             inputHandler.RotationInputHandled += OnRotationInput;
@@ -26,8 +21,7 @@ namespace GMTK25 {
 
         private void SetNewRotation() {
 
-            Vector2 mouseWorldPosition = mainCam!.ScreenToWorldPoint(LastKnownMousePosition);
-            Vector2 directionToMouse = mouseWorldPosition - body.position;
+            Vector2 directionToMouse = LastKnownMousePosition - body.position;
             float angle = Mathf.Atan2(directionToMouse.y, directionToMouse.x) * Mathf.Rad2Deg;
             body.SetRotation(angle - 90f);
 

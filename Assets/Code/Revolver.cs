@@ -34,8 +34,8 @@ namespace GMTK25 {
             GameObject bullet = Instantiate(newBullet.Prefab, bulletSpawnPoint.transform.position,
                 bulletSpawnPoint.transform.rotation);
             Rigidbody2D bulletBody = bullet.GetComponent<Rigidbody2D>();
-            Vector2 shootDirection = bulletSpawnPoint.transform.up;
-            bulletBody.AddForce(newBullet.InitialSpeed * shootDirection);
+            Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
+            bulletBody.AddForce(newBullet.InitialSpeed * shootDirection.normalized);
         }
 
     }

@@ -6,22 +6,29 @@ namespace GMTK25 {
 
     public class InputHandler : MonoBehaviour {
 
+        private Camera? mainCamera;
+
         public event Action<Vector2>? MovementInputHandled;
 
         public event Action<Vector2>? RotationInputHandled;
 
         public event Action? ShootInputHandled;
 
-        public void OnMovementInputReceived(InputAction.CallbackContext ctx) {
+        public Vector2 MouseScreenPosition { get; set; }
 
+        private void Awake() {
+            mainCamera = Camera.main;
+        }
+
+        public void OnMovementInputReceived(InputAction.CallbackContext ctx) {
             Vector2 value = ctx.ReadValue<Vector2>();
             MovementInputHandled?.Invoke(value);
-
         }
 
         public void OnMousePositionInputReceived(InputAction.CallbackContext ctx) {
             Vector2 value = ctx.ReadValue<Vector2>();
-            RotationInputHandled?.Invoke(value);
+            MouseScreenPosition = mainCamera!.ScreenToWorldPoint(value);
+            RotationInputHandled?.Invoke(MouseScreenPosition);
         }
 
         public void OnShootInputReceived(InputAction.CallbackContext ctx) {
