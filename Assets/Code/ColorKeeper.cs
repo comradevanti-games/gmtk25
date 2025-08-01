@@ -5,7 +5,14 @@ namespace GMTK25
 {
     public sealed class ColorKeeper : MonoBehaviour
     {
+        [SerializeField] private ColorType? initialColorType;
+
         public ColorType ColorType { get; set; } = null!;
+
+        private void Awake()
+        {
+            if (initialColorType) ColorType = initialColorType;
+        }
     }
 
     public static class ColorTypeExt
