@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace GMTK25
+namespace GMTK25.Enemies
 {
     [Serializable]
     public class EnemyGroup

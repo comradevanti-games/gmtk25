@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GMTK25
+namespace GMTK25.Enemies
 {
     [CreateAssetMenu(fileName = "New Enemy-type",
         menuName = "GMTK25/Enemy-type")]

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GMTK25
+namespace GMTK25.Enemies
 {
     public sealed class EnemySpawner : MonoBehaviour
     {
