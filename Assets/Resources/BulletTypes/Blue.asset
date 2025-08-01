@@ -15,3 +15,4 @@ MonoBehaviour:
   prefab: {fileID: 4984527910545026504, guid: 175842c5691b659458f343ea3c9deed6, type: 3}
   backSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   initialSpeed: 600
+  price: 2

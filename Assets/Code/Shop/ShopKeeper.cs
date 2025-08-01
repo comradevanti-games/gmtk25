@@ -34,7 +34,8 @@ namespace GMTK25.Shop
                     pos + Vector2.up * 2, Quaternion.identity);
                 shopObjects.Add(counter);
 
-                counter.GetComponent<PriceCounter>().Init(pickup, 2);
+                counter.GetComponent<PriceCounter>()
+                    .Init(pickup, offers[i].Price);
             }
         }
 
