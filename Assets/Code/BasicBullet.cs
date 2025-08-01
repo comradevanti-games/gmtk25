@@ -9,11 +9,20 @@ namespace GMTK25 {
 
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
+            Damage = damage;
         }
+
+        public float Damage { get; set; }
+
+        public ColorType ColorType { get; set; } = null!;
 
         public BulletType CurrentBulletType { get; set; } = null!;
 
-        public event Action<BulletType>? SuccessHit;
+        public ColorType? LastHitColor { get; set; }
+
+        public BulletType? LastHitBulletType { get; set; }
+
+        public event Action<BulletType, ColorType?>? SuccessHit;
 
         public void OnDespawnTimeReached() {
             Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
@@ -31,7 +40,7 @@ namespace GMTK25 {
             if (other.gameObject.layer == 9) {
                 Debug.Log("Hit the enemy! 👽");
                 other.GetComponent<HealthKeeper>().TakeDamage(damage);
-                SuccessHit?.Invoke(CurrentBulletType);
+                SuccessHit?.Invoke(CurrentBulletType, gameObject.TryGetColorType());
                 Despawn();
             }
 

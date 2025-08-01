@@ -14,6 +14,8 @@ namespace GMTK25 {
         private InputHandler? inputHandler;
         private float lastShotTime = 0;
         private ScreenShake? screenShaker;
+        private ColorType? lastSuccessColorType;
+        private BulletType? lastSuccessBulletType;
 
         private void Awake() {
             inputHandler = FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>();
@@ -49,8 +51,11 @@ namespace GMTK25 {
 
             GameObject bulletGameObject = Instantiate(newBullet.Prefab, bulletSpawnPoint.transform.position,
                 bulletSpawnPoint.transform.rotation);
+
             IBullet bullet = bulletGameObject.GetComponent<IBullet>();
             bullet.CurrentBulletType = newBullet;
+            bullet.LastHitBulletType = lastSuccessBulletType;
+            bullet.LastHitColor = lastSuccessColorType;
             bullet.SuccessHit += OnSuccessHit;
 
             Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
@@ -65,7 +70,9 @@ namespace GMTK25 {
             drumKeeper.EjectBullet();
         }
 
-        private void OnSuccessHit(BulletType successHitType) {
+        private void OnSuccessHit(BulletType successHitType, ColorType? colorType) {
+            lastSuccessBulletType = successHitType;
+            lastSuccessColorType = colorType;
             drumKeeper.PushBullet(successHitType);
         }
 

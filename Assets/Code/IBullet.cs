@@ -5,9 +5,17 @@ namespace GMTK25 {
 
     public interface IBullet {
 
+        public float Damage { get; set; }
+
+        public ColorType ColorType { get; set; }
+
         public BulletType CurrentBulletType { get; set; }
 
-        public event Action<BulletType> SuccessHit;
+        public ColorType? LastHitColor { get; set; }
+
+        public BulletType? LastHitBulletType { get; set; }
+
+        public event Action<BulletType, ColorType?> SuccessHit;
 
         public void OnDespawnTimeReached();
 

@@ -1,12 +1,14 @@
 using System;
+using GMTK25.Enemies;
 using UnityEngine;
 
 namespace GMTK25 {
 
-    public class ColoredBullet : MonoBehaviour, IBullet {
+    public class ColoredLinkBullet : MonoBehaviour, IBullet {
 
         [SerializeField] private float damage = 0f;
         [SerializeField] private ColorType colorType = null!;
+        [SerializeField] private BulletType linkBulletType = null!;
 
         public float Damage { get; set; }
 
@@ -23,7 +25,6 @@ namespace GMTK25 {
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
-            ColorType = colorType;
             Damage = damage;
         }
 
@@ -43,7 +44,20 @@ namespace GMTK25 {
                 Debug.Log("Hit the enemy! 👽");
 
                 if (other.gameObject.GetColorType() == gameObject.GetColorType()) {
+
                     other.GetComponent<HealthKeeper>().TakeDamage(damage);
+
+                    if (LastHitColor == other.gameObject.GetColorType()) {
+
+                        Singletons.Require<EnemyTracker>().GetClosestEnemyPosition(other.transform.position);
+
+                        GameObject bulletGameObject = Instantiate(linkBulletType.Prefab, transform.position,
+                            transform.rotation);
+
+                        IBullet bullet = bulletGameObject.GetComponent<IBullet>();
+                        bullet.CurrentBulletType = linkBulletType;
+                    }
+
                     SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());
                 }
                 else {

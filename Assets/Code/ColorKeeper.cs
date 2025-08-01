@@ -29,5 +29,13 @@ namespace GMTK25
         {
             g.GetOrAdd<ColorKeeper>().ColorType = colorType;
         }
+        
+        public static ColorType? TryGetColorType(this GameObject g)
+        {
+            if (g.GetComponent<ColorKeeper>() is { } colorKeeper)
+                return colorKeeper.ColorType;
+
+            return null;
+        }
     }
 }
