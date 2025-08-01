@@ -46,6 +46,8 @@ namespace GMTK25 {
                     other.GetComponent<HealthKeeper>().TakeDamage(damage);
 
                     if (LastHitColor == other.gameObject.GetColorType()) {
+                        
+                        Debug.Log("Spawning additional bullet!!");
 
                         Vector2 enemyPos = Singletons.Require<EnemyTracker>()
                             .GetClosestEnemyPosition(other.transform.position);
