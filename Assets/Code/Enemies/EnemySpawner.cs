@@ -44,6 +44,7 @@ namespace GMTK25.Enemies
 
             var enemy = Instantiate(type.Prefab, position, Quaternion.identity);
             enemy.name = $"{color.name} {type.name} {Random.Range(0, 1000)}";
+            enemy.SetColorType(color);
             enemy.GetComponent<SpriteRenderer>().color = color.Color;
 
             Debug.Log($"New enemy spawned 👶", enemy);

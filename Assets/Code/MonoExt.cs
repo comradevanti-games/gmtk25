@@ -7,6 +7,12 @@ namespace GMTK25
 {
     public static class MonoExt
     {
+        public static T GetOrAdd<T>(this GameObject g) where T : Component
+        {
+            var component = g.GetComponent<T>();
+            return component ? component : g.AddComponent<T>();
+        }
+
         public static async void RunTask(this MonoBehaviour mono,
             Func<CancellationToken, Task> startTask)
         {
