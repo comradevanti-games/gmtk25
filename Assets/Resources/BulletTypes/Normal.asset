@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd970a75e820446dbe28b00d99800fdb, type: 3}
-  m_Name: Basic
+  m_Name: Normal
   m_EditorClassIdentifier: 
   prefab: {fileID: 4984527910545026504, guid: d92e35d9966100b699089ae3daa0e9f0, type: 3}
   backSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   initialSpeed: 600
   price: 1
+  pickupSprite: {fileID: -581739249266215187, guid: 8a7b3872b6d01b0418a79335a712acd4, type: 3}

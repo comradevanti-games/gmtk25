@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GMTK25 {
 
-    public class BasicBullet : MonoBehaviour, IBullet {
+    public class NormalBullet : MonoBehaviour, IBullet {
 
         [SerializeField] private float damage = 0f;
 
@@ -27,7 +27,7 @@ namespace GMTK25 {
         public event Action? FailHit;
 
         public void OnDespawnTimeReached() {
-            Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+            Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
             Despawn();
         }
 
@@ -35,7 +35,7 @@ namespace GMTK25 {
 
             switch (other.gameObject.layer) {
                 case 8:
-                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
                     FailHit?.Invoke();
                     Despawn();
 

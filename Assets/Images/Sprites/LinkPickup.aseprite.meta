@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a7b3872b6d01b0418a79335a712acd4
+guid: 31a5bfdb4c78f19439b9720d9bd4c837
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638895803989189924
+  platformSettingsDirtyTick: 638896684847810613
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,7 +127,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pickup
+  - name: LinkPickup
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 9
@@ -139,7 +139,7 @@ ScriptedImporter:
       y: 0
       width: 16
       height: 16
-    spriteID: 96952e1af5d3dfa449da80f406500e11
+    spriteID: 4b9b6045021dec243b0344a639039108
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,17 +153,17 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1454441398
+      value0: 2567825706
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Pickup
+    name: LinkPickup
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pickup
+    - name: LinkPickup
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
@@ -171,7 +171,7 @@ ScriptedImporter:
         y: 0
         width: 16
         height: 16
-      spriteId: 96952e1af5d3dfa449da80f406500e11
+      spriteId: 4b9b6045021dec243b0344a639039108
     linkedCells: []
     tileCells: []
     tileSetIndex: 0

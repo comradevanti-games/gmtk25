@@ -16,3 +16,5 @@ MonoBehaviour:
   backSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   initialSpeed: 600
   price: 3
+  pickupSprite: {fileID: 2684831280133921057, guid: 31a5bfdb4c78f19439b9720d9bd4c837, type: 3}
+  colorType: {fileID: 11400000, guid: 422b741b63d8af67594dbe081c825297, type: 2}

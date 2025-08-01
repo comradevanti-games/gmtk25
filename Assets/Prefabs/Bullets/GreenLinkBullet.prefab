@@ -99,7 +99,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0, g: 0.47164273, b: 1, a: 1}
+      key0: {r: 0.4, g: 1, b: 0.23529412, a: 1}
       key1: {r: 0, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -201,15 +201,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.b
-      value: 1
+      value: 0.216981
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.g
-      value: 0.5254779
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 0.27640164
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

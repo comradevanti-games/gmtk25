@@ -9,7 +9,7 @@ namespace GMTK25.Shop
     {
         [SerializeField] private Vector2 shopLocation;
         [SerializeField] private float itemGap;
-        [SerializeField] private GameObject priceCounterPrefab;
+        [SerializeField] private GameObject priceCounterPrefab = null!;
 
         private PickupSpawner pickupSpawner = null!;
         private BulletType[] allBulletTypes = Array.Empty<BulletType>();
@@ -26,16 +26,14 @@ namespace GMTK25.Shop
             {
                 var x = leftX + i * itemGap;
                 var pos = new Vector2(x, shopLocation.y);
-                var pickup = pickupSpawner.SpawnPickup(
-                    new PickupSpawner.Request(offers[i], pos));
+                var pickup = pickupSpawner.SpawnPickup(new PickupSpawner.Request(offers[i], pos, offers[i].ColorType));
                 shopObjects.Add(pickup);
 
                 var counter = Instantiate(priceCounterPrefab,
                     pos + Vector2.up * 2, Quaternion.identity);
                 shopObjects.Add(counter);
 
-                counter.GetComponent<PriceCounter>()
-                    .Init(pickup, offers[i].Price);
+                counter.GetComponent<PriceCounter>().Init(pickup, offers[i].Price);
             }
         }
 

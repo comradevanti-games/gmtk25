@@ -31,7 +31,7 @@ namespace GMTK25 {
         }
 
         public void OnDespawnTimeReached() {
-            Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+            Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
             Despawn();
         }
 
@@ -39,7 +39,7 @@ namespace GMTK25 {
 
             switch (other.gameObject.layer) {
                 case 8:
-                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
                     FailHit?.Invoke();
                     Despawn();
 
@@ -63,7 +63,7 @@ namespace GMTK25 {
                         SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());
                     }
                     else {
-                        Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                        Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
                         FailHit?.Invoke();
                         other.GetComponent<HealthKeeper>().TakeDamage(0.5f);
                     }
