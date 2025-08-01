@@ -29,5 +29,10 @@ namespace GMTK25
         {
             g.GetOrAdd<ColorKeeper>().ColorType = colorType;
         }
+
+        public static void Tint(this GameObject g, Color color)
+        {
+            g.GetComponent<SpriteRenderer>().color = color;
+        }
     }
 }
