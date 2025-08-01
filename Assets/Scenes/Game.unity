@@ -782,6 +782,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65b02522f1ba4f70a903d8807fc5af84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allEnemiesDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0

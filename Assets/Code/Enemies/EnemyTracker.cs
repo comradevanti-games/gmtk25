@@ -1,10 +1,13 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace GMTK25.Enemies
 {
     public sealed class EnemyTracker : MonoBehaviour
     {
+        public UnityEvent allEnemiesDead = new UnityEvent();
+
         private readonly ISet<GameObject> enemies = new HashSet<GameObject>();
 
         public int EnemiesCount => enemies.Count;
@@ -18,6 +21,8 @@ namespace GMTK25.Enemies
             enemy.GetComponent<HealthKeeper>().died.AddListener(() =>
             {
                 enemies.Remove(enemy);
+
+                if (enemies.Count == 0) allEnemiesDead.Invoke();
             });
         }
     }
