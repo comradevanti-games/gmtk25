@@ -18,16 +18,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 96287052354082269, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_Size.x
-      value: 0.125
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 96287052354082269, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_Size.y
-      value: 0.25
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 96287052354082269, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: caeb159821ca3a7ef8afda71cc384c6f, type: 3}
+      objectReference: {fileID: 4159804991969981263, guid: dc47386dc838b3647a73d98973f45785, type: 3}
     - target: {fileID: 96287052354082269, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
@@ -136,7 +136,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 0.125, y: 0.25}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

@@ -6,6 +6,7 @@ namespace GMTK25 {
     public class BasicBullet : MonoBehaviour, IBullet {
 
         [SerializeField] private float damage = 0f;
+        
 
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;

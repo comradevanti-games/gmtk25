@@ -217,6 +217,7 @@ GameObject:
   - component: {fileID: 2790803190976374330}
   - component: {fileID: 4910977231910409874}
   - component: {fileID: 4188852114931132420}
+  - component: {fileID: 1455934946271646118}
   - component: {fileID: 8847059097071604878}
   - component: {fileID: 7174047176087027215}
   - component: {fileID: 5802279955669795499}
@@ -291,6 +292,22 @@ MonoBehaviour:
   minMouseDistanceToShoot: 0.9
   shootCooldown: 0.28
   audioSrc: {fileID: 5802279955669795499}
+--- !u!114 &1455934946271646118
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952723769476477827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b929d685f0e4864a8e942002887c02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  died:
+    m_PersistentCalls:
+      m_Calls: []
+  initialHealth: 3
 --- !u!50 &8847059097071604878
 Rigidbody2D:
   serializedVersion: 5

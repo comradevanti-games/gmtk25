@@ -574,6 +574,7 @@ GameObject:
   - component: {fileID: 1795197701}
   - component: {fileID: 1795197700}
   - component: {fileID: 1795197704}
+  - component: {fileID: 1795197705}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -726,6 +727,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: ---- !u!114 &1795197702
   locationFinder: {fileID: 1795197703}
   pickupPrefab: {fileID: 1427523892009127365, guid: 39034311ce63e68458cdf1c7b29dea5c, type: 3}
+  missSfx: {fileID: 8300000, guid: afe47427aa2635b48890544cfb854f38, type: 3}
 --- !u!114 &1795197703
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -754,6 +756,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a38a5ef994540db49b6e7407dccb47fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1795197705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6e4bdfdea80ff44da2f2fc31408de58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  jukeboxSource: {fileID: 1160842956}
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0

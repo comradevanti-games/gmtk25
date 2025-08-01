@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a7b3872b6d01b0418a79335a712acd4
+guid: 3061d5061155463409665d2120b144ba
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -33,7 +33,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 16
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638895803989189924
+  platformSettingsDirtyTick: 638896287698573124
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pickup
+  - name: Triangle
     originalName: 
-    pivot: {x: 0.5, y: 0.53846157}
+    pivot: {x: 0.5, y: 0.5}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 6
-      height: 13
-    spriteID: 96952e1af5d3dfa449da80f406500e11
+      width: 16
+      height: 16
+    spriteID: 28de638faf6a09847a9548e1f59ead8d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1454441398
+      value0: 215384446
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Pickup
+    name: Triangle
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pickup
+    - name: Triangle
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 1
-        width: 6
-        height: 13
-      spriteId: 96952e1af5d3dfa449da80f406500e11
+        x: 0
+        y: 0
+        width: 16
+        height: 16
+      spriteId: 28de638faf6a09847a9548e1f59ead8d
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -218,4 +218,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 8, y: 16}
+  previousTextureSize: {x: 16, y: 16}

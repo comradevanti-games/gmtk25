@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8a7b3872b6d01b0418a79335a712acd4
+guid: 9e668870e2107d5409202119dd02934e
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638895803989189924
+  platformSettingsDirtyTick: 638896293294054194
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -127,9 +127,9 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Pickup
+  - name: Arrow
     originalName: 
-    pivot: {x: 0.5, y: 0.53846157}
+    pivot: {x: 0.5, y: 0.4}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 0
       y: 0
-      width: 6
-      height: 13
-    spriteID: 96952e1af5d3dfa449da80f406500e11
+      width: 10
+      height: 5
+    spriteID: af141af0ee352ee42bf3e36804c95237
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -153,25 +153,25 @@ ScriptedImporter:
   asepriteLayers:
   - layerIndex: 0
     uuid:
-      value0: 1454441398
+      value0: 22446553
       value1: 0
       value2: 0
       value3: 0
     guid: 0
-    name: Pickup
+    name: Arrow
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Pickup
+    - name: Arrow
       frameIndex: 0
       additiveSortOrder: 0
       cellRect:
-        x: 5
-        y: 1
-        width: 6
-        height: 13
-      spriteId: 96952e1af5d3dfa449da80f406500e11
+        x: 3
+        y: 6
+        width: 10
+        height: 5
+      spriteId: af141af0ee352ee42bf3e36804c95237
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -218,4 +218,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 16, y: 16}
-  previousTextureSize: {x: 8, y: 16}
+  previousTextureSize: {x: 16, y: 8}
