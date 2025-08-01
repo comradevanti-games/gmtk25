@@ -12,7 +12,7 @@ namespace GMTK25.Enemies
 
         private EnemyTracker enemyTracker = null!;
         private StageLocationFinder locationFinder = null!;
-        private EnemyColor[] colors = Array.Empty<EnemyColor>();
+        private ColorType[] colors = Array.Empty<ColorType>();
 
         private TimeSpan ActivationDelay =>
             TimeSpan.FromSeconds(activationDelaySeconds);
@@ -54,7 +54,7 @@ namespace GMTK25.Enemies
 
         private void Awake()
         {
-            colors = Resources.LoadAll<EnemyColor>("EnemyColors");
+            colors = Resources.LoadAll<ColorType>("ColorTypes");
             enemyTracker = Singletons.Require<EnemyTracker>();
             locationFinder = Singletons.Require<StageLocationFinder>();
         }
