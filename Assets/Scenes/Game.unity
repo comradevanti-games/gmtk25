@@ -915,6 +915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795197698}
   - component: {fileID: 1795197697}
+  - component: {fileID: 1795197709}
   - component: {fileID: 1795197702}
   - component: {fileID: 1795197703}
   - component: {fileID: 1795197699}
@@ -1113,8 +1114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aba4f7ddaad044eb552e999ae42f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ---- !u!114 &1795197702
-  locationFinder: {fileID: 1795197703}
-  pickupPrefab: {fileID: 1427523892009127365, guid: 39034311ce63e68458cdf1c7b29dea5c, type: 3}
   missSfx: {fileID: 8300000, guid: afe47427aa2635b48890544cfb854f38, type: 3}
 --- !u!114 &1795197703
 MonoBehaviour:
@@ -1196,6 +1195,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e9c2ad9d56482fb253fe00d76de836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1795197709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b67274bc9ba49b58c39fabb6d8dbc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupPrefab: {fileID: 1427523892009127365, guid: 39034311ce63e68458cdf1c7b29dea5c, type: 3}
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0
