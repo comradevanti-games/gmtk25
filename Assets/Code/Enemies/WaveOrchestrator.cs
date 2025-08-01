@@ -14,6 +14,7 @@ namespace GMTK25.Enemies
         private TimeSpan BreakTime => TimeSpan.FromSeconds(breakTimeSeconds);
 
         private EnemySpawner enemySpawner = null!;
+        private EnemyTracker enemyTracker = null!;
         private int newGamePlusCounter = 1;
 
         private async Task RunWave(int waveIndex, CancellationToken ct)
@@ -34,6 +35,9 @@ namespace GMTK25.Enemies
 
                 await Task.Delay(subWave.Duration, ct);
             }
+
+            Debug.Log($"Waiting for all enemies to be defeated 🫷");
+            while (enemyTracker.HasEnemies) await Task.Yield();
 
             Debug.Log($"End wave {waveIndex}", this);
 
@@ -65,6 +69,7 @@ namespace GMTK25.Enemies
         private void Awake()
         {
             enemySpawner = Singletons.Require<EnemySpawner>();
+            enemyTracker = Singletons.Require<EnemyTracker>();
         }
     }
 }
