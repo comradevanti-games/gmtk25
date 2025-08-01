@@ -11,12 +11,17 @@ namespace GMTK25
 
         private StageLocationFinder locationFinder = null!;
 
-        public void SpawnPickup(Request request)
+        public GameObject SpawnPickup(Request request)
         {
             var location = request.Location ??
                            locationFinder.PickRandomFreeLocation();
-            Instantiate(pickupPrefab, location, Quaternion.identity)
-                .GetComponent<Pickup>().BulletType = request.Type;
+
+            var pickup =
+                Instantiate(pickupPrefab, location, Quaternion.identity);
+
+            pickup.GetComponent<Pickup>().BulletType = request.Type;
+
+            return pickup;
         }
 
         private void Awake()
