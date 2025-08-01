@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -12,6 +14,9 @@ namespace GMTK25
         private PickupSpawner pickupSpawner = null!;
         private BulletType[] allBulletTypes = Array.Empty<BulletType>();
 
+        private readonly IList<GameObject> offeredPickups =
+            new List<GameObject>();
+
         private void OpenShop(int itemCount)
         {
             var offers = Enumerable.Range(0, itemCount)
@@ -22,8 +27,9 @@ namespace GMTK25
             {
                 var x = leftX + i * itemGap;
                 var pos = new Vector2(x, shopLocation.y);
-                pickupSpawner.SpawnPickup(
+                var pickup = pickupSpawner.SpawnPickup(
                     new PickupSpawner.Request(offers[i], pos));
+                offeredPickups.Add(pickup);
             }
         }
 
@@ -36,6 +42,10 @@ namespace GMTK25
 
         public void OnWaveStarted()
         {
+            foreach (var pickup in offeredPickups)
+                Destroy(pickup);
+
+            offeredPickups.Clear();
         }
 
         private void Awake()
