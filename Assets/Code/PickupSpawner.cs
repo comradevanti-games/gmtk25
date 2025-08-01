@@ -21,6 +21,12 @@ namespace GMTK25
 
             pickup.GetComponent<Pickup>().BulletType = request.Type;
 
+            var bulletPrefab = request.Type.Prefab;
+            var bullet = bulletPrefab.GetComponent<ColoredBullet>();
+            var color = bullet?.ColorType.Color;
+
+            if (color != null) pickup.Tint(color.Value);
+
             return pickup;
         }
 
