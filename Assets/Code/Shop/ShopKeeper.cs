@@ -1,21 +1,20 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace GMTK25
+namespace GMTK25.Shop
 {
     public sealed class ShopKeeper : MonoBehaviour
     {
         [SerializeField] private Vector2 shopLocation;
         [SerializeField] private float itemGap;
+        [SerializeField] private GameObject priceCounterPrefab;
 
         private PickupSpawner pickupSpawner = null!;
         private BulletType[] allBulletTypes = Array.Empty<BulletType>();
 
-        private readonly IList<GameObject> offeredPickups =
-            new List<GameObject>();
+        private readonly IList<GameObject> shopObjects = new List<GameObject>();
 
         private void OpenShop(int itemCount)
         {
@@ -29,7 +28,13 @@ namespace GMTK25
                 var pos = new Vector2(x, shopLocation.y);
                 var pickup = pickupSpawner.SpawnPickup(
                     new PickupSpawner.Request(offers[i], pos));
-                offeredPickups.Add(pickup);
+                shopObjects.Add(pickup);
+
+                var counter = Instantiate(priceCounterPrefab,
+                    pos + Vector2.up * 2, Quaternion.identity);
+                shopObjects.Add(counter);
+
+                counter.GetComponent<PriceCounter>().Init(pickup, 2);
             }
         }
 
@@ -42,10 +47,8 @@ namespace GMTK25
 
         public void OnWaveStarted()
         {
-            foreach (var pickup in offeredPickups)
-                Destroy(pickup);
-
-            offeredPickups.Clear();
+            foreach (var it in shopObjects) Destroy(it);
+            shopObjects.Clear();
         }
 
         private void Awake()

@@ -1196,6 +1196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopLocation: {x: 0, y: 0}
   itemGap: 3
+  priceCounterPrefab: {fileID: 0}
 --- !u!114 &1795197709
 MonoBehaviour:
   m_ObjectHideFlags: 0
