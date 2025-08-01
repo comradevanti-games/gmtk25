@@ -57,6 +57,7 @@ namespace GMTK25 {
             bullet.LastHitBulletType = lastSuccessBulletType;
             bullet.LastHitColor = lastSuccessColorType;
             bullet.SuccessHit += OnSuccessHit;
+            bullet.FailHit += OnFailHit;
 
             Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
             Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
@@ -74,6 +75,11 @@ namespace GMTK25 {
             lastSuccessBulletType = successHitType;
             lastSuccessColorType = colorType;
             drumKeeper.PushBullet(successHitType);
+        }
+
+        private void OnFailHit() {
+            lastSuccessBulletType = null;
+            lastSuccessColorType = null;
         }
 
     }

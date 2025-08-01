@@ -16,7 +16,6 @@ namespace GMTK25 {
         private void OnTriggerEnter2D(Collider2D other) {
 
             if (other.gameObject.CompareTag("Player")) {
-                Debug.Log("Collected your bullet again! Phew! 😰");
                 RevolverDrumKeeper rdk = other.GetComponentInChildren<RevolverDrumKeeper>();
                 rdk.PushBullet(BulletType);
                 rdk.PlaySfx("Pickup");

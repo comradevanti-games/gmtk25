@@ -46,7 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drumSize: 7
-  initialBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  initialBulletTypes:
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  - {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
   displayText: {fileID: 0}
   audioSrc: {fileID: 6886810406395600427}
 --- !u!82 &6886810406395600427

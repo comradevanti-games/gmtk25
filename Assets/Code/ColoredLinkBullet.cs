@@ -22,6 +22,8 @@ namespace GMTK25 {
 
         public event Action<BulletType, ColorType?>? SuccessHit;
 
+        public event Action? FailHit;
+
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
@@ -34,44 +36,59 @@ namespace GMTK25 {
         }
 
         public void OnTriggerEnter2D(Collider2D other) {
-            if (other.gameObject.layer == 8) {
-                Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
-                Despawn();
-            }
 
-            if (other.gameObject.layer == 9) {
+            switch (other.gameObject.layer) {
+                case 8:
+                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                    FailHit?.Invoke();
+                    Despawn();
 
-                if (other.gameObject.GetColorType() == gameObject.GetColorType()) {
+                    break;
+                case 9:
+                {
+                    if (other.gameObject.GetColorType() == colorType) {
 
-                    other.GetComponent<HealthKeeper>().TakeDamage(damage);
+                        if (LastHitColor == other.gameObject.GetColorType()) {
 
-                    if (LastHitColor == other.gameObject.GetColorType()) {
-                        
-                        Debug.Log("Spawning additional bullet!!");
+                            Vector2 enemyPos = Singletons.Require<EnemyTracker>()
+                                .GetClosestEnemyPosition(other.transform.position, 2);
 
-                        Vector2 enemyPos = Singletons.Require<EnemyTracker>()
-                            .GetClosestEnemyPosition(other.transform.position);
+                            if (enemyPos.x < 25) {
+                                ShootLinkBullet(enemyPos);
+                            }
 
-                        GameObject bulletGameObject = Instantiate(linkBulletType.Prefab, transform.position,
-                            transform.rotation);
+                        }
 
-                        IBullet bullet = bulletGameObject.GetComponent<IBullet>();
-                        bullet.CurrentBulletType = linkBulletType;
-
-                        Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
-                        Vector2 shootDirection = enemyPos - (Vector2)transform.position;
-                        bulletBody.AddForce(linkBulletType.InitialSpeed * shootDirection.normalized);
+                        other.GetComponent<HealthKeeper>().TakeDamage(damage);
+                        SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());
+                    }
+                    else {
+                        Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                        FailHit?.Invoke();
+                        other.GetComponent<HealthKeeper>().TakeDamage(0.5f);
                     }
 
-                    SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());
-                }
-                else {
-                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
-                }
+                    Despawn();
 
-                Despawn();
-
+                    break;
+                }
             }
+
+        }
+
+        private void ShootLinkBullet(Vector2 enemyPos) {
+
+            Vector2 shootDirection = enemyPos - (Vector2)transform.position;
+            Quaternion bulletRotation =
+                Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg - 90);
+            GameObject bulletGameObject = Instantiate(linkBulletType.Prefab, transform.position, bulletRotation);
+
+            IBullet bullet = bulletGameObject.GetComponent<IBullet>();
+            bullet.CurrentBulletType = linkBulletType;
+            bullet.Damage = Damage / 2f;
+
+            Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
+            bulletBody.AddForce(linkBulletType.InitialSpeed * shootDirection.normalized);
 
         }
 

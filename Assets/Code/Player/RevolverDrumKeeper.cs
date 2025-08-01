@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using TMPro;
 using UnityEngine;
@@ -7,7 +8,7 @@ namespace GMTK25 {
     public sealed class RevolverDrumKeeper : MonoBehaviour {
 
         [SerializeField] private int drumSize;
-        [SerializeField] private BulletType initialBulletType = null!;
+        [SerializeField] private BulletType[] initialBulletTypes = Array.Empty<BulletType>();
         [SerializeField] private TMP_Text displayText = null!;
         [SerializeField] private AudioSource audioSrc = null!;
 
@@ -52,6 +53,7 @@ namespace GMTK25 {
             switch (sfxName) {
                 case "Pickup":
                     audioSrc.Play();
+
                     break;
             }
 
@@ -60,7 +62,7 @@ namespace GMTK25 {
         private void Awake() {
             bullets = new LoopQueue<BulletType>(drumSize);
             for (var i = 0; i < drumSize; i++)
-                bullets.Enqueue(initialBulletType);
+                bullets.Enqueue(initialBulletTypes[i]);
         }
 
         private void Start() {

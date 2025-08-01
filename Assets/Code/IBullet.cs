@@ -17,6 +17,8 @@ namespace GMTK25 {
 
         public event Action<BulletType, ColorType?> SuccessHit;
 
+        public event Action? FailHit;
+
         public void OnDespawnTimeReached();
 
         public void OnTriggerEnter2D(Collider2D other);

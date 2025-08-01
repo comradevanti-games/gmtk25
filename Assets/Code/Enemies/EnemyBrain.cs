@@ -47,10 +47,7 @@ namespace GMTK25.Enemies
                 < 60 => new EnemyAction.PredictPlayer(),
                 _ => new EnemyAction.FollowPlayer()
             };
-
-            Debug.Log(
-                $"Executing action {action.GetType().Name} for {duration} 🫡",
-                this);
+            
             ExecuteAction(action);
 
             this.RunTask(async (ct) =>

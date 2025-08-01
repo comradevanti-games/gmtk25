@@ -14,7 +14,7 @@ namespace GMTK25 {
 
         public float Damage { get; set; }
 
-        public ColorType ColorType { get; }
+        public ColorType ColorType { get; } = null!;
 
         public BulletType CurrentBulletType { get; set; } = null!;
 
@@ -24,6 +24,8 @@ namespace GMTK25 {
 
         public event Action<BulletType, ColorType?>? SuccessHit;
 
+        public event Action? FailHit;
+
         public void OnDespawnTimeReached() {
             Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
             Despawn();
@@ -31,15 +33,19 @@ namespace GMTK25 {
 
         public void OnTriggerEnter2D(Collider2D other) {
 
-            if (other.gameObject.layer == 8) {
-                Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
-                Despawn();
-            }
+            switch (other.gameObject.layer) {
+                case 8:
+                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                    FailHit?.Invoke();
+                    Despawn();
 
-            if (other.gameObject.layer == 9) {
-                other.GetComponent<HealthKeeper>().TakeDamage(damage);
-                SuccessHit?.Invoke(CurrentBulletType, gameObject.TryGetColorType());
-                Despawn();
+                    break;
+                case 9:
+                    other.GetComponent<HealthKeeper>().TakeDamage(Damage);
+                    SuccessHit?.Invoke(CurrentBulletType, gameObject.TryGetColorType());
+                    Despawn();
+
+                    break;
             }
 
         }

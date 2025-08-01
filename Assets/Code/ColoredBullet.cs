@@ -20,6 +20,8 @@ namespace GMTK25 {
 
         public event Action<BulletType, ColorType?>? SuccessHit;
 
+        public event Action? FailHit;
+
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
@@ -34,6 +36,7 @@ namespace GMTK25 {
         public void OnTriggerEnter2D(Collider2D other) {
             if (other.gameObject.layer == 8) {
                 Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                FailHit?.Invoke();
                 Despawn();
             }
 
@@ -45,6 +48,8 @@ namespace GMTK25 {
                 }
                 else {
                     Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
+                    FailHit?.Invoke();
+                    other.GetComponent<HealthKeeper>().TakeDamage(0.5f);
                 }
 
                 Despawn();

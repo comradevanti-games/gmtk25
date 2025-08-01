@@ -25,7 +25,7 @@ namespace GMTK25.Enemies {
             });
         }
 
-        public Vector2 GetClosestEnemyPosition(Vector2 origin) {
+        public Vector2 GetClosestEnemyPosition(Vector2 origin, float minDistance) {
             float distance = 100;
             Vector2 closestEnemyPos = new Vector2(100, 100);
 
@@ -33,7 +33,7 @@ namespace GMTK25.Enemies {
 
                 float enemyDistance = Vector2.Distance(enemy.transform.position, origin);
 
-                if (enemyDistance < distance) {
+                if (enemyDistance > minDistance && enemyDistance < distance) {
                     distance = enemyDistance;
                     closestEnemyPos = enemy.transform.position;
                 }

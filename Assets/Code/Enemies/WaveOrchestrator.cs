@@ -30,7 +30,6 @@ namespace GMTK25.Enemies
 
         private async Task RunWave(int waveIndex, CancellationToken ct)
         {
-            Debug.Log($"Start wave {waveIndex}", this);
             var wave = waveDescription.Waves[waveIndex];
             var remainingSubWaves = wave.SubWaves.ToList();
             waveStarted.Invoke();
@@ -39,8 +38,6 @@ namespace GMTK25.Enemies
             while (remainingSubWaves.Count > 0)
             {
                 var subWave = remainingSubWaves.RemoveRandom();
-                Debug.Log($"Start sub-wave ({subWave.Duration} until next)",
-                    this);
 
                 foreach (var group in subWave.Groups)
                     for (var i = 0; i < group.Count * newGamePlusCounter; i++)

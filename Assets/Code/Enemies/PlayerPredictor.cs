@@ -14,14 +14,12 @@ namespace GMTK25.Enemies
         private void OnEnable()
         {
             if (!player) return;
-            Debug.Log($"Predicting {player.name} 🏃‍", this);
         }
 
         private void OnDisable()
         {
             mover.TargetPosition = null;
             if (!player) return;
-            Debug.Log($"Stopped predicting {player.name} 🖐", this);
         }
 
         private void FixedUpdate()
