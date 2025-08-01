@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GMTK25
+namespace GMTK25.Enemies
 {
     [RequireComponent(typeof(TargetMover))]
     public sealed class TargetFollower : MonoBehaviour
