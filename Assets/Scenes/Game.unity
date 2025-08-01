@@ -656,6 +656,7 @@ GameObject:
   - component: {fileID: 1795197705}
   - component: {fileID: 1795197706}
   - component: {fileID: 1795197707}
+  - component: {fileID: 1795197708}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -763,6 +764,10 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 42c91bb7-59e2-45ac-9185-ed11013def60
     m_ActionName: 'Player/Shoot[/Mouse/leftButton]'
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ba823728-937b-4d26-a9b4-1ab18d4dc16e
+    m_ActionName: 'Player/Quit[/Keyboard/escape]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: MKB
   m_DefaultActionMap: Player
@@ -782,10 +787,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   breakStarted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1795197708}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   waveStarted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1795197708}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
   breakTimeSeconds: 20
 --- !u!114 &1795197701
@@ -882,6 +911,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 392d9ef60754bce449c545c4e1abdec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1795197708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90e9c2ad9d56482fb253fe00d76de836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2000602885
