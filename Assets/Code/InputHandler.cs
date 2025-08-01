@@ -42,6 +42,8 @@ namespace GMTK25 {
 
         }
 
+        public void OnQuitInputReceived(InputAction.CallbackContext ctx) { }
+
     }
 
 }

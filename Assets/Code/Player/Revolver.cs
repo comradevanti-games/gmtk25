@@ -10,6 +10,7 @@ namespace GMTK25 {
         [SerializeField] private float minMouseDistanceToShoot = 0;
         [SerializeField] private float shootCooldown = 0;
         [SerializeField] private AudioSource audioSrc = null!;
+
         private InputHandler? inputHandler;
         private float lastShotTime = 0;
         private ScreenShake? screenShaker;

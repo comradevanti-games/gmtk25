@@ -99,7 +99,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0.63026214, b: 0, a: 1}
+      key0: {r: 1, g: 0.952031, b: 0, a: 1}
       key1: {r: 0, g: 0, b: 0, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -197,19 +197,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1859487324161728949, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Name
-      value: BasicBullet
+      value: YellowBullet
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.b
-      value: 0.05345905
+      value: 0.28616333
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.g
-      value: 0.67186236
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.94966656
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -220,14 +220,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1859487324161728949, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       insertIndex: 1
-      addedObject: {fileID: 3114354807425821334}
+      addedObject: {fileID: 6467550725736189073}
   m_SourcePrefab: {fileID: 100100000, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
 --- !u!1 &4984527910545026504 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1859487324161728949, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
   m_PrefabInstance: {fileID: 6693088361341389949}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3114354807425821334
+--- !u!114 &6467550725736189073
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -236,10 +236,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4984527910545026504}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f1209bb639b46d8bc3aa05c3e43785d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7c1de1d5b26599d428e0cda35d8a44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 0.5
+  damage: 3
+  colorType: {fileID: 11400000, guid: 2aeb99606db33d6d4a6be04aea9397a7, type: 2}
 --- !u!4 &5874573401541129526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 964910537200580939, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}

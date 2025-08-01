@@ -45,4 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drumSize: 7
-  initialBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+  initialBulletType: {fileID: 11400000, guid: 1b51805b7472ea343b4b3bb068e9871f, type: 2}
+  displayText: {fileID: 0}
+  audioSrc: {fileID: 0}

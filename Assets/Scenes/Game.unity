@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 1795197704}
   - component: {fileID: 1795197705}
   - component: {fileID: 1795197706}
+  - component: {fileID: 1795197707}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -785,6 +786,18 @@ MonoBehaviour:
   allEnemiesDead:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1795197707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 392d9ef60754bce449c545c4e1abdec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0
@@ -888,6 +901,34 @@ PrefabInstance:
     - target: {fileID: 1093806267562429392, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: m_ActionEvents.Array.data[0].m_ActionName
       value: 'Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1795197707}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnPlayerDeath
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GMTK25.SceneHandler, GMTK25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7846508905358984964, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: displayText
