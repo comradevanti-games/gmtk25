@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,6 +9,9 @@ namespace GMTK25.Enemies
     public sealed class WaveOrchestrator : MonoBehaviour
     {
         [SerializeField] private WaveDescription waveDescription = null!;
+        [SerializeField] private float breakTimeSeconds;
+
+        private TimeSpan BreakTime => TimeSpan.FromSeconds(breakTimeSeconds);
 
         private EnemySpawner enemySpawner = null!;
         private int newGamePlusCounter = 1;
@@ -35,8 +39,8 @@ namespace GMTK25.Enemies
 
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
-                Debug.Log($"Next wave starts in {wave.Delay}");
-                await Task.Delay(wave.Delay, ct);
+                Debug.Log($"Next wave starts in {BreakTime} ⏰");
+                await Task.Delay(BreakTime, ct);
                 _ = RunWave(waveIndex + 1, ct);
             }
             else
