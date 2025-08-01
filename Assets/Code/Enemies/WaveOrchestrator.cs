@@ -9,7 +9,12 @@ namespace GMTK25.Enemies
 {
     public sealed class WaveOrchestrator : MonoBehaviour
     {
-        public UnityEvent breakStarted = new UnityEvent();
+        /// <summary>
+        /// Called when the break starts. The payload is how many sub-waves
+        /// the player has completed early.
+        /// </summary>
+        public UnityEvent<int> breakStarted = new UnityEvent<int>();
+
         public UnityEvent waveStarted = new UnityEvent();
 
         [SerializeField] private WaveDescription waveDescription = null!;
@@ -28,6 +33,7 @@ namespace GMTK25.Enemies
             var remainingSubWaves = wave.SubWaves.ToList();
             waveStarted.Invoke();
 
+            var earlyWins = 0;
             while (remainingSubWaves.Count > 0)
             {
                 var subWave = remainingSubWaves.RemoveRandom();
@@ -38,25 +44,37 @@ namespace GMTK25.Enemies
                     for (var i = 0; i < group.Count * newGamePlusCounter; i++)
                         enemySpawner.SpawnEnemy(group.Type);
 
-                await Task.Delay(subWave.Duration, ct);
+                await CustomTask.CancellableDelay(subWave.Duration, () =>
+                {
+                    var isDone = !enemyTracker.HasEnemies;
+
+                    if (isDone)
+                    {
+                        Debug.Log("Sub-wave completed early 🏅");
+                        earlyWins++;
+                    }
+
+                    return !isDone;
+                }, ct);
             }
 
-            Debug.Log($"Waiting for all enemies to be defeated 🫷");
+            if (enemyTracker.HasEnemies)
+                Debug.Log("Waiting for all enemies to be defeated 🫷");
             while (enemyTracker.HasEnemies) await Task.Yield();
 
-            Debug.Log($"End wave {waveIndex}", this);
+            Debug.Log(
+                $"Completed wave {waveIndex} with {earlyWins} early wins 💪");
 
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
                 Debug.Log($"Next wave starts in {BreakTime} ⏰");
-                breakStarted.Invoke();
+                breakStarted.Invoke(earlyWins);
                 await Task.Delay(BreakTime, ct);
                 _ = RunWave(waveIndex + 1, ct);
             }
             else
             {
-                Debug.Log("Last wave completed. We are done 🥳. Or are we?",
-                    this);
+                Debug.Log("Last wave completed. We are done 🥳. Or are we?");
                 Restart();
             }
         }
