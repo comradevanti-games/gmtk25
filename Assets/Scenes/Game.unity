@@ -575,6 +575,7 @@ GameObject:
   - component: {fileID: 1795197700}
   - component: {fileID: 1795197704}
   - component: {fileID: 1795197705}
+  - component: {fileID: 1795197706}
   m_Layer: 0
   m_Name: Singletons
   m_TagString: Singletons
@@ -769,6 +770,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jukeboxSource: {fileID: 1160842956}
+--- !u!114 &1795197706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65b02522f1ba4f70a903d8807fc5af84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allEnemiesDead:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0

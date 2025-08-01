@@ -9,6 +9,8 @@ namespace GMTK25.Enemies
     public sealed class EnemySpawner : MonoBehaviour
     {
         [SerializeField] private float activationDelaySeconds;
+
+        private EnemyTracker enemyTracker = null!;
         private StageLocationFinder locationFinder = null!;
         private EnemyColor[] colors = Array.Empty<EnemyColor>();
 
@@ -42,9 +44,10 @@ namespace GMTK25.Enemies
 
             var enemy = Instantiate(type.Prefab, position, Quaternion.identity);
             enemy.name = $"{color.name} {type.name} {Random.Range(0, 1000)}";
+            enemy.GetComponent<SpriteRenderer>().color = color.Color;
 
             Debug.Log($"New enemy spawned 👶", enemy);
-            enemy.GetComponent<SpriteRenderer>().color = color.Color;
+            enemyTracker.RegisterEnemy(enemy);
 
             this.RunTask((ct) => DelayedActivate(enemy, ct));
         }
@@ -52,6 +55,7 @@ namespace GMTK25.Enemies
         private void Awake()
         {
             colors = Resources.LoadAll<EnemyColor>("EnemyColors");
+            enemyTracker = Singletons.Require<EnemyTracker>();
             locationFinder = Singletons.Require<StageLocationFinder>();
         }
     }
