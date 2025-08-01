@@ -14,6 +14,8 @@ namespace GMTK25 {
 
         private Vector2 MovementDirection { get; set; }
 
+        public Vector2 Velocity => MovementDirection * movementSpeed;
+
         private void Awake() {
             FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>()
                 .MovementInputHandled += OnMovementInput;
