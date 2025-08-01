@@ -639,7 +639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartImage: {fileID: 528297362}
-  initialHealth: 3
 --- !u!1 &1063982646
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1795197698}
   - component: {fileID: 1795197697}
+  - component: {fileID: 1795197709}
   - component: {fileID: 1795197702}
   - component: {fileID: 1795197703}
   - component: {fileID: 1795197699}
@@ -1057,9 +1057,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1795197708}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_TargetAssemblyTypeName: GMTK25.ShopKeeper, GMTK25
+        m_MethodName: OnBreakStarted
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1072,9 +1072,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1795197708}
-        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
-        m_MethodName: set_enabled
-        m_Mode: 6
+        m_TargetAssemblyTypeName: GMTK25.ShopKeeper, GMTK25
+        m_MethodName: OnWaveStarted
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1083,6 +1083,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  wonEarly:
+    m_PersistentCalls:
+      m_Calls: []
   waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
   breakTimeSeconds: 20
 --- !u!114 &1795197701
@@ -1110,8 +1113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79aba4f7ddaad044eb552e999ae42f12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: ---- !u!114 &1795197702
-  locationFinder: {fileID: 1795197703}
-  pickupPrefab: {fileID: 1427523892009127365, guid: 39034311ce63e68458cdf1c7b29dea5c, type: 3}
   missSfx: {fileID: 8300000, guid: afe47427aa2635b48890544cfb854f38, type: 3}
 --- !u!114 &1795197703
 MonoBehaviour:
@@ -1188,11 +1189,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1795197696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 90e9c2ad9d56482fb253fe00d76de836, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopLocation: {x: 0, y: 0}
+  itemGap: 3
+  priceCounterPrefab: {fileID: 2269279375698994196, guid: ffce9a8d2ca586b87b9787614c4cc2b4, type: 3}
+--- !u!114 &1795197709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1795197696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b67274bc9ba49b58c39fabb6d8dbc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pickupPrefab: {fileID: 1427523892009127365, guid: 39034311ce63e68458cdf1c7b29dea5c, type: 3}
 --- !u!1 &2000602885
 GameObject:
   m_ObjectHideFlags: 0

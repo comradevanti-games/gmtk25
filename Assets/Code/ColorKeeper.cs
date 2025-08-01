@@ -37,5 +37,10 @@ namespace GMTK25
 
             return null;
         }
+
+        public static void Tint(this GameObject g, Color color)
+        {
+            g.GetComponent<SpriteRenderer>().color = color;
+        }
     }
 }

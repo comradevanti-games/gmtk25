@@ -1,31 +1,24 @@
 using UnityEngine;
 
-namespace GMTK25 {
-
-    public class BulletPickupHandler : MonoBehaviour {
-
-        [SerializeField] private StageLocationFinder locationFinder = null!;
-        [SerializeField] private GameObject pickupPrefab = null!;
+namespace GMTK25
+{
+    public class BulletPickupHandler : MonoBehaviour
+    {
         [SerializeField] private AudioClip missSfx = null!;
 
-        private Jukebox? jukebox;
+        private PickupSpawner spawner = null!;
+        private Jukebox jukebox = null!;
 
-        private void Awake() {
+        private void Awake()
+        {
             jukebox = Singletons.Require<Jukebox>();
+            spawner = Singletons.Require<PickupSpawner>();
         }
 
-        public void OnBulletFailed(BulletType hitType) {
-            jukebox!.Play(missSfx);
-            SpawnPickup(hitType);
+        public void OnBulletFailed(BulletType hitType)
+        {
+            jukebox.Play(missSfx);
+            spawner.SpawnPickup(new PickupSpawner.Request(hitType, null));
         }
-
-        private void SpawnPickup(BulletType type) {
-
-            Vector2 location = locationFinder.PickRandomLocation();
-            Instantiate(pickupPrefab, location, Quaternion.identity).GetComponent<Pickup>().BulletType = type;
-
-        }
-
     }
-
 }
