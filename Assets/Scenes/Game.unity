@@ -701,6 +701,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3907ad1c4bf497386bd43102b3583e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  breakStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  waveStarted:
+    m_PersistentCalls:
+      m_Calls: []
   waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
   breakTimeSeconds: 20
 --- !u!114 &1795197701
