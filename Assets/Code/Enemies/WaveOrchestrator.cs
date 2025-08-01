@@ -17,6 +17,8 @@ namespace GMTK25.Enemies
 
         public UnityEvent waveStarted = new UnityEvent();
 
+        public UnityEvent wonEarly;
+
         [SerializeField] private WaveDescription waveDescription = null!;
         [SerializeField] private float breakTimeSeconds;
 
@@ -51,6 +53,7 @@ namespace GMTK25.Enemies
                     if (isDone)
                     {
                         Debug.Log("Sub-wave completed early 🏅");
+                        wonEarly.Invoke();
                         earlyWins++;
                     }
 

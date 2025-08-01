@@ -1083,6 +1083,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  wonEarly:
+    m_PersistentCalls:
+      m_Calls: []
   waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
   breakTimeSeconds: 20
 --- !u!114 &1795197701
