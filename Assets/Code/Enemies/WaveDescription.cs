@@ -33,11 +33,7 @@ namespace GMTK25.Enemies
     {
         [SerializeField] private SubWave[] subWaves = Array.Empty<SubWave>();
 
-        [SerializeField] private float delaySeconds;
-
         public IReadOnlyList<SubWave> SubWaves => subWaves;
-
-        public TimeSpan Delay => TimeSpan.FromSeconds(delaySeconds);
     }
 
     [CreateAssetMenu(fileName = "New Wave-description",

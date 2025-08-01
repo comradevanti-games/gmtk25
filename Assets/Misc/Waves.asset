@@ -26,7 +26,6 @@ MonoBehaviour:
       - type: {fileID: 11400000, guid: 42363203ae80eb42591ec14d2e3b3103, type: 2}
         count: 1
       durationSeconds: 4
-    delaySeconds: 10
   - subWaves:
     - groups:
       - type: {fileID: 11400000, guid: 6389de3398d24187387c4d98fc4173aa, type: 2}
@@ -54,4 +53,3 @@ MonoBehaviour:
       - type: {fileID: 11400000, guid: 42363203ae80eb42591ec14d2e3b3103, type: 2}
         count: 2
       durationSeconds: 15
-    delaySeconds: 10

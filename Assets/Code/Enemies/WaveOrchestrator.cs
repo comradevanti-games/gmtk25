@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,8 +9,12 @@ namespace GMTK25.Enemies
     public sealed class WaveOrchestrator : MonoBehaviour
     {
         [SerializeField] private WaveDescription waveDescription = null!;
+        [SerializeField] private float breakTimeSeconds;
+
+        private TimeSpan BreakTime => TimeSpan.FromSeconds(breakTimeSeconds);
 
         private EnemySpawner enemySpawner = null!;
+        private EnemyTracker enemyTracker = null!;
         private int newGamePlusCounter = 1;
 
         private async Task RunWave(int waveIndex, CancellationToken ct)
@@ -31,12 +36,15 @@ namespace GMTK25.Enemies
                 await Task.Delay(subWave.Duration, ct);
             }
 
+            Debug.Log($"Waiting for all enemies to be defeated 🫷");
+            while (enemyTracker.HasEnemies) await Task.Yield();
+
             Debug.Log($"End wave {waveIndex}", this);
 
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
-                Debug.Log($"Next wave starts in {wave.Delay}");
-                await Task.Delay(wave.Delay, ct);
+                Debug.Log($"Next wave starts in {BreakTime} ⏰");
+                await Task.Delay(BreakTime, ct);
                 _ = RunWave(waveIndex + 1, ct);
             }
             else
@@ -61,6 +69,7 @@ namespace GMTK25.Enemies
         private void Awake()
         {
             enemySpawner = Singletons.Require<EnemySpawner>();
+            enemyTracker = Singletons.Require<EnemyTracker>();
         }
     }
 }
