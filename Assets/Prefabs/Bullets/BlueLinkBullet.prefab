@@ -197,7 +197,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1859487324161728949, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Name
-      value: BlueBullet 1
+      value: BlueLinkBullet
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.b
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   colorType: {fileID: 11400000, guid: cc335facfa158217da32ca000f3ac727, type: 2}
-  linkBulletPrefab: {fileID: 4984527910545026504, guid: d92e35d9966100b699089ae3daa0e9f0, type: 3}
+  linkBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
 --- !u!4 &5874573401541129526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 964910537200580939, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}

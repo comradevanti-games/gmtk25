@@ -7,7 +7,7 @@ namespace GMTK25 {
 
         public float Damage { get; set; }
 
-        public ColorType ColorType { get; set; }
+        public ColorType ColorType { get; }
 
         public BulletType CurrentBulletType { get; set; }
 

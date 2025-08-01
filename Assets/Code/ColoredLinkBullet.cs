@@ -12,7 +12,7 @@ namespace GMTK25 {
 
         public float Damage { get; set; }
 
-        public ColorType ColorType { get; set; } = null!;
+        public ColorType ColorType => colorType;
 
         public BulletType CurrentBulletType { get; set; } = null!;
 
@@ -35,13 +35,11 @@ namespace GMTK25 {
 
         public void OnTriggerEnter2D(Collider2D other) {
             if (other.gameObject.layer == 8) {
-                Debug.Log("Hit the wall! 🧱");
                 Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
                 Despawn();
             }
 
             if (other.gameObject.layer == 9) {
-                Debug.Log("Hit the enemy! 👽");
 
                 if (other.gameObject.GetColorType() == gameObject.GetColorType()) {
 
@@ -49,13 +47,18 @@ namespace GMTK25 {
 
                     if (LastHitColor == other.gameObject.GetColorType()) {
 
-                        Singletons.Require<EnemyTracker>().GetClosestEnemyPosition(other.transform.position);
+                        Vector2 enemyPos = Singletons.Require<EnemyTracker>()
+                            .GetClosestEnemyPosition(other.transform.position);
 
                         GameObject bulletGameObject = Instantiate(linkBulletType.Prefab, transform.position,
                             transform.rotation);
 
                         IBullet bullet = bulletGameObject.GetComponent<IBullet>();
                         bullet.CurrentBulletType = linkBulletType;
+
+                        Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
+                        Vector2 shootDirection = enemyPos - (Vector2)transform.position;
+                        bulletBody.AddForce(linkBulletType.InitialSpeed * shootDirection.normalized);
                     }
 
                     SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());

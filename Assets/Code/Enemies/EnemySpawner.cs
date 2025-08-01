@@ -34,7 +34,6 @@ namespace GMTK25.Enemies
             enemy.GetComponent<Collider2D>().enabled = true;
 
             enemyRenderer.color = WithAlpha(enemyRenderer.color, 1);
-            Debug.Log($"Enemy activated", enemy);
         }
 
         public void SpawnEnemy(EnemyType type)
@@ -46,8 +45,7 @@ namespace GMTK25.Enemies
             enemy.name = $"{color.name} {type.name} {Random.Range(0, 1000)}";
             enemy.SetColorType(color);
             enemy.Tint(color.Color);
-
-            Debug.Log($"New enemy spawned 👶", enemy);
+            
             enemyTracker.RegisterEnemy(enemy);
 
             this.RunTask((ct) => DelayedActivate(enemy, ct));

@@ -10,7 +10,7 @@ namespace GMTK25 {
 
         public float Damage { get; set; }
 
-        public ColorType ColorType { get; set; } = null!;
+        public ColorType ColorType => colorType;
 
         public BulletType CurrentBulletType { get; set; } = null!;
 
@@ -23,7 +23,6 @@ namespace GMTK25 {
         private void Awake() {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
-            ColorType = colorType;
             Damage = damage;
         }
 
@@ -34,13 +33,11 @@ namespace GMTK25 {
 
         public void OnTriggerEnter2D(Collider2D other) {
             if (other.gameObject.layer == 8) {
-                Debug.Log("Hit the wall! 🧱");
                 Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType);
                 Despawn();
             }
 
             if (other.gameObject.layer == 9) {
-                Debug.Log("Hit the enemy! 👽");
 
                 if (other.gameObject.GetColorType() == gameObject.GetColorType()) {
                     other.GetComponent<HealthKeeper>().TakeDamage(damage);

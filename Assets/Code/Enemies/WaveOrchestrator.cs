@@ -52,7 +52,6 @@ namespace GMTK25.Enemies
 
                     if (isDone)
                     {
-                        Debug.Log("Sub-wave completed early 🏅");
                         wonEarly.Invoke();
                         earlyWins++;
                     }
@@ -70,7 +69,6 @@ namespace GMTK25.Enemies
 
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
-                Debug.Log($"Next wave starts in {BreakTime} ⏰");
                 breakStarted.Invoke(earlyWins);
                 await Task.Delay(BreakTime, ct);
                 _ = RunWave(waveIndex + 1, ct);
