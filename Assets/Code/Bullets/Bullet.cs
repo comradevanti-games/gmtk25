@@ -59,7 +59,7 @@ namespace GMTK25.Bullets
             Despawn();
         }
 
-        public void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
             var isEnemy = other.gameObject.layer == 9;
             if (!isEnemy)
