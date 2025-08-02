@@ -2,10 +2,10 @@ using GMTK25.Bullets;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GMTK25 {
-
-    public class Revolver : MonoBehaviour {
-
+namespace GMTK25
+{
+    public class Revolver : MonoBehaviour
+    {
         [SerializeField] private RevolverDrumKeeper drumKeeper = null!;
         [SerializeField] private GameObject bulletSpawnPoint = null!;
         [SerializeField] private float minMouseDistanceToShoot = 0;
@@ -15,54 +15,55 @@ namespace GMTK25 {
         private InputHandler? inputHandler;
         private float lastShotTime = 0;
         private ScreenShake? screenShaker;
-        private ColorType? lastSuccessColorType;
+        public ColorType? LastSuccessColorType { get; private set; }
         private BulletType? lastSuccessBulletType;
 
-        private void Awake() {
-            inputHandler = FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>();
+        private void Awake()
+        {
+            inputHandler =
+                FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude)
+                    .GetComponent<InputHandler>();
             inputHandler.ShootInputHandled += OnShootInput;
             screenShaker = Singletons.Require<ScreenShake>();
         }
 
-        private void OnShootInput() {
-
-            if (Vector2.Distance(inputHandler!.MouseScreenPosition, transform.position) <
-                minMouseDistanceToShoot) {
+        private void OnShootInput()
+        {
+            if (Vector2.Distance(inputHandler!.MouseScreenPosition,
+                    transform.position) <
+                minMouseDistanceToShoot)
                 return;
-            }
 
-            if (Time.time - lastShotTime >= shootCooldown) {
+            if (Time.time - lastShotTime >= shootCooldown)
+            {
                 Shoot();
                 lastShotTime = Time.time;
             }
-
         }
 
-        private void Shoot() {
+        private void Shoot()
+        {
+            if (drumKeeper == null) return;
 
-            if (drumKeeper == null) {
-                return;
-            }
+            var newBullet = drumKeeper.ChamberedBulletType;
 
-            BulletType? newBullet = drumKeeper.ChamberedBulletType;
+            if (newBullet == null) return;
 
-            if (newBullet == null) {
-                return;
-            }
-
-            GameObject bulletGameObject = Instantiate(newBullet.Prefab, bulletSpawnPoint.transform.position,
+            var bulletGameObject = Instantiate(newBullet.Prefab,
+                bulletSpawnPoint.transform.position,
                 bulletSpawnPoint.transform.rotation);
 
-            IBullet bullet = bulletGameObject.GetComponent<IBullet>();
+            var bullet = bulletGameObject.GetComponent<IBullet>();
             bullet.CurrentBulletType = newBullet;
             bullet.LastHitBulletType = lastSuccessBulletType;
-            bullet.LastHitColor = lastSuccessColorType;
             bullet.SuccessHit += OnSuccessHit;
             bullet.FailHit += OnFailHit;
 
-            Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
-            Vector2 shootDirection = inputHandler!.MouseScreenPosition - (Vector2)bulletSpawnPoint.transform.position;
-            bulletBody.AddForce(newBullet.InitialSpeed * shootDirection.normalized);
+            var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
+            var shootDirection = inputHandler!.MouseScreenPosition -
+                                 (Vector2)bulletSpawnPoint.transform.position;
+            bulletBody.AddForce(newBullet.InitialSpeed *
+                                shootDirection.normalized);
 
             audioSrc.Play();
             audioSrc.pitch = Random.Range(0.9f, 1.1f);
@@ -72,17 +73,18 @@ namespace GMTK25 {
             drumKeeper.EjectBullet();
         }
 
-        private void OnSuccessHit(BulletType successHitType, ColorType? colorType) {
+        private void OnSuccessHit(BulletType successHitType,
+            ColorType? colorType)
+        {
             lastSuccessBulletType = successHitType;
-            lastSuccessColorType = colorType;
+            LastSuccessColorType = colorType;
             drumKeeper.PushBullet(successHitType);
         }
 
-        private void OnFailHit() {
+        private void OnFailHit()
+        {
             lastSuccessBulletType = null;
-            lastSuccessColorType = null;
+            LastSuccessColorType = null;
         }
-
     }
-
 }
