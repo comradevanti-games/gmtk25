@@ -7,8 +7,6 @@ namespace GMTK25.Bullets
     {
         public override BulletType CurrentBulletType { get; set; } = null!;
 
-        public override BulletType? LastHitBulletType { get; set; }
-
         public override event Action<BulletType, ColorType?>? SuccessHit;
 
         protected override void OnBulletHitEnemy(BulletHit hit)

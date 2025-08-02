@@ -41,8 +41,6 @@ namespace GMTK25.Bullets
 
         public abstract BulletType CurrentBulletType { get; set; }
 
-        public abstract BulletType? LastHitBulletType { get; set; }
-
         public abstract event Action<BulletType, ColorType?>? SuccessHit;
 
         public void OnDespawnTimeReached()
