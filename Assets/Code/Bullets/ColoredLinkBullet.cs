@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class ColoredLinkBullet : BulletBase
+    public class ColoredLinkBullet : Bullet
     {
         [SerializeField] private ColorType colorType = null!;
 

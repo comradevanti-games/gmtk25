@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class ColoredBullet : BulletBase
+    public class ColoredBullet : Bullet
     {
         [SerializeField] private ColorType colorType = null!;
 
