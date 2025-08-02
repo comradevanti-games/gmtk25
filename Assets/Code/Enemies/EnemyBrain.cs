@@ -15,13 +15,17 @@ namespace GMTK25.Enemies
             public sealed record FollowPlayer : EnemyAction;
 
             public sealed record PredictPlayer : EnemyAction;
+
+            public sealed record GoTo(Vector2 Target) : EnemyAction;
         }
 
         [SerializeField] private float minActionDurationSeconds;
         [SerializeField] private float maxActionDurationSeconds;
 
+        private TargetMover targetMover = null!;
         private TargetFollower targetFollower = null!;
         private PlayerPredictor playerPredictor = null!;
+        private StageLocationFinder stageLocationFinder = null!;
 
         private TimeSpan PickActionDuration()
         {
@@ -35,6 +39,9 @@ namespace GMTK25.Enemies
 
             targetFollower.enabled = action is EnemyAction.FollowPlayer;
             playerPredictor.enabled = action is EnemyAction.PredictPlayer;
+
+            if (action is EnemyAction.GoTo(var target))
+                targetMover.TargetPosition = target;
         }
 
         private void PickAction()
@@ -43,11 +50,13 @@ namespace GMTK25.Enemies
             var r = Random.Range(0f, 100);
             EnemyAction action = r switch
             {
-                < 20 => new EnemyAction.Idle(),
+                < 15 => new EnemyAction.Idle(),
+                < 30 => new EnemyAction.GoTo(stageLocationFinder
+                    .PickRandomFreeLocation()),
                 < 60 => new EnemyAction.PredictPlayer(),
                 _ => new EnemyAction.FollowPlayer()
             };
-            
+
             ExecuteAction(action);
 
             this.RunTask(async (ct) =>
@@ -64,8 +73,10 @@ namespace GMTK25.Enemies
 
         private void Awake()
         {
+            targetMover = GetComponent<TargetMover>();
             targetFollower = GetComponent<TargetFollower>();
             playerPredictor = GetComponent<PlayerPredictor>();
+            stageLocationFinder = Singletons.Require<StageLocationFinder>();
         }
     }
 }
