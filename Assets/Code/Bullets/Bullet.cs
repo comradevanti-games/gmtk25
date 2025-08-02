@@ -60,10 +60,6 @@ namespace GMTK25.Bullets
             Despawn();
         }
 
-        protected virtual void OnReturnsToPlayer(BulletHit hit)
-        {
-        }
-
         private void OnBulletHitEnemy(BulletHit hit)
         {
             if (hit.Health is { } health)
@@ -74,7 +70,9 @@ namespace GMTK25.Bullets
 
             if (returnFilters.All(filter => filter.ShouldReturn(hit)))
             {
-                OnReturnsToPlayer(hit);
+                foreach (var behavior in GetComponents<IReturnBehavior>())
+                    behavior.OnReturnsToPlayer(hit);
+
                 ReturnToPlayer();
             }
             else

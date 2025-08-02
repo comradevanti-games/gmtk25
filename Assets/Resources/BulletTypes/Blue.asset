@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd970a75e820446dbe28b00d99800fdb, type: 3}
   m_Name: Blue
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4984527910545026504, guid: 175842c5691b659458f343ea3c9deed6, type: 3}
+  prefab: {fileID: 7529325558471264183, guid: ab17f0654e1f5d187926585e131cdb1a, type: 3}
   backSprite: {fileID: -9053022328223612392, guid: 405f8a1140da2d94f9808fb7ee172918, type: 3}
   initialSpeed: 600
   price: 2
