@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GMTK25
-{
-    public sealed class HealthKeeper : MonoBehaviour
-    {
+namespace GMTK25 {
+
+    public sealed class HealthKeeper : MonoBehaviour {
+
         public UnityEvent<float> changed = new UnityEvent<float>();
         public UnityEvent died = new UnityEvent();
 
@@ -30,14 +30,18 @@ namespace GMTK25
             }
         }
 
-        public void TakeDamage(float amount)
-        {
+        public void TakeDamage(float amount) {
             Health -= amount;
         }
 
-        private void Awake()
-        {
+        public void ResetHealth() {
             Health = initialHealth;
         }
+
+        private void Awake() {
+            Health = initialHealth;
+        }
+
     }
+
 }

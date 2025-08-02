@@ -1112,6 +1112,9 @@ MonoBehaviour:
   wonEarly:
     m_PersistentCalls:
       m_Calls: []
+  wonGame:
+    m_PersistentCalls:
+      m_Calls: []
   waveDescription: {fileID: 11400000, guid: 46eb8c5844b2812cb93ffe8365633c4a, type: 2}
   breakTimeSeconds: 20
 --- !u!114 &1795197701
@@ -1181,6 +1184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jukeboxSource: {fileID: 1160842956}
+  lpf: {fileID: 1160842957}
 --- !u!114 &1795197706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1195,7 +1199,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allEnemiesDead:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8594667588222593132}
+        m_TargetAssemblyTypeName: GMTK25.HealthKeeper, GMTK25
+        m_MethodName: ResetHealth
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1795197707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1346,7 +1362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -1361,6 +1377,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 713282666}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1795197705}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -1373,7 +1393,15 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnHealthChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
       value: OnHealthChanged
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
@@ -1385,11 +1413,19 @@ PrefabInstance:
       value: GMTK25.HealthDisplayUI, GMTK25
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: GMTK25.Jukebox, GMTK25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7846508905358984964, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
@@ -1450,6 +1486,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8606504435851384275, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
   m_PrefabInstance: {fileID: 8594667588222593130}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8594667588222593132 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+  m_PrefabInstance: {fileID: 8594667588222593130}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b929d685f0e4864a8e942002887c02a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
