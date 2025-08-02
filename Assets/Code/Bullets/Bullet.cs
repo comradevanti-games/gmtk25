@@ -86,10 +86,9 @@ namespace GMTK25.Bullets
             {
                 case 8:
                 {
-                    if (other.gameObject.CompareTag("ShopItem"))
-                        Miss(false);
-                    else
-                        Miss(true);
+                    var respawnAsPickup =
+                        !other.gameObject.CompareTag("ShopItem");
+                    Miss(respawnAsPickup);
                     break;
                 }
 
