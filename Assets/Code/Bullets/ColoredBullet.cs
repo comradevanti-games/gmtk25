@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using UnityEngine;
 
 namespace GMTK25.Bullets
@@ -7,9 +6,6 @@ namespace GMTK25.Bullets
     public class ColoredBullet : BulletBase
     {
         [SerializeField] private ColorType colorType = null!;
-
-
-        public override ColorType ColorType => colorType;
 
         public override BulletType CurrentBulletType { get; set; } = null!;
 
@@ -32,7 +28,7 @@ namespace GMTK25.Bullets
         public override void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
-                .OnBulletFailed(CurrentBulletType, ColorType);
+                .OnBulletFailed(CurrentBulletType, colorType);
             Despawn();
         }
 
@@ -56,7 +52,7 @@ namespace GMTK25.Bullets
                 }
 
                 Singletons.Require<BulletPickupHandler>()
-                    .OnBulletFailed(CurrentBulletType, ColorType);
+                    .OnBulletFailed(CurrentBulletType, colorType);
                 FailHit?.Invoke();
                 Despawn();
             }
@@ -72,7 +68,7 @@ namespace GMTK25.Bullets
                 else
                 {
                     Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(CurrentBulletType, ColorType);
+                        .OnBulletFailed(CurrentBulletType, colorType);
                     FailHit?.Invoke();
                 }
 

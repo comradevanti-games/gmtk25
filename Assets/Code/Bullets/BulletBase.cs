@@ -24,8 +24,6 @@ namespace GMTK25.Bullets
             return baseDamage.Value * mult;
         }
 
-        public abstract ColorType ColorType { get; }
-
         public abstract BulletType CurrentBulletType { get; set; }
 
         public abstract ColorType? LastHitColor { get; set; }

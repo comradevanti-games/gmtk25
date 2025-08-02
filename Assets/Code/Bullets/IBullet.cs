@@ -5,8 +5,6 @@ namespace GMTK25.Bullets
 {
     public interface IBullet
     {
-        public ColorType ColorType { get; }
-
         public BulletType CurrentBulletType { get; set; }
 
         public ColorType? LastHitColor { get; set; }
