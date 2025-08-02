@@ -602,22 +602,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1723302365610815562, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723302365610815562, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.67894936
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723302365610815562, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.6981132
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723302365610815562, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.97347474
-      objectReference: {fileID: 0}
-    - target: {fileID: 1723302365610815562, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795197707}
@@ -625,58 +609,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 242702702}
-    - target: {fileID: 4634333608436793700, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.g
-      value: 0.67894936
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_SelectedColor.r
-      value: 0.6981132
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_Colors.m_HighlightedColor.g
-      value: 0.97347474
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1795197700}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 460659709}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: OnGameStarted
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: GMTK25.EndGameDisplay, GMTK25
-      objectReference: {fileID: 0}
-    - target: {fileID: 6154716047761442697, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
