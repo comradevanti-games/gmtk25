@@ -21,6 +21,12 @@ namespace GMTK25.Bullets
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
 
+        protected void ReturnToPlayer()
+        {
+            FindAnyObjectByType<Revolver>().ReturnBulletLike(gameObject);
+            Despawn();
+        }
+
         protected void Miss(bool respawnAsPickup)
         {
             if (respawnAsPickup)
@@ -40,8 +46,6 @@ namespace GMTK25.Bullets
         }
 
         public abstract BulletType CurrentBulletType { get; set; }
-
-        public abstract event Action<BulletType, ColorType?>? SuccessHit;
 
         public void OnDespawnTimeReached()
         {

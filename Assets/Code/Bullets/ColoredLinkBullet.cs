@@ -15,8 +15,6 @@ namespace GMTK25.Bullets
 
         public override BulletType CurrentBulletType { get; set; } = null!;
 
-        public override event Action<BulletType, ColorType?>? SuccessHit;
-
 
         protected override void Awake()
         {
@@ -42,9 +40,7 @@ namespace GMTK25.Bullets
                     if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
                 }
 
-                SuccessHit?.Invoke(CurrentBulletType,
-                    gameObject.GetColorType());
-                Despawn();
+                ReturnToPlayer();
             }
             else
             {

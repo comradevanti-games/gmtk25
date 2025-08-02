@@ -7,15 +7,10 @@ namespace GMTK25.Bullets
     {
         public override BulletType CurrentBulletType { get; set; } = null!;
 
-        public override event Action<BulletType, ColorType?>? SuccessHit;
-
         protected override void OnBulletHitEnemy(BulletHit hit)
         {
             base.OnBulletHitEnemy(hit);
-
-            SuccessHit?.Invoke(CurrentBulletType,
-                gameObject.TryGetColorType());
-            Despawn();
+            ReturnToPlayer();
         }
     }
 }

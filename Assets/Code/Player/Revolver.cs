@@ -55,7 +55,6 @@ namespace GMTK25
 
             var bullet = bulletGameObject.GetComponent<IBullet>();
             bullet.CurrentBulletType = newBullet;
-            bullet.SuccessHit += OnSuccessHit;
             bullet.FailHit += OnFailHit;
 
             var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
@@ -72,12 +71,14 @@ namespace GMTK25
             drumKeeper.EjectBullet();
         }
 
-        private void OnSuccessHit(BulletType successHitType,
-            ColorType? colorType)
+        public void ReturnBulletLike(GameObject bullet)
         {
-            lastSuccessBulletType = successHitType;
-            LastSuccessColorType = colorType;
-            drumKeeper.PushBullet(successHitType);
+            var type = bullet.GetComponent<IBullet>().CurrentBulletType;
+            var color = bullet.TryGetColorType();
+
+            lastSuccessBulletType = type;
+            LastSuccessColorType = color;
+            drumKeeper.PushBullet(type);
         }
 
         private void OnFailHit()
