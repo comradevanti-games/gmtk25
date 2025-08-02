@@ -14,6 +14,8 @@ namespace GMTK25 {
 
         public event Action? ShootInputHandled;
 
+        public event Action<bool>? QuitInputHandled;
+
         public Vector2 MouseScreenPosition { get; set; }
 
         private void Awake() {
@@ -42,7 +44,17 @@ namespace GMTK25 {
 
         }
 
-        public void OnQuitInputReceived(InputAction.CallbackContext ctx) { }
+        public void OnQuitInputReceived(InputAction.CallbackContext ctx) {
+
+            if (ctx.started) {
+                QuitInputHandled?.Invoke(true);
+            }
+
+            if (ctx.canceled) {
+                QuitInputHandled?.Invoke(false);
+            }
+
+        }
 
     }
 
