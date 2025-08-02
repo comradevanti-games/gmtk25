@@ -13,6 +13,9 @@ namespace GMTK25.Bullets
         private IDamageMultiplier[] damageMultipliers =
             Array.Empty<IDamageMultiplier>();
 
+
+        public BulletType CurrentBulletType { get; set; } = null!;
+
         protected virtual void Awake()
         {
             baseDamage = GetComponent<BaseDamage>();
@@ -45,7 +48,6 @@ namespace GMTK25.Bullets
             return baseDamage.Value * mult;
         }
 
-        public abstract BulletType CurrentBulletType { get; set; }
 
         public void OnDespawnTimeReached()
         {
@@ -82,7 +84,6 @@ namespace GMTK25.Bullets
                     break;
             }
         }
-
 
         protected void Despawn()
         {

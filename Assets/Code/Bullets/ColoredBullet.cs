@@ -7,8 +7,6 @@ namespace GMTK25.Bullets
     {
         [SerializeField] private ColorType colorType = null!;
 
-        public override BulletType CurrentBulletType { get; set; } = null!;
-
 
         protected override void Awake()
         {
