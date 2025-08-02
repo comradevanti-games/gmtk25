@@ -55,7 +55,6 @@ namespace GMTK25
 
             var bullet = bulletGameObject.GetComponent<IBullet>();
             bullet.CurrentBulletType = newBullet;
-            bullet.LastHitBulletType = lastSuccessBulletType;
             bullet.SuccessHit += OnSuccessHit;
             bullet.FailHit += OnFailHit;
 
