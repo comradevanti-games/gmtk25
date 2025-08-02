@@ -29,13 +29,13 @@ namespace GMTK25.Bullets
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
 
-        protected void ReturnToPlayer()
+        private void ReturnToPlayer()
         {
             FindAnyObjectByType<Revolver>().ReturnBulletLike(gameObject);
             Despawn();
         }
 
-        protected void Miss(bool respawnAsPickup)
+        private void Miss(bool respawnAsPickup)
         {
             if (respawnAsPickup)
                 Singletons.Require<BulletPickupHandler>()
@@ -46,15 +46,14 @@ namespace GMTK25.Bullets
             Despawn();
         }
 
-        protected float DamageFor(BulletHit hit)
+        private float DamageFor(BulletHit hit)
         {
             var mult = damageMultipliers.Aggregate(1f,
                 (acc, mult) => acc * mult.CalcMultiplier(hit));
             return baseDamage.Value * mult;
         }
 
-
-        public void OnDespawnTimeReached()
+        private void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
                 .SpawnPickupLike(gameObject);
@@ -65,7 +64,7 @@ namespace GMTK25.Bullets
         {
         }
 
-        protected virtual void OnBulletHitEnemy(BulletHit hit)
+        private void OnBulletHitEnemy(BulletHit hit)
         {
             if (hit.Health is { } health)
             {
@@ -104,7 +103,7 @@ namespace GMTK25.Bullets
             }
         }
 
-        protected void Despawn()
+        private void Despawn()
         {
             GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
             Destroy(gameObject);
