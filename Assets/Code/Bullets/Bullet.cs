@@ -77,18 +77,17 @@ namespace GMTK25.Bullets
                 health.TakeDamage(damage);
             }
 
-            if (returnFilters.All(filter => filter.ShouldReturn(hit)))
-            {
-                foreach (var behavior in
-                         GetComponents<IReturnBehavior>())
-                    behavior.OnBulletReturnsToPlayer(hit);
-
-                ReturnToPlayer();
-            }
-            else
+            if (!returnFilters.All(filter => filter.ShouldReturn(hit)))
             {
                 Miss(true);
+                return;
             }
+
+            foreach (var behavior in
+                     GetComponents<IReturnBehavior>())
+                behavior.OnBulletReturnsToPlayer(hit);
+
+            ReturnToPlayer();
         }
 
         private void Despawn()
