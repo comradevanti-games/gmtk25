@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,9 +13,20 @@ namespace GMTK25.UI
 
         public float TargetT { get; set; }
 
+        private void UpdateAlpha()
+        {
+            var distToBack = Mathf.Min(Mathf.Abs(T - 0.5f), 0.2f);
+            var alpha = Mathf.InverseLerp(0, 0.2f, distToBack);
+            image.SetAlpha(alpha);
+        }
+
         public Vector2 Position
         {
-            set => rectTransform.anchoredPosition = value;
+            set
+            {
+                rectTransform.anchoredPosition = value;
+                UpdateAlpha();
+            }
         }
 
         public void Display(BulletType? bulletType)
