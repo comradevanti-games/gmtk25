@@ -56,7 +56,7 @@ namespace GMTK25.Bullets
                 transform.position, bulletRotation);
 
             var bullet = bulletGameObject.GetComponent<ColoredLinkBullet>();
-            bullet.CurrentBulletType = linkBulletType;
+            bullet.Type = linkBulletType;
             bullet.jumpCount.Value = jumpCount.Value + 1;
 
             var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();

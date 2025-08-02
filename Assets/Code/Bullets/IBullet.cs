@@ -5,7 +5,7 @@ namespace GMTK25.Bullets
 {
     public interface IBullet
     {
-        public BulletType CurrentBulletType { get; set; }
+        public BulletType Type { get; set; }
 
         public event Action? FailHit;
     }
