@@ -9,11 +9,11 @@ namespace GMTK25.Bullets
         [SerializeField] private ColorType colorType = null!;
         [SerializeField] private BulletType linkBulletType = null!;
 
+        private Revolver revolver = null!;
+
         private JumpCount jumpCount = null!;
 
         public override BulletType CurrentBulletType { get; set; } = null!;
-
-        public override ColorType? LastHitColor { get; set; }
 
         public override BulletType? LastHitBulletType { get; set; }
 
@@ -26,6 +26,7 @@ namespace GMTK25.Bullets
 
             gameObject.SetColorType(colorType);
             jumpCount = GetComponent<JumpCount>();
+            revolver = FindAnyObjectByType<Revolver>();
         }
 
         protected override void OnBulletHitEnemy(BulletHit hit)
@@ -34,7 +35,7 @@ namespace GMTK25.Bullets
 
             if (hit.TargetColor == colorType)
             {
-                if (LastHitColor == hit.TargetColor)
+                if (revolver.LastSuccessColorType == hit.TargetColor)
                 {
                     var enemyPos = Singletons.Require<EnemyTracker>()
                         .GetClosestEnemyPosition(

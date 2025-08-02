@@ -7,8 +7,6 @@ namespace GMTK25.Bullets
     {
         public BulletType CurrentBulletType { get; set; }
 
-        public ColorType? LastHitColor { get; set; }
-
         public BulletType? LastHitBulletType { get; set; }
 
         public event Action<BulletType, ColorType?> SuccessHit;
