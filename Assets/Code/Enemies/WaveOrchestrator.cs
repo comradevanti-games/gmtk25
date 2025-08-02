@@ -57,12 +57,7 @@ namespace GMTK25.Enemies
                 }, ct);
             }
 
-            if (enemyTracker.HasEnemies)
-                Debug.Log("Waiting for all enemies to be defeated 🫷");
             while (enemyTracker.HasEnemies) await Task.Yield();
-
-            Debug.Log(
-                $"Completed wave {waveIndex} with {earlyWins} early wins 💪");
 
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
@@ -72,7 +67,6 @@ namespace GMTK25.Enemies
             }
             else
             {
-                Debug.Log("Last wave completed. We are done 🥳. Or are we?");
                 Restart();
             }
         }
