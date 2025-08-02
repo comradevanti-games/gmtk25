@@ -13,34 +13,13 @@ namespace GMTK25.Bullets
 
         public override event Action<BulletType, ColorType?>? SuccessHit;
 
-        public override void OnTriggerEnter2D(Collider2D other)
+        protected override void OnBulletHitEnemy(BulletHit hit)
         {
-            var hit = new BulletHit(other.gameObject);
+            base.OnBulletHitEnemy(hit);
 
-            if (hit.Health is { } health)
-            {
-                var damage = DamageFor(hit);
-                health.TakeDamage(damage);
-            }
-
-            switch (other.gameObject.layer)
-            {
-                case 8:
-                {
-                    if (other.gameObject.CompareTag("ShopItem"))
-                        Miss(false);
-                    else
-                        Miss(true);
-                    break;
-                }
-
-                case 9:
-                    SuccessHit?.Invoke(CurrentBulletType,
-                        gameObject.TryGetColorType());
-                    Despawn();
-
-                    break;
-            }
+            SuccessHit?.Invoke(CurrentBulletType,
+                gameObject.TryGetColorType());
+            Despawn();
         }
     }
 }

@@ -28,49 +28,28 @@ namespace GMTK25.Bullets
             jumpCount = GetComponent<JumpCount>();
         }
 
-        public override void OnTriggerEnter2D(Collider2D other)
+        protected override void OnBulletHitEnemy(BulletHit hit)
         {
-            var hit = new BulletHit(other.gameObject);
+            base.OnBulletHitEnemy(hit);
 
-            if (hit.Health is { } health)
+            if (hit.TargetColor == colorType)
             {
-                var damage = DamageFor(hit);
-                health.TakeDamage(damage);
-            }
-
-            switch (other.gameObject.layer)
-            {
-                case 8:
-
-                    if (other.gameObject.CompareTag("ShopItem"))
-                        Miss(false);
-                    else
-                        Miss(true);
-                    break;
-                case 9:
+                if (LastHitColor == hit.TargetColor)
                 {
-                    if (other.gameObject.GetColorType() == colorType)
-                    {
-                        if (LastHitColor == other.gameObject.GetColorType())
-                        {
-                            var enemyPos = Singletons.Require<EnemyTracker>()
-                                .GetClosestEnemyPosition(
-                                    other.transform.position, 2);
+                    var enemyPos = Singletons.Require<EnemyTracker>()
+                        .GetClosestEnemyPosition(
+                            hit.Target.transform.position, 2);
 
-                            if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
-                        }
-
-                        SuccessHit?.Invoke(CurrentBulletType,
-                            gameObject.GetColorType());
-                        Despawn();
-                    }
-                    else
-                    {
-                        Miss(true);
-                    }
-
-                    break;
+                    if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
                 }
+
+                SuccessHit?.Invoke(CurrentBulletType,
+                    gameObject.GetColorType());
+                Despawn();
+            }
+            else
+            {
+                Miss(true);
             }
         }
 
