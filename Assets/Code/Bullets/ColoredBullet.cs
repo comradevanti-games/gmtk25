@@ -7,7 +7,6 @@ namespace GMTK25.Bullets
     public class ColoredBullet : BulletBase
     {
         [SerializeField] private ColorType colorType = null!;
-        private BaseDamage baseDamage = null!;
 
         private IDamageMultiplier[] damageMultipliers =
             Array.Empty<IDamageMultiplier>();
@@ -31,8 +30,10 @@ namespace GMTK25.Bullets
             return baseDamage.Value * mult;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             baseDamage = GetComponent<BaseDamage>();
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);

@@ -10,7 +10,6 @@ namespace GMTK25.Bullets
         [SerializeField] private ColorType colorType = null!;
         [SerializeField] private BulletType linkBulletType = null!;
 
-        private BaseDamage baseDamage = null!;
         private JumpCount jumpCount = null!;
 
         private IDamageMultiplier[] damageMultipliers =
@@ -35,11 +34,12 @@ namespace GMTK25.Bullets
             return baseDamage.Value * mult;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
+
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
-            baseDamage = GetComponent<BaseDamage>();
             jumpCount = GetComponent<JumpCount>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
         }
