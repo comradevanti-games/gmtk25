@@ -45,11 +45,6 @@ namespace GMTK25.UI
             return Loop(i + 1);
         }
 
-        private int DecLooping(int i)
-        {
-            return Loop(i - 1);
-        }
-
         private void UpdateTargets()
         {
             for (var i = 0; i < 7; i++)
