@@ -19,6 +19,8 @@ namespace GMTK25.Enemies
 
         public UnityEvent wonEarly = new UnityEvent();
 
+        public UnityEvent wonGame = new UnityEvent();
+
         [SerializeField] private WaveDescription waveDescription = null!;
         [SerializeField] private float breakTimeSeconds;
 
@@ -65,10 +67,13 @@ namespace GMTK25.Enemies
                 await Task.Delay(BreakTime, ct);
                 _ = RunWave(waveIndex + 1, ct);
             }
-            else
-            {
-                Restart();
+            else {
+                wonGame.Invoke();
             }
+        }
+
+        public void OnNewGamePlusStarted() {
+            Restart();
         }
 
         private void Restart()

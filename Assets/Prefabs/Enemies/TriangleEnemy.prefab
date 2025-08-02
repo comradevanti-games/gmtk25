@@ -74,7 +74,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967371659423618781, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: baseForce
-      value: 20
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2208724882889521027, guid: def1fcf0e7f8113b3b103ec86b323443, type: 3}
       propertyPath: initialHealth
