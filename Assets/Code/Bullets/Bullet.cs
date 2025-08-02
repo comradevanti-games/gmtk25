@@ -59,34 +59,31 @@ namespace GMTK25.Bullets
             Despawn();
         }
 
-        private void OnBulletHitEnemy(BulletHit hit)
-        {
-            if (hit.Health is { } health)
-            {
-                var damage = DamageFor(hit);
-                health.TakeDamage(damage);
-            }
-
-            if (returnFilters.All(filter => filter.ShouldReturn(hit)))
-            {
-                foreach (var behavior in GetComponents<IReturnBehavior>())
-                    behavior.OnReturnsToPlayer(hit);
-
-                ReturnToPlayer();
-            }
-            else
-            {
-                Miss(true);
-            }
-        }
-
         public void OnTriggerEnter2D(Collider2D other)
         {
             switch (other.gameObject.layer)
             {
                 case 9:
                     var hit = new BulletHit(other.gameObject);
-                    OnBulletHitEnemy(hit);
+                    if (hit.Health is { } health)
+                    {
+                        var damage = DamageFor(hit);
+                        health.TakeDamage(damage);
+                    }
+
+                    if (returnFilters.All(filter => filter.ShouldReturn(hit)))
+                    {
+                        foreach (var behavior in
+                                 GetComponents<IReturnBehavior>())
+                            behavior.OnReturnsToPlayer(hit);
+
+                        ReturnToPlayer();
+                    }
+                    else
+                    {
+                        Miss(true);
+                    }
+
                     break;
 
                 default:
