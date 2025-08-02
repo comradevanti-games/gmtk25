@@ -15,13 +15,6 @@ namespace GMTK25.Bullets
 
         public override event Action? FailHit;
 
-        public override void OnDespawnTimeReached()
-        {
-            Singletons.Require<BulletPickupHandler>()
-                .OnBulletFailed(CurrentBulletType, null);
-            Despawn();
-        }
-
         public override void OnTriggerEnter2D(Collider2D other)
         {
             var hit = new BulletHit(other.gameObject);
@@ -44,7 +37,7 @@ namespace GMTK25.Bullets
                     }
 
                     Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(CurrentBulletType, null);
+                        .OnBulletFailed(gameObject);
                     FailHit?.Invoke();
                     Despawn();
 

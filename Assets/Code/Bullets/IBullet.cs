@@ -15,8 +15,6 @@ namespace GMTK25.Bullets
 
         public event Action? FailHit;
 
-        public void OnDespawnTimeReached();
-
         public void OnTriggerEnter2D(Collider2D other);
 
         public void Despawn();

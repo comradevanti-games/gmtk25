@@ -36,7 +36,12 @@ namespace GMTK25.Bullets
 
         public abstract event Action? FailHit;
 
-        public abstract void OnDespawnTimeReached();
+        public void OnDespawnTimeReached()
+        {
+            Singletons.Require<BulletPickupHandler>()
+                .OnBulletFailed(gameObject);
+            Despawn();
+        }
 
         public abstract void OnTriggerEnter2D(Collider2D other);
 

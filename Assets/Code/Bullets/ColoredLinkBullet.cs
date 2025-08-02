@@ -29,13 +29,6 @@ namespace GMTK25.Bullets
             jumpCount = GetComponent<JumpCount>();
         }
 
-        public override void OnDespawnTimeReached()
-        {
-            Singletons.Require<BulletPickupHandler>()
-                .OnBulletFailed(CurrentBulletType, colorType);
-            Despawn();
-        }
-
         public override void OnTriggerEnter2D(Collider2D other)
         {
             var hit = new BulletHit(other.gameObject);
@@ -58,7 +51,7 @@ namespace GMTK25.Bullets
                     }
 
                     Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(CurrentBulletType, colorType);
+                        .OnBulletFailed(gameObject);
                     FailHit?.Invoke();
                     Despawn();
 
@@ -82,7 +75,7 @@ namespace GMTK25.Bullets
                     else
                     {
                         Singletons.Require<BulletPickupHandler>()
-                            .OnBulletFailed(CurrentBulletType, colorType);
+                            .OnBulletFailed(gameObject);
                         FailHit?.Invoke();
                     }
 
