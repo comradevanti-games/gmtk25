@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class ColoredLinkBullet : MonoBehaviour, IBullet
+    public class ColoredLinkBullet : BulletBase
     {
         [SerializeField] private ColorType colorType = null!;
         [SerializeField] private BulletType linkBulletType = null!;
@@ -16,17 +16,17 @@ namespace GMTK25.Bullets
         private IDamageMultiplier[] damageMultipliers =
             Array.Empty<IDamageMultiplier>();
 
-        public ColorType ColorType => colorType;
+        public override ColorType ColorType => colorType;
 
-        public BulletType CurrentBulletType { get; set; } = null!;
+        public override BulletType CurrentBulletType { get; set; } = null!;
 
-        public ColorType? LastHitColor { get; set; }
+        public override ColorType? LastHitColor { get; set; }
 
-        public BulletType? LastHitBulletType { get; set; }
+        public override BulletType? LastHitBulletType { get; set; }
 
-        public event Action<BulletType, ColorType?>? SuccessHit;
+        public override event Action<BulletType, ColorType?>? SuccessHit;
 
-        public event Action? FailHit;
+        public override event Action? FailHit;
 
         private float DamageFor(BulletHit hit)
         {
@@ -44,14 +44,14 @@ namespace GMTK25.Bullets
             damageMultipliers = GetComponents<IDamageMultiplier>();
         }
 
-        public void OnDespawnTimeReached()
+        public override void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
                 .OnBulletFailed(CurrentBulletType, ColorType);
             Despawn();
         }
 
-        public void OnTriggerEnter2D(Collider2D other)
+        public override void OnTriggerEnter2D(Collider2D other)
         {
             var hit = new BulletHit(other.gameObject);
 
@@ -127,7 +127,7 @@ namespace GMTK25.Bullets
                                 shootDirection.normalized);
         }
 
-        public void Despawn()
+        public override void Despawn()
         {
             GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
             Destroy(gameObject);

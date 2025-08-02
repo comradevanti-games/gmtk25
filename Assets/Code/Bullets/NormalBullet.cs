@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class NormalBullet : MonoBehaviour, IBullet
+    public class NormalBullet : BulletBase
     {
         private BaseDamage baseDamage = null!;
 
@@ -13,26 +13,26 @@ namespace GMTK25.Bullets
             baseDamage = GetComponent<BaseDamage>();
         }
 
-        public ColorType ColorType { get; } = null!;
+        public override ColorType ColorType { get; } = null!;
 
-        public BulletType CurrentBulletType { get; set; } = null!;
+        public override BulletType CurrentBulletType { get; set; } = null!;
 
-        public ColorType? LastHitColor { get; set; }
+        public override ColorType? LastHitColor { get; set; }
 
-        public BulletType? LastHitBulletType { get; set; }
+        public override BulletType? LastHitBulletType { get; set; }
 
-        public event Action<BulletType, ColorType?>? SuccessHit;
+        public override event Action<BulletType, ColorType?>? SuccessHit;
 
-        public event Action? FailHit;
+        public override event Action? FailHit;
 
-        public void OnDespawnTimeReached()
+        public override void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
                 .OnBulletFailed(CurrentBulletType, ColorType);
             Despawn();
         }
 
-        public void OnTriggerEnter2D(Collider2D other)
+        public override void OnTriggerEnter2D(Collider2D other)
         {
             switch (other.gameObject.layer)
             {
@@ -64,7 +64,7 @@ namespace GMTK25.Bullets
             }
         }
 
-        public void Despawn()
+        public override void Despawn()
         {
             GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
             Destroy(gameObject);
