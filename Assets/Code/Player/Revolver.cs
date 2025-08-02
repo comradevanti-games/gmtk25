@@ -16,7 +16,6 @@ namespace GMTK25
         private float lastShotTime = 0;
         private ScreenShake? screenShaker;
         public ColorType? LastSuccessColorType { get; private set; }
-        private BulletType? lastSuccessBulletType;
 
         private void Awake()
         {
@@ -76,14 +75,12 @@ namespace GMTK25
             var type = bullet.GetComponent<Bullet>().Type;
             var color = bullet.TryGetColorType();
 
-            lastSuccessBulletType = type;
             LastSuccessColorType = color;
             drumKeeper.PushBullet(type);
         }
 
         private void OnFailHit()
         {
-            lastSuccessBulletType = null;
             LastSuccessColorType = null;
         }
     }
