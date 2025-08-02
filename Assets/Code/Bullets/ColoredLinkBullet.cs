@@ -12,9 +12,6 @@ namespace GMTK25.Bullets
 
         private JumpCount jumpCount = null!;
 
-        private IDamageMultiplier[] damageMultipliers =
-            Array.Empty<IDamageMultiplier>();
-
         public override ColorType ColorType => colorType;
 
         public override BulletType CurrentBulletType { get; set; } = null!;
@@ -41,7 +38,6 @@ namespace GMTK25.Bullets
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
             jumpCount = GetComponent<JumpCount>();
-            damageMultipliers = GetComponents<IDamageMultiplier>();
         }
 
         public override void OnDespawnTimeReached()

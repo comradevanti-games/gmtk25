@@ -7,9 +7,13 @@ namespace GMTK25.Bullets
     {
         protected BaseDamage baseDamage = null!;
 
+        protected IDamageMultiplier[] damageMultipliers =
+            Array.Empty<IDamageMultiplier>();
+
         protected virtual void Awake()
         {
             baseDamage = GetComponent<BaseDamage>();
+            damageMultipliers = GetComponents<IDamageMultiplier>();
         }
 
         public abstract ColorType ColorType { get; }
