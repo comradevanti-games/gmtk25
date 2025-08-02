@@ -25,7 +25,6 @@ namespace GMTK25.Bullets
         {
             base.Awake();
 
-            GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
             jumpCount = GetComponent<JumpCount>();
         }
