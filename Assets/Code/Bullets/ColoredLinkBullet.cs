@@ -7,7 +7,6 @@ namespace GMTK25.Bullets
     public class ColoredLinkBullet : BulletBase
     {
         [SerializeField] private ColorType colorType = null!;
-        [SerializeField] private BulletType linkBulletType = null!;
 
         private Revolver revolver = null!;
         private JumpCount jumpCount = null!;
@@ -52,16 +51,15 @@ namespace GMTK25.Bullets
                 Quaternion.Euler(0, 0,
                     Mathf.Atan2(shootDirection.y, shootDirection.x) *
                     Mathf.Rad2Deg - 90);
-            var bulletGameObject = Instantiate(linkBulletType.Prefab,
+            var bulletGameObject = Instantiate(Type.Prefab,
                 transform.position, bulletRotation);
 
             var bullet = bulletGameObject.GetComponent<ColoredLinkBullet>();
-            bullet.Type = linkBulletType;
+            bullet.Type = Type;
             bullet.jumpCount.Value = jumpCount.Value + 1;
 
             var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
-            bulletBody.AddForce(linkBulletType.InitialSpeed *
-                                shootDirection.normalized);
+            bulletBody.AddForce(Type.InitialSpeed * shootDirection.normalized);
         }
     }
 }
