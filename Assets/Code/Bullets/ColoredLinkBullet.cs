@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using GMTK25.Enemies;
 using UnityEngine;
 
@@ -12,6 +13,9 @@ namespace GMTK25.Bullets
         private BaseDamage baseDamage = null!;
         private JumpCount jumpCount = null!;
 
+        private IDamageMultiplier[] damageMultipliers =
+            Array.Empty<IDamageMultiplier>();
+
         public ColorType ColorType => colorType;
 
         public BulletType CurrentBulletType { get; set; } = null!;
@@ -24,8 +28,12 @@ namespace GMTK25.Bullets
 
         public event Action? FailHit;
 
-        private float JumpDamage =>
-            baseDamage.Value / Mathf.Pow(2, jumpCount.Value);
+        private float DamageFor(BulletHit hit)
+        {
+            var mult = damageMultipliers.Aggregate(1f,
+                (acc, mult) => acc * mult.CalcMultiplier(hit));
+            return baseDamage.Value * mult;
+        }
 
         private void Awake()
         {
@@ -33,6 +41,7 @@ namespace GMTK25.Bullets
             gameObject.SetColorType(colorType);
             baseDamage = GetComponent<BaseDamage>();
             jumpCount = GetComponent<JumpCount>();
+            damageMultipliers = GetComponents<IDamageMultiplier>();
         }
 
         public void OnDespawnTimeReached()
@@ -44,6 +53,14 @@ namespace GMTK25.Bullets
 
         public void OnTriggerEnter2D(Collider2D other)
         {
+            var hit = new BulletHit(other.gameObject);
+
+            if (hit.Health is { } health)
+            {
+                var damage = DamageFor(hit);
+                health.TakeDamage(damage);
+            }
+
             switch (other.gameObject.layer)
             {
                 case 8:
@@ -74,8 +91,6 @@ namespace GMTK25.Bullets
                             if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
                         }
 
-                        other.GetComponent<HealthKeeper>()
-                            .TakeDamage(JumpDamage * 2);
                         SuccessHit?.Invoke(CurrentBulletType,
                             gameObject.GetColorType());
                     }
@@ -84,8 +99,6 @@ namespace GMTK25.Bullets
                         Singletons.Require<BulletPickupHandler>()
                             .OnBulletFailed(CurrentBulletType, ColorType);
                         FailHit?.Invoke();
-                        other.GetComponent<HealthKeeper>()
-                            .TakeDamage(JumpDamage);
                     }
 
                     Despawn();
