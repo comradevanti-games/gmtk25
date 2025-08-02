@@ -5,13 +5,6 @@ namespace GMTK25.Bullets
 {
     public class NormalBullet : BulletBase
     {
-        protected override void Awake()
-        {
-            base.Awake();
-
-            GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
-        }
-
         public override BulletType CurrentBulletType { get; set; } = null!;
 
         public override ColorType? LastHitColor { get; set; }

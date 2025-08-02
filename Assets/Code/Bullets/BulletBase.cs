@@ -15,6 +15,8 @@ namespace GMTK25.Bullets
         {
             baseDamage = GetComponent<BaseDamage>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
+
+            GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
 
         protected float DamageFor(BulletHit hit)
