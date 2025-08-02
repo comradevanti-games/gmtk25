@@ -1,19 +1,27 @@
 using System;
+using System.Linq;
 using UnityEngine;
 
 namespace GMTK25.Bullets
 {
     public abstract class BulletBase : MonoBehaviour, IBullet
     {
-        protected BaseDamage baseDamage = null!;
+        private BaseDamage baseDamage = null!;
 
-        protected IDamageMultiplier[] damageMultipliers =
+        private IDamageMultiplier[] damageMultipliers =
             Array.Empty<IDamageMultiplier>();
 
         protected virtual void Awake()
         {
             baseDamage = GetComponent<BaseDamage>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
+        }
+
+        protected float DamageFor(BulletHit hit)
+        {
+            var mult = damageMultipliers.Aggregate(1f,
+                (acc, mult) => acc * mult.CalcMultiplier(hit));
+            return baseDamage.Value * mult;
         }
 
         public abstract ColorType ColorType { get; }

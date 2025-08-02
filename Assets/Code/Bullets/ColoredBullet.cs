@@ -21,18 +21,10 @@ namespace GMTK25.Bullets
 
         public override event Action? FailHit;
 
-        private float DamageFor(BulletHit hit)
-        {
-            var mult = damageMultipliers.Aggregate(1f,
-                (acc, mult) => acc * mult.CalcMultiplier(hit));
-            return baseDamage.Value * mult;
-        }
-
         protected override void Awake()
         {
             base.Awake();
 
-            baseDamage = GetComponent<BaseDamage>();
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
         }
