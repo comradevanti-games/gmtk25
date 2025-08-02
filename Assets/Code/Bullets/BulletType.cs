@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GMTK25 {
+namespace GMTK25.Bullets {
 
     [CreateAssetMenu(fileName = "New Bullet-type",
         menuName = "GMTK25/Bullet-type")]

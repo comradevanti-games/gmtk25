@@ -1,3 +1,4 @@
+using GMTK25.Bullets;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

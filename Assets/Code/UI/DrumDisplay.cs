@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using GMTK25.Bullets;
 using UnityEngine;
 
 namespace GMTK25.UI

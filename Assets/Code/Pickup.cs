@@ -1,4 +1,5 @@
 using System.Collections;
+using GMTK25.Bullets;
 using UnityEngine;
 
 namespace GMTK25 {

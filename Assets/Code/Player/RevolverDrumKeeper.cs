@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using GMTK25.Bullets;
 using GMTK25.UI;
 using TMPro;
 using UnityEngine;

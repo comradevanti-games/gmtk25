@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using GMTK25.Bullets;
 using UnityEngine;
 
 namespace GMTK25.Shop
