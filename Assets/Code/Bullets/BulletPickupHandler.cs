@@ -15,7 +15,7 @@ namespace GMTK25.Bullets
             spawner = Singletons.Require<PickupSpawner>();
         }
 
-        public void OnBulletFailed(GameObject bullet)
+        public void SpawnPickupLike(GameObject bullet)
         {
             jukebox.Play(missSfx);
 

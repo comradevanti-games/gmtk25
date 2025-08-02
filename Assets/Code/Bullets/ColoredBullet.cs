@@ -15,7 +15,6 @@ namespace GMTK25.Bullets
 
         public override event Action<BulletType, ColorType?>? SuccessHit;
 
-        public override event Action? FailHit;
 
         protected override void Awake()
         {
@@ -37,16 +36,9 @@ namespace GMTK25.Bullets
             if (other.gameObject.layer == 8)
             {
                 if (other.gameObject.CompareTag("ShopItem"))
-                {
-                    Despawn();
-
-                    return;
-                }
-
-                Singletons.Require<BulletPickupHandler>()
-                    .OnBulletFailed(gameObject);
-                FailHit?.Invoke();
-                Despawn();
+                    Miss(false);
+                else
+                    Miss(true);
             }
 
             if (other.gameObject.layer == 9)
@@ -56,15 +48,12 @@ namespace GMTK25.Bullets
                 {
                     SuccessHit?.Invoke(CurrentBulletType,
                         gameObject.GetColorType());
+                    Despawn();
                 }
                 else
                 {
-                    Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(gameObject);
-                    FailHit?.Invoke();
+                    Miss(true);
                 }
-
-                Despawn();
             }
         }
     }

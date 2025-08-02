@@ -6,6 +6,8 @@ namespace GMTK25.Bullets
 {
     public abstract class BulletBase : MonoBehaviour, IBullet
     {
+        public event Action? FailHit;
+
         private BaseDamage baseDamage = null!;
 
         private IDamageMultiplier[] damageMultipliers =
@@ -17,6 +19,17 @@ namespace GMTK25.Bullets
             damageMultipliers = GetComponents<IDamageMultiplier>();
 
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
+        }
+
+        protected void Miss(bool respawnAsPickup)
+        {
+            if (respawnAsPickup)
+                Singletons.Require<BulletPickupHandler>()
+                    .SpawnPickupLike(gameObject);
+
+            FailHit?.Invoke();
+
+            Despawn();
         }
 
         protected float DamageFor(BulletHit hit)
@@ -34,12 +47,11 @@ namespace GMTK25.Bullets
 
         public abstract event Action<BulletType, ColorType?>? SuccessHit;
 
-        public abstract event Action? FailHit;
 
         public void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
-                .OnBulletFailed(gameObject);
+                .SpawnPickupLike(gameObject);
             Despawn();
         }
 
