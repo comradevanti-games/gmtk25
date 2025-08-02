@@ -45,7 +45,7 @@ namespace GMTK25.Bullets
                 shootDirection.normalized);
         }
 
-        public void OnReturnsToPlayer(BulletHit hit)
+        public void OnBulletReturnsToPlayer(BulletHit hit)
         {
             if (revolver.LastSuccessColorType != hit.TargetColor) return;
 
