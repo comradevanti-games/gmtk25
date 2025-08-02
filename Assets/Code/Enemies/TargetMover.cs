@@ -9,15 +9,15 @@ namespace GMTK25.Enemies
         private new Rigidbody2D rigidbody = null!;
         private MovementForce movementForce = null!;
 
-        public Vector3? TargetPosition { get; set; }
-
+        public Vector2? TargetPosition { get; set; }
 
         private void FixedUpdate()
         {
             if (TargetPosition is not { } target) return;
-            var dir = (target - transform.position).normalized;
+            var dir = (target - rigidbody.position).normalized;
             rigidbody.AddForce(dir * movementForce.Force);
         }
+
 
         private void Awake()
         {
