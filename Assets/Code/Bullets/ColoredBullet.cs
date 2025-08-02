@@ -8,8 +8,6 @@ namespace GMTK25.Bullets
     {
         [SerializeField] private ColorType colorType = null!;
 
-        private IDamageMultiplier[] damageMultipliers =
-            Array.Empty<IDamageMultiplier>();
 
         public override ColorType ColorType => colorType;
 
@@ -37,7 +35,6 @@ namespace GMTK25.Bullets
             baseDamage = GetComponent<BaseDamage>();
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
-            damageMultipliers = GetComponents<IDamageMultiplier>();
         }
 
         public override void OnDespawnTimeReached()
