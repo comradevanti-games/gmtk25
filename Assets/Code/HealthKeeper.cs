@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,7 +11,7 @@ namespace GMTK25 {
 
         [SerializeField] private float initialHealth;
 
-        private float health;
+        private float health = float.NegativeInfinity;
 
         public float Health
         {
@@ -38,8 +39,8 @@ namespace GMTK25 {
             Health = initialHealth;
         }
 
-        private void Awake() {
-            Health = initialHealth;
+        private void Start() {
+            ResetHealth();
         }
 
     }
