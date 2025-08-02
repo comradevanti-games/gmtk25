@@ -34,13 +34,18 @@ namespace GMTK25.UI
         {
             image.enabled = bulletType != null;
 
-            if (bulletType != null) {
+            if (bulletType != null)
+            {
                 image.sprite = bulletType.BackSprite;
 
-                if (bulletType.ColorType != null) {
+                if (bulletType.ColorType != null)
                     image.color = bulletType.ColorType.Color;
-                }
-               
+                else
+                    image.color = Color.white;
+            }
+            else
+            {
+                image.sprite = null!;
             }
         }
 
