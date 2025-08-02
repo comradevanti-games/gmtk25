@@ -1,5 +1,4 @@
 using System;
-using System.Linq;
 using GMTK25.Enemies;
 using UnityEngine;
 
@@ -23,13 +22,6 @@ namespace GMTK25.Bullets
         public override event Action<BulletType, ColorType?>? SuccessHit;
 
         public override event Action? FailHit;
-
-        private float DamageFor(BulletHit hit)
-        {
-            var mult = damageMultipliers.Aggregate(1f,
-                (acc, mult) => acc * mult.CalcMultiplier(hit));
-            return baseDamage.Value * mult;
-        }
 
         protected override void Awake()
         {

@@ -33,6 +33,14 @@ namespace GMTK25.Bullets
 
         public override void OnTriggerEnter2D(Collider2D other)
         {
+            var hit = new BulletHit(other.gameObject);
+
+            if (hit.Health is { } health)
+            {
+                var damage = DamageFor(hit);
+                health.TakeDamage(damage);
+            }
+
             switch (other.gameObject.layer)
             {
                 case 8:
@@ -53,8 +61,6 @@ namespace GMTK25.Bullets
                 }
 
                 case 9:
-                    other.GetComponent<HealthKeeper>()
-                        .TakeDamage(baseDamage.Value);
                     SuccessHit?.Invoke(CurrentBulletType,
                         gameObject.TryGetColorType());
                     Despawn();
