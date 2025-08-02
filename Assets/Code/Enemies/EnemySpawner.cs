@@ -17,16 +17,12 @@ namespace GMTK25.Enemies
         private TimeSpan ActivationDelay =>
             TimeSpan.FromSeconds(activationDelaySeconds);
 
-        private static Color WithAlpha(Color c, float a)
-        {
-            return new Color(c.r, c.g, c.b, a);
-        }
 
         private async Task DelayedActivate(GameObject enemy,
             CancellationToken ct)
         {
             var enemyRenderer = enemy.GetComponent<SpriteRenderer>();
-            enemyRenderer.color = WithAlpha(enemyRenderer.color, 0.25f);
+            enemyRenderer.color = enemyRenderer.color.WithAlpha(0.25f);
 
             await Task.Delay(ActivationDelay, ct);
 
@@ -37,7 +33,7 @@ namespace GMTK25.Enemies
             enemy.GetComponent<EnemyBrain>().enabled = true;
             enemy.GetComponent<Collider2D>().enabled = true;
 
-            enemyRenderer.color = WithAlpha(enemyRenderer.color, 1);
+            enemyRenderer.color = enemyRenderer.color.WithAlpha(1);
         }
 
         public void SpawnEnemy(EnemyType type)
