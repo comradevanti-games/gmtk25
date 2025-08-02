@@ -197,7 +197,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1859487324161728949, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Name
-      value: BasicBullet
+      value: NormalBullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 3954308465593571959, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
+      propertyPath: value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.b
@@ -239,7 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1209bb639b46d8bc3aa05c3e43785d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
 --- !u!4 &5874573401541129526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 964910537200580939, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}

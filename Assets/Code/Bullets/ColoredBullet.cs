@@ -1,14 +1,12 @@
 using System;
 using UnityEngine;
 
-namespace GMTK25.Bullets {
-
-    public class ColoredBullet : MonoBehaviour, IBullet {
-
-        [SerializeField] private float damage = 0f;
+namespace GMTK25.Bullets
+{
+    public class ColoredBullet : MonoBehaviour, IBullet
+    {
         [SerializeField] private ColorType colorType = null!;
-
-        public float Damage { get; set; }
+        private BaseDamage baseDamage = null!;
 
         public ColorType ColorType => colorType;
 
@@ -22,54 +20,64 @@ namespace GMTK25.Bullets {
 
         public event Action? FailHit;
 
-        private void Awake() {
+        private void Awake()
+        {
+            baseDamage = GetComponent<BaseDamage>();
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
-            Damage = damage;
         }
 
-        public void OnDespawnTimeReached() {
-            Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
+        public void OnDespawnTimeReached()
+        {
+            Singletons.Require<BulletPickupHandler>()
+                .OnBulletFailed(CurrentBulletType, ColorType);
             Despawn();
         }
 
-        public void OnTriggerEnter2D(Collider2D other) {
-            if (other.gameObject.layer == 8) {
-
-                if (other.gameObject.CompareTag("ShopItem")) {
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.layer == 8)
+            {
+                if (other.gameObject.CompareTag("ShopItem"))
+                {
                     Despawn();
 
                     return;
                 }
 
-                Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
+                Singletons.Require<BulletPickupHandler>()
+                    .OnBulletFailed(CurrentBulletType, ColorType);
                 FailHit?.Invoke();
                 Despawn();
             }
 
-            if (other.gameObject.layer == 9) {
-
-                if (other.gameObject.GetColorType() == gameObject.GetColorType()) {
-                    other.GetComponent<HealthKeeper>().TakeDamage(damage);
-                    SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());
+            if (other.gameObject.layer == 9)
+            {
+                if (other.gameObject.GetColorType() ==
+                    gameObject.GetColorType())
+                {
+                    other.GetComponent<HealthKeeper>()
+                        .TakeDamage(baseDamage.Value * 2);
+                    SuccessHit?.Invoke(CurrentBulletType,
+                        gameObject.GetColorType());
                 }
-                else {
-                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
+                else
+                {
+                    Singletons.Require<BulletPickupHandler>()
+                        .OnBulletFailed(CurrentBulletType, ColorType);
                     FailHit?.Invoke();
-                    other.GetComponent<HealthKeeper>().TakeDamage(0.5f);
+                    other.GetComponent<HealthKeeper>()
+                        .TakeDamage(baseDamage.Value);
                 }
 
                 Despawn();
-
             }
-
         }
 
-        public void Despawn() {
+        public void Despawn()
+        {
             GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
             Destroy(gameObject);
         }
-
     }
-
 }
