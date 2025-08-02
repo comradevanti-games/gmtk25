@@ -14,7 +14,7 @@ namespace GMTK25.Bullets
             Array.Empty<IDamageMultiplier>();
 
 
-        public BulletType CurrentBulletType { get; set; } = null!;
+        public BulletType Type { get; set; } = null!;
 
         protected virtual void Awake()
         {
