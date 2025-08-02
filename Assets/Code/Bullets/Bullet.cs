@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class Bullet : MonoBehaviour
+    public sealed class Bullet : MonoBehaviour
     {
         public event Action? FailHit;
 
@@ -17,10 +17,9 @@ namespace GMTK25.Bullets
         private IReturnFilter[] returnFilters =
             Array.Empty<IReturnFilter>();
 
-
         public BulletType Type { get; set; } = null!;
 
-        protected virtual void Awake()
+        private void Awake()
         {
             baseDamage = GetComponent<BaseDamage>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
