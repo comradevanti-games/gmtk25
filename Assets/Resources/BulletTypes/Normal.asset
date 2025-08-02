@@ -15,6 +15,6 @@ MonoBehaviour:
   prefab: {fileID: 4984527910545026504, guid: d92e35d9966100b699089ae3daa0e9f0, type: 3}
   backSprite: {fileID: -9053022328223612392, guid: 405f8a1140da2d94f9808fb7ee172918, type: 3}
   initialSpeed: 600
-  price: 1
+  price: 0
   pickupSprite: {fileID: -581739249266215187, guid: 8a7b3872b6d01b0418a79335a712acd4, type: 3}
   colorType: {fileID: 0}

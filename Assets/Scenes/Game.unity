@@ -1908,6 +1908,7 @@ MonoBehaviour:
   shopLocation: {x: 0, y: 0}
   itemGap: 3
   priceCounterPrefab: {fileID: 2269279375698994196, guid: ffce9a8d2ca586b87b9787614c4cc2b4, type: 3}
+  normalBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
 --- !u!114 &1795197709
 MonoBehaviour:
   m_ObjectHideFlags: 0
