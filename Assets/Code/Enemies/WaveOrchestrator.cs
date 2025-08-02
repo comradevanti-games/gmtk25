@@ -17,6 +17,8 @@ namespace GMTK25.Enemies
 
         public UnityEvent waveStarted = new UnityEvent();
 
+        public UnityEvent<SubWave> subWaveStarted = new UnityEvent<SubWave>();
+
         public UnityEvent wonEarly = new UnityEvent();
 
         public UnityEvent wonGame = new UnityEvent();
@@ -40,6 +42,7 @@ namespace GMTK25.Enemies
             while (remainingSubWaves.Count > 0)
             {
                 var subWave = remainingSubWaves.RemoveRandom();
+                subWaveStarted.Invoke(subWave);
 
                 foreach (var group in subWave.Groups)
                     for (var i = 0; i < group.Count * newGamePlusCounter; i++)
@@ -57,6 +60,7 @@ namespace GMTK25.Enemies
 
                     return !isDone;
                 }, ct);
+                
             }
 
             while (enemyTracker.HasEnemies) await Task.Yield();
