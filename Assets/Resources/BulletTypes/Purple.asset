@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Purple
   m_EditorClassIdentifier: 
   prefab: {fileID: 4984527910545026504, guid: 969cc318f9b9b7549b1b8ad4c285dacf, type: 3}
-  backSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  backSprite: {fileID: -3050641036902443362, guid: b5583118ced12eb1aa41fb69fe055ec4, type: 3}
   initialSpeed: 600
   price: 2
   pickupSprite: {fileID: -581739249266215187, guid: 8a7b3872b6d01b0418a79335a712acd4, type: 3}

@@ -20,6 +20,7 @@ namespace GMTK25.UI
         public void Display(BulletType? bulletType)
         {
             image.enabled = bulletType != null;
+            if (bulletType != null) image.sprite = bulletType.BackSprite;
         }
 
         private void Awake()
