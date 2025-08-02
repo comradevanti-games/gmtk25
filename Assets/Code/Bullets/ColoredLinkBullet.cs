@@ -104,11 +104,5 @@ namespace GMTK25.Bullets
             bulletBody.AddForce(linkBulletType.InitialSpeed *
                                 shootDirection.normalized);
         }
-
-        public override void Despawn()
-        {
-            GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
-            Destroy(gameObject);
-        }
     }
 }
