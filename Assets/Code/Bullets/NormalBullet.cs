@@ -13,8 +13,6 @@ namespace GMTK25.Bullets
 
         public override event Action<BulletType, ColorType?>? SuccessHit;
 
-        public override event Action? FailHit;
-
         public override void OnTriggerEnter2D(Collider2D other)
         {
             var hit = new BulletHit(other.gameObject);
@@ -30,17 +28,9 @@ namespace GMTK25.Bullets
                 case 8:
                 {
                     if (other.gameObject.CompareTag("ShopItem"))
-                    {
-                        Despawn();
-
-                        return;
-                    }
-
-                    Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(gameObject);
-                    FailHit?.Invoke();
-                    Despawn();
-
+                        Miss(false);
+                    else
+                        Miss(true);
                     break;
                 }
 
