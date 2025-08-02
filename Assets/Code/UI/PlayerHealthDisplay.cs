@@ -8,7 +8,7 @@ namespace GMTK25.UI {
     public class PlayerHealthDisplay : MonoBehaviour {
 
         [SerializeField] private Image heartImage = null!;
-        [SerializeField] private Image heartImageBG = null!;
+        [SerializeField] private Image heartImageBg = null!;
         [SerializeField] private float pulsateSpeed = 2f;
         [SerializeField] private float pulsateGrowth = 1.2f;
 
@@ -35,7 +35,7 @@ namespace GMTK25.UI {
                 pulsateCoroutine = null;
 
                 heartImage.transform.localScale = originalScale;
-                heartImageBG.transform.localScale = originalScale;
+                heartImageBg.transform.localScale = originalScale;
             }
         }
 
@@ -51,16 +51,16 @@ namespace GMTK25.UI {
             const float distance = 1f;
 
             while (Time.time < startTime + distance / speed) {
-                float fractionOfJourney = (Time.time - startTime) * speed / distance;
-                float t = Mathf.Sin(fractionOfJourney * Mathf.PI * 0.5f);
+                float fraction = (Time.time - startTime) * speed / distance;
+                float t = Mathf.Sin(fraction * Mathf.PI * 0.5f);
                 heartImage.transform.localScale = Vector3.Lerp(startScale, endScale, t);
-                heartImageBG.transform.localScale = Vector3.Lerp(startScale, endScale, t);
+                heartImageBg.transform.localScale = Vector3.Lerp(startScale, endScale, t);
 
                 yield return null;
             }
 
             heartImage.transform.localScale = endScale;
-            heartImageBG.transform.localScale = endScale;
+            heartImageBg.transform.localScale = endScale;
         }
 
     }
