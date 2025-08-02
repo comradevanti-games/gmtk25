@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using GMTK25.Bullets.Return;
 using UnityEngine;
 
 namespace GMTK25.Bullets
@@ -13,6 +14,9 @@ namespace GMTK25.Bullets
         private IDamageMultiplier[] damageMultipliers =
             Array.Empty<IDamageMultiplier>();
 
+        private IReturnFilter[] returnFilters =
+            Array.Empty<IReturnFilter>();
+
 
         public BulletType Type { get; set; } = null!;
 
@@ -20,6 +24,7 @@ namespace GMTK25.Bullets
         {
             baseDamage = GetComponent<BaseDamage>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
+            returnFilters = GetComponents<IReturnFilter>();
 
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
@@ -56,12 +61,26 @@ namespace GMTK25.Bullets
             Despawn();
         }
 
+        protected virtual void OnReturnsToPlayer(BulletHit hit)
+        {
+        }
+
         protected virtual void OnBulletHitEnemy(BulletHit hit)
         {
             if (hit.Health is { } health)
             {
                 var damage = DamageFor(hit);
                 health.TakeDamage(damage);
+            }
+
+            if (returnFilters.All(filter => filter.ShouldReturn(hit)))
+            {
+                OnReturnsToPlayer(hit);
+                ReturnToPlayer();
+            }
+            else
+            {
+                Miss(true);
             }
         }
 
