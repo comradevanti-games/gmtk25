@@ -19,7 +19,7 @@ namespace GMTK25.Bullets
         {
             jukebox.Play(missSfx);
 
-            var bulletType = bullet.GetComponent<IBullet>().Type;
+            var bulletType = bullet.GetComponent<Bullet>().Type;
             var bulletColor = bullet.TryGetColorType();
 
             spawner.SpawnPickup(

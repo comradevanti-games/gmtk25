@@ -53,7 +53,7 @@ namespace GMTK25
                 bulletSpawnPoint.transform.position,
                 bulletSpawnPoint.transform.rotation);
 
-            var bullet = bulletGameObject.GetComponent<IBullet>();
+            var bullet = bulletGameObject.GetComponent<Bullet>();
             bullet.Type = newBullet;
             bullet.FailHit += OnFailHit;
 
@@ -73,7 +73,7 @@ namespace GMTK25
 
         public void ReturnBulletLike(GameObject bullet)
         {
-            var type = bullet.GetComponent<IBullet>().Type;
+            var type = bullet.GetComponent<Bullet>().Type;
             var color = bullet.TryGetColorType();
 
             lastSuccessBulletType = type;
