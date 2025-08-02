@@ -639,6 +639,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartImage: {fileID: 528297362}
+  heartImageBG: {fileID: 607616157}
+  pulsateSpeed: 2
+  pulsateGrowth: 1.2
 --- !u!1 &1063982646
 GameObject:
   m_ObjectHideFlags: 0
