@@ -30,6 +30,10 @@ namespace GMTK25.Enemies
 
             await Task.Delay(ActivationDelay, ct);
 
+            // Handle case where enemy has despawned in the meantime
+            // for whatever reason.
+            if (!enemy) return;
+
             enemy.GetComponent<EnemyBrain>().enabled = true;
             enemy.GetComponent<Collider2D>().enabled = true;
 
@@ -45,7 +49,7 @@ namespace GMTK25.Enemies
             enemy.name = $"{color.name} {type.name} {Random.Range(0, 1000)}";
             enemy.SetColorType(color);
             enemy.Tint(color.Color);
-            
+
             enemyTracker.RegisterEnemy(enemy);
 
             this.RunTask((ct) => DelayedActivate(enemy, ct));
