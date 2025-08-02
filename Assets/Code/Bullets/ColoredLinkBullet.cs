@@ -1,4 +1,3 @@
-using System;
 using GMTK25.Enemies;
 using UnityEngine;
 
@@ -21,27 +20,15 @@ namespace GMTK25.Bullets
             revolver = FindAnyObjectByType<Revolver>();
         }
 
-        protected override void OnBulletHitEnemy(BulletHit hit)
+        protected override void OnReturnsToPlayer(BulletHit hit)
         {
-            base.OnBulletHitEnemy(hit);
+            if (revolver.LastSuccessColorType != hit.TargetColor) return;
 
-            if (hit.TargetColor == colorType)
-            {
-                if (revolver.LastSuccessColorType == hit.TargetColor)
-                {
-                    var enemyPos = Singletons.Require<EnemyTracker>()
-                        .GetClosestEnemyPosition(
-                            hit.Target.transform.position, 2);
+            var enemyPos = Singletons.Require<EnemyTracker>()
+                .GetClosestEnemyPosition(
+                    hit.Target.transform.position, 2);
 
-                    if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
-                }
-
-                ReturnToPlayer();
-            }
-            else
-            {
-                Miss(true);
-            }
+            if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
         }
 
         private void ShootLinkBullet(Vector2 enemyPos)
