@@ -2,20 +2,21 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class JumpCountDamageMultiplier : MonoBehaviour, IDamageMultiplier
+    public sealed class JumpCountDamageMultiplier : MonoBehaviour,
+        IDamageMultiplier
     {
         [SerializeField] private float multiplierPerJump;
 
-        private JumpCount jumpCount = null!;
+        private BulletJumpBehavior jumpBehavior = null!;
 
         private void Awake()
         {
-            jumpCount = GetComponent<JumpCount>();
+            jumpBehavior = GetComponent<BulletJumpBehavior>();
         }
 
         public float CalcMultiplier(BulletHit hit)
         {
-            return Mathf.Pow(multiplierPerJump, jumpCount.Value);
+            return Mathf.Pow(multiplierPerJump, jumpBehavior.JumpCount);
         }
     }
 }
