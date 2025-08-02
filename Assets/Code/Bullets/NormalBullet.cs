@@ -52,11 +52,5 @@ namespace GMTK25.Bullets
                     break;
             }
         }
-
-        public override void Despawn()
-        {
-            GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
-            Destroy(gameObject);
-        }
     }
 }

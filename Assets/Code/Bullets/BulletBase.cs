@@ -45,6 +45,10 @@ namespace GMTK25.Bullets
 
         public abstract void OnTriggerEnter2D(Collider2D other);
 
-        public abstract void Despawn();
+        protected void Despawn()
+        {
+            GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
+            Destroy(gameObject);
+        }
     }
 }
