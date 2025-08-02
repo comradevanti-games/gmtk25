@@ -14,7 +14,5 @@ namespace GMTK25.Bullets
         public event Action<BulletType, ColorType?> SuccessHit;
 
         public event Action? FailHit;
-
-        public void OnTriggerEnter2D(Collider2D other);
     }
 }

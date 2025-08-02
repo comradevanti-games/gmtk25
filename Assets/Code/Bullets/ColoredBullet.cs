@@ -23,37 +23,19 @@ namespace GMTK25.Bullets
             gameObject.SetColorType(colorType);
         }
 
-        public override void OnTriggerEnter2D(Collider2D other)
+        protected override void OnBulletHitEnemy(BulletHit hit)
         {
-            var hit = new BulletHit(other.gameObject);
+            base.OnBulletHitEnemy(hit);
 
-            if (hit.Health is { } health)
+            if (hit.TargetColor == gameObject.GetColorType())
             {
-                var damage = DamageFor(hit);
-                health.TakeDamage(damage);
+                SuccessHit?.Invoke(CurrentBulletType,
+                    gameObject.GetColorType());
+                Despawn();
             }
-
-            if (other.gameObject.layer == 8)
+            else
             {
-                if (other.gameObject.CompareTag("ShopItem"))
-                    Miss(false);
-                else
-                    Miss(true);
-            }
-
-            if (other.gameObject.layer == 9)
-            {
-                if (other.gameObject.GetColorType() ==
-                    gameObject.GetColorType())
-                {
-                    SuccessHit?.Invoke(CurrentBulletType,
-                        gameObject.GetColorType());
-                    Despawn();
-                }
-                else
-                {
-                    Miss(true);
-                }
+                Miss(true);
             }
         }
     }

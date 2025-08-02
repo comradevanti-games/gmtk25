@@ -47,7 +47,6 @@ namespace GMTK25.Bullets
 
         public abstract event Action<BulletType, ColorType?>? SuccessHit;
 
-
         public void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
@@ -55,7 +54,35 @@ namespace GMTK25.Bullets
             Despawn();
         }
 
-        public abstract void OnTriggerEnter2D(Collider2D other);
+        protected virtual void OnBulletHitEnemy(BulletHit hit)
+        {
+            if (hit.Health is { } health)
+            {
+                var damage = DamageFor(hit);
+                health.TakeDamage(damage);
+            }
+        }
+
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            switch (other.gameObject.layer)
+            {
+                case 8:
+                {
+                    if (other.gameObject.CompareTag("ShopItem"))
+                        Miss(false);
+                    else
+                        Miss(true);
+                    break;
+                }
+
+                case 9:
+                    var hit = new BulletHit(other.gameObject);
+                    OnBulletHitEnemy(hit);
+                    break;
+            }
+        }
+
 
         protected void Despawn()
         {
