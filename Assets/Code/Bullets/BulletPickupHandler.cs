@@ -15,11 +15,15 @@ namespace GMTK25.Bullets
             spawner = Singletons.Require<PickupSpawner>();
         }
 
-        public void OnBulletFailed(BulletType hitType, ColorType? colorType)
+        public void OnBulletFailed(GameObject bullet)
         {
             jukebox.Play(missSfx);
+
+            var bulletType = bullet.GetComponent<IBullet>().CurrentBulletType;
+            var bulletColor = bullet.TryGetColorType();
+
             spawner.SpawnPickup(
-                new PickupSpawner.Request(hitType, null, colorType));
+                new PickupSpawner.Request(bulletType, null, bulletColor));
         }
     }
 }
