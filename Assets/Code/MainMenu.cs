@@ -12,6 +12,7 @@ namespace GMTK25 {
         [SerializeField] private Sprite unmuteIcon = null!;
 
         private void Awake() {
+
             if (!PlayerPrefs.HasKey("Mute")) {
                 PlayerPrefs.SetInt("Mute", 0);
             }
@@ -32,9 +33,14 @@ namespace GMTK25 {
 
             if (!PlayerPrefs.HasKey("Mute")) return;
 
-            int isMute = PlayerPrefs.GetInt("Mute");
-            PlayerPrefs.SetInt("Mute", isMute == 0 ? 1 : 0);
-            muteIconRenderer.sprite = PlayerPrefs.GetInt("Mute") == 1 ? muteIcon : unmuteIcon;
+            if (PlayerPrefs.GetInt("Mute") == 0) {
+                PlayerPrefs.SetInt("Mute", 1);
+                muteIconRenderer.sprite = muteIcon;
+            }
+            else {
+                PlayerPrefs.SetInt("Mute", 0);
+                muteIconRenderer.sprite = unmuteIcon;
+            }
 
         }
 

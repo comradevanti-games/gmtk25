@@ -11,12 +11,12 @@ namespace GMTK25 {
 
             if (PlayerPrefs.HasKey("Mute")) {
 
-                if (PlayerPrefs.GetInt("Mute") == 1) {
+                if (PlayerPrefs.GetInt("Mute") == 0) {
                     jukeboxSource.Play();
                 }
-                
+
             }
-            
+
         }
 
         public void Play(AudioClip clip) {
