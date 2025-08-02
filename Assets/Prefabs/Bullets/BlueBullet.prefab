@@ -199,6 +199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlueBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 3954308465593571959, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -239,7 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c1de1d5b26599d428e0cda35d8a44da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
   colorType: {fileID: 11400000, guid: cc335facfa158217da32ca000f3ac727, type: 2}
 --- !u!4 &5874573401541129526 stripped
 Transform:

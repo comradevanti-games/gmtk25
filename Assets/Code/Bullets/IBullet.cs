@@ -1,12 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace GMTK25.Bullets {
-
-    public interface IBullet {
-
-        public float Damage { get; set; }
-
+namespace GMTK25.Bullets
+{
+    public interface IBullet
+    {
         public ColorType ColorType { get; }
 
         public BulletType CurrentBulletType { get; set; }
@@ -24,7 +22,5 @@ namespace GMTK25.Bullets {
         public void OnTriggerEnter2D(Collider2D other);
 
         public void Despawn();
-
     }
-
 }

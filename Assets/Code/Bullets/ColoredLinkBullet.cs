@@ -2,15 +2,16 @@ using System;
 using GMTK25.Enemies;
 using UnityEngine;
 
-namespace GMTK25.Bullets {
-
-    public class ColoredLinkBullet : MonoBehaviour, IBullet {
-
-        [SerializeField] private float damage = 0f;
+namespace GMTK25.Bullets
+{
+    public class ColoredLinkBullet : MonoBehaviour, IBullet
+    {
         [SerializeField] private ColorType colorType = null!;
         [SerializeField] private BulletType linkBulletType = null!;
 
-        public float Damage { get; set; }
+        private BaseDamage baseDamage = null!;
+
+        private int jump = 1;
 
         public ColorType ColorType => colorType;
 
@@ -24,55 +25,66 @@ namespace GMTK25.Bullets {
 
         public event Action? FailHit;
 
-        private void Awake() {
+        private float JumpDamage => baseDamage.Value / Mathf.Pow(2, jump);
+
+        private void Awake()
+        {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
-            Damage = damage;
+            baseDamage = GetComponent<BaseDamage>();
         }
 
-        public void OnDespawnTimeReached() {
-            Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
+        public void OnDespawnTimeReached()
+        {
+            Singletons.Require<BulletPickupHandler>()
+                .OnBulletFailed(CurrentBulletType, ColorType);
             Despawn();
         }
 
-        public void OnTriggerEnter2D(Collider2D other) {
-
-            switch (other.gameObject.layer) {
+        public void OnTriggerEnter2D(Collider2D other)
+        {
+            switch (other.gameObject.layer)
+            {
                 case 8:
 
-                    if (other.gameObject.CompareTag("ShopItem")) {
+                    if (other.gameObject.CompareTag("ShopItem"))
+                    {
                         Despawn();
 
                         return;
                     }
 
-                    Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
+                    Singletons.Require<BulletPickupHandler>()
+                        .OnBulletFailed(CurrentBulletType, ColorType);
                     FailHit?.Invoke();
                     Despawn();
 
                     break;
                 case 9:
                 {
-                    if (other.gameObject.GetColorType() == colorType) {
+                    if (other.gameObject.GetColorType() == colorType)
+                    {
+                        if (LastHitColor == other.gameObject.GetColorType())
+                        {
+                            var enemyPos = Singletons.Require<EnemyTracker>()
+                                .GetClosestEnemyPosition(
+                                    other.transform.position, 2);
 
-                        if (LastHitColor == other.gameObject.GetColorType()) {
-
-                            Vector2 enemyPos = Singletons.Require<EnemyTracker>()
-                                .GetClosestEnemyPosition(other.transform.position, 2);
-
-                            if (enemyPos.x < 25) {
-                                ShootLinkBullet(enemyPos);
-                            }
-
+                            if (enemyPos.x < 25) ShootLinkBullet(enemyPos);
                         }
 
-                        other.GetComponent<HealthKeeper>().TakeDamage(damage);
-                        SuccessHit?.Invoke(CurrentBulletType, gameObject.GetColorType());
+                        other.GetComponent<HealthKeeper>()
+                            .TakeDamage(JumpDamage * 2);
+                        SuccessHit?.Invoke(CurrentBulletType,
+                            gameObject.GetColorType());
                     }
-                    else {
-                        Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
+                    else
+                    {
+                        Singletons.Require<BulletPickupHandler>()
+                            .OnBulletFailed(CurrentBulletType, ColorType);
                         FailHit?.Invoke();
-                        other.GetComponent<HealthKeeper>().TakeDamage(0.5f);
+                        other.GetComponent<HealthKeeper>()
+                            .TakeDamage(JumpDamage);
                     }
 
                     Despawn();
@@ -80,30 +92,31 @@ namespace GMTK25.Bullets {
                     break;
                 }
             }
-
         }
 
-        private void ShootLinkBullet(Vector2 enemyPos) {
+        private void ShootLinkBullet(Vector2 enemyPos)
+        {
+            var shootDirection = enemyPos - (Vector2)transform.position;
+            var bulletRotation =
+                Quaternion.Euler(0, 0,
+                    Mathf.Atan2(shootDirection.y, shootDirection.x) *
+                    Mathf.Rad2Deg - 90);
+            var bulletGameObject = Instantiate(linkBulletType.Prefab,
+                transform.position, bulletRotation);
 
-            Vector2 shootDirection = enemyPos - (Vector2)transform.position;
-            Quaternion bulletRotation =
-                Quaternion.Euler(0, 0, Mathf.Atan2(shootDirection.y, shootDirection.x) * Mathf.Rad2Deg - 90);
-            GameObject bulletGameObject = Instantiate(linkBulletType.Prefab, transform.position, bulletRotation);
-
-            IBullet bullet = bulletGameObject.GetComponent<IBullet>();
+            var bullet = bulletGameObject.GetComponent<ColoredLinkBullet>();
             bullet.CurrentBulletType = linkBulletType;
-            bullet.Damage = Damage / 2f;
+            bullet.jump = jump + 1;
 
-            Rigidbody2D bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
-            bulletBody.AddForce(linkBulletType.InitialSpeed * shootDirection.normalized);
-
+            var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
+            bulletBody.AddForce(linkBulletType.InitialSpeed *
+                                shootDirection.normalized);
         }
 
-        public void Despawn() {
+        public void Despawn()
+        {
             GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
             Destroy(gameObject);
         }
-
     }
-
 }

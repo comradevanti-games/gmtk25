@@ -199,6 +199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PurpleLinkBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 3954308465593571959, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
+      propertyPath: value
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7178799666608691585, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -239,7 +243,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827bb090c3f5e4e499d4ebc80c6717e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
   colorType: {fileID: 11400000, guid: 2aeb99606db33d6d4a6be04aea9397a7, type: 2}
   linkBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
 --- !u!4 &5874573401541129526 stripped
