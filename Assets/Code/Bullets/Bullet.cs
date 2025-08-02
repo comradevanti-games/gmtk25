@@ -84,17 +84,15 @@ namespace GMTK25.Bullets
         {
             switch (other.gameObject.layer)
             {
-                case 8:
-                {
-                    var respawnAsPickup =
-                        !other.gameObject.CompareTag("ShopItem");
-                    Miss(respawnAsPickup);
-                    break;
-                }
-
                 case 9:
                     var hit = new BulletHit(other.gameObject);
                     OnBulletHitEnemy(hit);
+                    break;
+
+                default:
+                    var respawnAsPickup =
+                        !other.gameObject.CompareTag("ShopItem");
+                    Miss(respawnAsPickup);
                     break;
             }
         }
