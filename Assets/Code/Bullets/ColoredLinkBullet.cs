@@ -10,8 +10,7 @@ namespace GMTK25.Bullets
         [SerializeField] private BulletType linkBulletType = null!;
 
         private BaseDamage baseDamage = null!;
-
-        private int jump = 1;
+        private JumpCount jumpCount = null!;
 
         public ColorType ColorType => colorType;
 
@@ -25,13 +24,15 @@ namespace GMTK25.Bullets
 
         public event Action? FailHit;
 
-        private float JumpDamage => baseDamage.Value / Mathf.Pow(2, jump);
+        private float JumpDamage =>
+            baseDamage.Value / Mathf.Pow(2, jumpCount.Value);
 
         private void Awake()
         {
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
             gameObject.SetColorType(colorType);
             baseDamage = GetComponent<BaseDamage>();
+            jumpCount = GetComponent<JumpCount>();
         }
 
         public void OnDespawnTimeReached()
@@ -106,7 +107,7 @@ namespace GMTK25.Bullets
 
             var bullet = bulletGameObject.GetComponent<ColoredLinkBullet>();
             bullet.CurrentBulletType = linkBulletType;
-            bullet.jump = jump + 1;
+            bullet.jumpCount.Value = jumpCount.Value + 1;
 
             var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
             bulletBody.AddForce(linkBulletType.InitialSpeed *
