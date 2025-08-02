@@ -5,6 +5,13 @@ namespace GMTK25.Bullets
 {
     public abstract class BulletBase : MonoBehaviour, IBullet
     {
+        protected BaseDamage baseDamage = null!;
+
+        protected virtual void Awake()
+        {
+            baseDamage = GetComponent<BaseDamage>();
+        }
+
         public abstract ColorType ColorType { get; }
 
         public abstract BulletType CurrentBulletType { get; set; }
