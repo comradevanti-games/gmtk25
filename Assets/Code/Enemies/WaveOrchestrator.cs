@@ -17,7 +17,7 @@ namespace GMTK25.Enemies
 
         public UnityEvent waveStarted = new UnityEvent();
 
-        public UnityEvent wonEarly;
+        public UnityEvent wonEarly = new UnityEvent();
 
         [SerializeField] private WaveDescription waveDescription = null!;
         [SerializeField] private float breakTimeSeconds;
