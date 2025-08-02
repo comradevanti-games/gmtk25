@@ -10,10 +10,7 @@ namespace GMTK25.Bullets
         [SerializeField] private BulletType linkBulletType = null!;
 
         private Revolver revolver = null!;
-
         private JumpCount jumpCount = null!;
-
-        public override BulletType CurrentBulletType { get; set; } = null!;
 
 
         protected override void Awake()
