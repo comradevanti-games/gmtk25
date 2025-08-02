@@ -1,10 +1,14 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 namespace GMTK25 {
 
     public class InputHandler : MonoBehaviour {
+
+        [SerializeField] private PlayerInput playerInput = null!;
+        [SerializeField] private GameObject firstSelectedUIElement = null!;
 
         private Camera? mainCamera;
 
@@ -54,6 +58,12 @@ namespace GMTK25 {
                 QuitInputHandled?.Invoke(false);
             }
 
+        }
+
+        public void SwitchActionMap(string actionMapName) {
+            playerInput.SwitchCurrentActionMap(actionMapName);
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(firstSelectedUIElement);
         }
 
     }
