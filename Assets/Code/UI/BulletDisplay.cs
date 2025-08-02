@@ -32,7 +32,15 @@ namespace GMTK25.UI
         public void Display(BulletType? bulletType)
         {
             image.enabled = bulletType != null;
-            if (bulletType != null) image.sprite = bulletType.BackSprite;
+
+            if (bulletType != null) {
+                image.sprite = bulletType.BackSprite;
+
+                if (bulletType.ColorType != null) {
+                    image.color = bulletType.ColorType.Color;
+                }
+               
+            }
         }
 
         private void Awake()
