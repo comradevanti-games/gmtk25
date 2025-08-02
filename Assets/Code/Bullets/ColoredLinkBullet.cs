@@ -2,7 +2,7 @@ using System;
 using GMTK25.Enemies;
 using UnityEngine;
 
-namespace GMTK25 {
+namespace GMTK25.Bullets {
 
     public class ColoredLinkBullet : MonoBehaviour, IBullet {
 

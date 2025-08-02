@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GMTK25 {
+namespace GMTK25.Bullets {
 
     public interface IBullet {
 
