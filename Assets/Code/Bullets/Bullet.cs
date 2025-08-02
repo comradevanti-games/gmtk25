@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public class Bullet : MonoBehaviour, IBullet
+    public class Bullet : MonoBehaviour
     {
         public event Action? FailHit;
 
