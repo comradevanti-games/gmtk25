@@ -81,7 +81,7 @@ namespace GMTK25.Bullets
             {
                 foreach (var behavior in
                          GetComponents<IReturnBehavior>())
-                    behavior.OnReturnsToPlayer(hit);
+                    behavior.OnBulletReturnsToPlayer(hit);
 
                 ReturnToPlayer();
             }
