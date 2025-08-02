@@ -28,6 +28,25 @@ namespace GMTK25 {
             lpf.cutoffFrequency = health <= 1 ? 500f : 5000f;
         }
 
+        public void OnGameWon() {
+            jukeboxSource.pitch = 0.5f;
+        }
+
+        public void OnGameResume() {
+            jukeboxSource.pitch = 1;
+        }
+
+        public void OnMuteChanged() {
+
+            if (jukeboxSource.isPlaying) {
+                jukeboxSource.Stop();
+            }
+            else {
+                jukeboxSource.Play();
+            }
+
+        }
+
     }
 
 }
