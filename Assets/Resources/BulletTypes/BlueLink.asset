@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueLink
   m_EditorClassIdentifier: 
   prefab: {fileID: 4984527910545026504, guid: b9e635ded15c91a4fbfd1274a00fde23, type: 3}
-  backSprite: {fileID: -3050641036902443362, guid: b5583118ced12eb1aa41fb69fe055ec4, type: 3}
+  backSprite: {fileID: 3194803916165564415, guid: fbb8582c68b8bd24ca74a887bfcc776d, type: 3}
   initialSpeed: 600
   price: 3
   pickupSprite: {fileID: 2684831280133921057, guid: 31a5bfdb4c78f19439b9720d9bd4c837, type: 3}
