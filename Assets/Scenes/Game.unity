@@ -600,6 +600,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -275
+      objectReference: {fileID: 0}
+    - target: {fileID: 2219408742202566493, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 175
+      objectReference: {fileID: 0}
     - target: {fileID: 4634333608436793700, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
       propertyPath: m_Camera
       value: 
@@ -613,17 +645,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
---- !u!114 &460659709 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8554157266319967134, guid: 7ebd7815c844687cf92b4eeba9158b0b, type: 3}
-  m_PrefabInstance: {fileID: 460659708}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &528297360
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,8 +912,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heartImage: {fileID: 528297362}
-  heartImageBg: {fileID: 607616157}
-  pulsateSpeed: 4
+  heartImageBg: {fileID: 0}
+  pulsateSpeed: 2
   pulsateGrowth: 1.2
 --- !u!1 &782758482
 GameObject:
@@ -1585,19 +1606,7 @@ MonoBehaviour:
         m_CallState: 2
   subWaveStarted:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 339442769}
-        m_TargetAssemblyTypeName: GMTK25.WaveTimeDisplay, GMTK25
-        m_MethodName: OnSubWaveStarted
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   wonEarly:
     m_PersistentCalls:
       m_Calls: []
@@ -2131,7 +2140,7 @@ PrefabInstance:
     - target: {fileID: 7846508905358984964, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: displayText
       value: 
-      objectReference: {fileID: 460659709}
+      objectReference: {fileID: 0}
     - target: {fileID: 8606504435851384275, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

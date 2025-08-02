@@ -22,10 +22,17 @@ namespace GMTK25
             return items.FirstOrDefault();
         }
 
-        public void Enqueue(T item)
+        public bool Enqueue(T item)
         {
-            if (Count == capacity) _ = items.Dequeue();
+            var removed = false;
+            if (Count == capacity)
+            {
+                _ = items.Dequeue();
+                removed = true;
+            }
+
             items.Enqueue(item);
+            return removed;
         }
 
         public void Dequeue()
