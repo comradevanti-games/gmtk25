@@ -11,8 +11,6 @@ namespace GMTK25.Bullets
 
         private JumpCount jumpCount = null!;
 
-        public override ColorType ColorType => colorType;
-
         public override BulletType CurrentBulletType { get; set; } = null!;
 
         public override ColorType? LastHitColor { get; set; }
@@ -35,7 +33,7 @@ namespace GMTK25.Bullets
         public override void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
-                .OnBulletFailed(CurrentBulletType, ColorType);
+                .OnBulletFailed(CurrentBulletType, colorType);
             Despawn();
         }
 
@@ -61,7 +59,7 @@ namespace GMTK25.Bullets
                     }
 
                     Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(CurrentBulletType, ColorType);
+                        .OnBulletFailed(CurrentBulletType, colorType);
                     FailHit?.Invoke();
                     Despawn();
 
@@ -85,7 +83,7 @@ namespace GMTK25.Bullets
                     else
                     {
                         Singletons.Require<BulletPickupHandler>()
-                            .OnBulletFailed(CurrentBulletType, ColorType);
+                            .OnBulletFailed(CurrentBulletType, colorType);
                         FailHit?.Invoke();
                     }
 

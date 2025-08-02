@@ -12,8 +12,6 @@ namespace GMTK25.Bullets
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
 
-        public override ColorType ColorType { get; } = null!;
-
         public override BulletType CurrentBulletType { get; set; } = null!;
 
         public override ColorType? LastHitColor { get; set; }
@@ -27,7 +25,7 @@ namespace GMTK25.Bullets
         public override void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
-                .OnBulletFailed(CurrentBulletType, ColorType);
+                .OnBulletFailed(CurrentBulletType, null);
             Despawn();
         }
 
@@ -53,7 +51,7 @@ namespace GMTK25.Bullets
                     }
 
                     Singletons.Require<BulletPickupHandler>()
-                        .OnBulletFailed(CurrentBulletType, ColorType);
+                        .OnBulletFailed(CurrentBulletType, null);
                     FailHit?.Invoke();
                     Despawn();
 
