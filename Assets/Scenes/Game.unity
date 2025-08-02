@@ -536,7 +536,7 @@ GameObject:
   - component: {fileID: 713282662}
   - component: {fileID: 713282666}
   m_Layer: 5
-  m_Name: ScreenspaceCameraCanvas
+  m_Name: WorldCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1200,7 +1200,7 @@ MonoBehaviour:
   allEnemiesDead:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8594667588222593132}
+      - m_Target: {fileID: 8594667588222593137}
         m_TargetAssemblyTypeName: GMTK25.HealthKeeper, GMTK25
         m_MethodName: ResetHealth
         m_Mode: 1
@@ -1486,7 +1486,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8606504435851384275, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
   m_PrefabInstance: {fileID: 8594667588222593130}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8594667588222593132 stripped
+--- !u!114 &8594667588222593137 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
   m_PrefabInstance: {fileID: 8594667588222593130}
