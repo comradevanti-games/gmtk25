@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Singletons
   - Bullet
+  - ShopItem
   layers:
   - Default
   - TransparentFX

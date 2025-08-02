@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 1376626404535398855}
   m_Layer: 8
   m_Name: PriceCounter
-  m_TagString: Untagged
+  m_TagString: ShopItem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

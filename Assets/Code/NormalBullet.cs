@@ -35,11 +35,21 @@ namespace GMTK25 {
 
             switch (other.gameObject.layer) {
                 case 8:
+                {
+
+                    if (other.gameObject.CompareTag("ShopItem")) {
+                        Despawn();
+
+                        return;
+                    }
+
                     Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
                     FailHit?.Invoke();
                     Despawn();
 
                     break;
+                }
+
                 case 9:
                     other.GetComponent<HealthKeeper>().TakeDamage(Damage);
                     SuccessHit?.Invoke(CurrentBulletType, gameObject.TryGetColorType());

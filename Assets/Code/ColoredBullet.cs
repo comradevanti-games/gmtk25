@@ -35,6 +35,13 @@ namespace GMTK25 {
 
         public void OnTriggerEnter2D(Collider2D other) {
             if (other.gameObject.layer == 8) {
+
+                if (other.gameObject.CompareTag("ShopItem")) {
+                    Despawn();
+
+                    return;
+                }
+
                 Singletons.Require<BulletPickupHandler>().OnBulletFailed(CurrentBulletType, ColorType);
                 FailHit?.Invoke();
                 Despawn();
