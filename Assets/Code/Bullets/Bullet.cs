@@ -61,36 +61,33 @@ namespace GMTK25.Bullets
 
         public void OnTriggerEnter2D(Collider2D other)
         {
-            switch (other.gameObject.layer)
+            var isEnemy = other.gameObject.layer == 9;
+            if (!isEnemy)
             {
-                case 9:
-                    var hit = new BulletHit(other.gameObject);
-                    if (hit.Health is { } health)
-                    {
-                        var damage = DamageFor(hit);
-                        health.TakeDamage(damage);
-                    }
+                var respawnAsPickup =
+                    !other.gameObject.CompareTag("ShopItem");
+                Miss(respawnAsPickup);
+                return;
+            }
 
-                    if (returnFilters.All(filter => filter.ShouldReturn(hit)))
-                    {
-                        foreach (var behavior in
-                                 GetComponents<IReturnBehavior>())
-                            behavior.OnReturnsToPlayer(hit);
+            var hit = new BulletHit(other.gameObject);
+            if (hit.Health is { } health)
+            {
+                var damage = DamageFor(hit);
+                health.TakeDamage(damage);
+            }
 
-                        ReturnToPlayer();
-                    }
-                    else
-                    {
-                        Miss(true);
-                    }
+            if (returnFilters.All(filter => filter.ShouldReturn(hit)))
+            {
+                foreach (var behavior in
+                         GetComponents<IReturnBehavior>())
+                    behavior.OnReturnsToPlayer(hit);
 
-                    break;
-
-                default:
-                    var respawnAsPickup =
-                        !other.gameObject.CompareTag("ShopItem");
-                    Miss(respawnAsPickup);
-                    break;
+                ReturnToPlayer();
+            }
+            else
+            {
+                Miss(true);
             }
         }
 
