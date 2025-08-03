@@ -26,6 +26,8 @@ namespace GMTK25.Enemies
         [SerializeField] private WaveDescription waveDescription = null!;
         [SerializeField] private float breakTimeSeconds;
 
+        public bool StartEarly { get; set; }
+
         private TimeSpan BreakTime => TimeSpan.FromSeconds(breakTimeSeconds);
 
         private EnemySpawner enemySpawner = null!;
@@ -60,7 +62,6 @@ namespace GMTK25.Enemies
 
                     return !isDone;
                 }, ct);
-                
             }
 
             while (enemyTracker.HasEnemies) await Task.Yield();
@@ -68,15 +69,19 @@ namespace GMTK25.Enemies
             if (waveIndex < waveDescription.Waves.Count - 1)
             {
                 breakStarted.Invoke(earlyWins);
-                await Task.Delay(BreakTime, ct);
+                await CustomTask.CancellableDelay(BreakTime, () => !StartEarly,
+                    ct);
+                StartEarly = false;
                 _ = RunWave(waveIndex + 1, ct);
             }
-            else {
+            else
+            {
                 wonGame.Invoke();
             }
         }
 
-        public void OnNewGamePlusStarted() {
+        public void OnNewGamePlusStarted()
+        {
             Restart();
         }
 
