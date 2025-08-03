@@ -2,23 +2,24 @@ using GMTK25.Bullets;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace GMTK25
-{
-    public class Revolver : MonoBehaviour
-    {
+namespace GMTK25 {
+
+    public class Revolver : MonoBehaviour {
+
         [SerializeField] private RevolverDrumKeeper drumKeeper = null!;
         [SerializeField] private GameObject bulletSpawnPoint = null!;
         [SerializeField] private float minMouseDistanceToShoot = 0;
         [SerializeField] private float shootCooldown = 0;
         [SerializeField] private AudioSource audioSrc = null!;
+        [SerializeField] private GameObject gamePadCrosshair = null!;
 
         private InputHandler? inputHandler;
         private float lastShotTime = 0;
         private ScreenShake? screenShaker;
+
         public ColorType? LastSuccessColorType { get; private set; }
 
-        private void Awake()
-        {
+        private void Awake() {
             inputHandler =
                 FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude)
                     .GetComponent<InputHandler>();
@@ -26,22 +27,27 @@ namespace GMTK25
             screenShaker = Singletons.Require<ScreenShake>();
         }
 
-        private void OnShootInput()
-        {
+        private void OnShootInput() {
             if (Vector2.Distance(inputHandler!.MouseScreenPosition,
                     transform.position) <
                 minMouseDistanceToShoot)
                 return;
 
-            if (Time.time - lastShotTime >= shootCooldown)
-            {
-                Shoot();
+            if (Time.time - lastShotTime >= shootCooldown) {
+
+                if (inputHandler.CurrentControlScheme == "MKB") {
+                    Shoot(inputHandler!.MouseScreenPosition);
+                }
+
+                if (inputHandler.CurrentControlScheme == "Gamepad") {
+                    Shoot(gamePadCrosshair.transform.position);
+                }
+
                 lastShotTime = Time.time;
             }
         }
 
-        private void Shoot()
-        {
+        private void Shoot(Vector2 dir) {
             if (drumKeeper == null) return;
 
             var newBullet = drumKeeper.ChamberedBulletType;
@@ -57,10 +63,9 @@ namespace GMTK25
             bullet.FailHit += OnFailHit;
 
             var bulletBody = bulletGameObject.GetComponent<Rigidbody2D>();
-            var shootDirection = inputHandler!.MouseScreenPosition -
-                                 (Vector2)bulletSpawnPoint.transform.position;
+            var shootDirection = dir - (Vector2)bulletSpawnPoint.transform.position;
             bulletBody.AddForce(newBullet.InitialSpeed *
-                                shootDirection.normalized, 
+                                shootDirection.normalized,
                 ForceMode2D.Impulse);
 
             audioSrc.Play();
@@ -71,8 +76,7 @@ namespace GMTK25
             drumKeeper.EjectBullet();
         }
 
-        public void ReturnBulletLike(GameObject bullet)
-        {
+        public void ReturnBulletLike(GameObject bullet) {
             var type = bullet.GetComponent<Bullet>().Type;
             var color = bullet.TryGetColorType();
 
@@ -80,9 +84,10 @@ namespace GMTK25
             drumKeeper.PushBullet(type);
         }
 
-        private void OnFailHit()
-        {
+        private void OnFailHit() {
             LastSuccessColorType = null;
         }
+
     }
+
 }

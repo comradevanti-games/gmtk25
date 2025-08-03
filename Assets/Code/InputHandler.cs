@@ -20,10 +20,15 @@ namespace GMTK25 {
 
         public event Action<bool>? QuitInputHandled;
 
-        public Vector2 MouseScreenPosition { get; set; }
+        public event Action<string>? ControlSchemeSwitched;
+
+        public Vector2 MouseScreenPosition { get; private set; }
+
+        public string? CurrentControlScheme { get; private set; }
 
         private void Awake() {
             mainCamera = Camera.main;
+            CurrentControlScheme = playerInput.currentControlScheme;
         }
 
         public void OnMovementInputReceived(InputAction.CallbackContext ctx) {
@@ -31,12 +36,22 @@ namespace GMTK25 {
             MovementInputHandled?.Invoke(value);
         }
 
-        public void OnMousePositionInputReceived(InputAction.CallbackContext ctx) {
+        public void OnLookInputReceived(InputAction.CallbackContext ctx) {
 
             if (ctx.performed) {
                 Vector2 value = ctx.ReadValue<Vector2>();
-                MouseScreenPosition = mainCamera!.ScreenToWorldPoint(value);
-                RotationInputHandled?.Invoke(MouseScreenPosition);
+
+                if (playerInput.currentControlScheme == "Gamepad") {
+
+                    if (value != Vector2.zero) {
+                        RotationInputHandled?.Invoke(value);
+                    }
+                }
+                else {
+                    MouseScreenPosition = mainCamera!.ScreenToWorldPoint(value);
+                    RotationInputHandled?.Invoke(MouseScreenPosition);
+                }
+
             }
         }
 
@@ -64,6 +79,19 @@ namespace GMTK25 {
             playerInput.SwitchCurrentActionMap(actionMapName);
             EventSystem.current.SetSelectedGameObject(null!);
             EventSystem.current.SetSelectedGameObject(firstSelectedUIElement);
+        }
+
+        public void OnControlsSwitched(PlayerInput updatedInputs) {
+            ControlSchemeSwitched?.Invoke(updatedInputs.currentControlScheme);
+            CurrentControlScheme = updatedInputs.currentControlScheme;
+
+            if (updatedInputs.currentControlScheme == "Gamepad") {
+                Cursor.visible = false;
+            }
+            else {
+                Cursor.visible = true;
+            }
+
         }
 
     }
