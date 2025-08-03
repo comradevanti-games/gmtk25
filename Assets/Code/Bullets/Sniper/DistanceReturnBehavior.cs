@@ -15,11 +15,13 @@ namespace GMTK25.Bullets
             startPosition = transform.position;
         }
 
-        public bool ShouldReturn(BulletHit hit)
+        public ReturnAction ShouldReturn(BulletHit hit)
         {
             var endPosition = transform.position;
             var distance = Vector2.Distance(startPosition, endPosition);
-            return distance >= minDistance;
+            return distance >= minDistance
+                ? ReturnAction.Return
+                : ReturnAction.BecomePickup;
         }
     }
 }

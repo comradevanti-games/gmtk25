@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd970a75e820446dbe28b00d99800fdb, type: 3}
-  m_Name: Red Link
+  m_Name: Link
   m_EditorClassIdentifier: 
-  prefab: {fileID: 3120031715035167133, guid: 85ea43ed825836526810ec2f65f71333, type: 3}
+  prefab: {fileID: 8915804800543958928, guid: 5981cb1f15be40f5fbef7a06b27a6c3a, type: 3}
   backSprite: {fileID: 3194803916165564415, guid: fbb8582c68b8bd24ca74a887bfcc776d, type: 3}
   initialSpeed: 10
   price: 3
   pickupSprite: {fileID: 2684831280133921057, guid: 31a5bfdb4c78f19439b9720d9bd4c837, type: 3}
-  colorType: {fileID: 11400000, guid: 422b741b63d8af67594dbe081c825297, type: 2}
+  colorType: {fileID: 0}

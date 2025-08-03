@@ -1,10 +1,9 @@
-using GMTK25.Bullets.Return;
 using GMTK25.Enemies;
 using UnityEngine;
 
 namespace GMTK25.Bullets
 {
-    public sealed class BulletJumpBehavior : MonoBehaviour, IReturnBehavior
+    public sealed class BulletJumpBehavior : MonoBehaviour, IHitBehavior
     {
         [SerializeField] private BulletType jumpBulletType = null!;
 
@@ -15,10 +14,10 @@ namespace GMTK25.Bullets
                 rotation);
 
             jump.GetComponent<BaseDamage>().Value /= 2;
-            jump.GetComponent<Bullet>().Type = jumpBulletType;
 
-            // Prevent spawned bullet from returning to player
-            jump.AddComponent<ConstantReturnFilter>().Value = false;
+            // When the jump bullet hits we want to get back an instance
+            // of this link bullet
+            jump.GetComponent<Bullet>().Type = GetComponent<Bullet>().Type;
 
             return jump;
         }
@@ -38,7 +37,7 @@ namespace GMTK25.Bullets
                 ForceMode2D.Impulse);
         }
 
-        public void OnBulletReturnsToPlayer(BulletHit hit)
+        public void OnHit(BulletHit hit)
         {
             var enemyPos = Singletons.Require<EnemyTracker>()
                 .GetClosestEnemyPosition(

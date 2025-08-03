@@ -4,17 +4,17 @@ namespace GMTK25.Bullets.Return
 {
     public sealed class ConstantReturnFilter : MonoBehaviour, IReturnFilter
     {
-        [SerializeField] private bool value;
+        [SerializeField] private ReturnAction action;
 
-        public bool Value
+        public ReturnAction Action
         {
-            get => value;
-            set => this.value = value;
+            get => action;
+            set => action = value;
         }
 
-        public bool ShouldReturn(BulletHit hit)
+        public ReturnAction ShouldReturn(BulletHit hit)
         {
-            return Value;
+            return Action;
         }
     }
 }

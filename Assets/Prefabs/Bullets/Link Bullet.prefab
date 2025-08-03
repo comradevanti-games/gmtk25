@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5383061434282661279, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
       propertyPath: m_Name
-      value: Link Bullet Base
+      value: Link Bullet
       objectReference: {fileID: 0}
     - target: {fileID: 6781942757408279905, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,13 +52,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -4080951442402078904, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
+    - {fileID: 4992855359920410872, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
+    - {fileID: -2261578120604141018, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5383061434282661279, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3072758788888244747}
+    - targetCorrespondingSourceObject: {fileID: 5383061434282661279, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1971317291055007556}
   m_SourcePrefab: {fileID: 100100000, guid: 6d760bded27fe755ca101bfe5985ec13, type: 3}
 --- !u!1 &8915804800543958928 stripped
 GameObject:
@@ -78,3 +84,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpBulletType: {fileID: 11400000, guid: 54f7bce308dbb32d8a9f4d27fda94f5a, type: 2}
+--- !u!114 &-1971317291055007556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8915804800543958928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deada4ffe82a461fad9c4e1c7b399264, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  value: 0

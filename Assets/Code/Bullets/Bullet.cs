@@ -17,8 +17,7 @@ namespace GMTK25.Bullets
         private IContinueFilter[] continueFilters =
             Array.Empty<IContinueFilter>();
 
-        private IReturnFilter[] returnFilters =
-            Array.Empty<IReturnFilter>();
+        private IReturnFilter returnFilter = null!;
 
         public BulletType Type { get; set; } = null!;
 
@@ -26,7 +25,7 @@ namespace GMTK25.Bullets
         {
             baseDamage = GetComponent<BaseDamage>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
-            returnFilters = GetComponents<IReturnFilter>();
+            returnFilter = GetComponent<IReturnFilter>();
             continueFilters = GetComponents<IContinueFilter>();
         }
 
@@ -88,17 +87,30 @@ namespace GMTK25.Bullets
                 return;
             }
 
-            if (!returnFilters.All(filter => filter.ShouldReturn(hit)))
-            {
-                Miss(true);
-                return;
-            }
-
             foreach (var behavior in
-                     GetComponents<IReturnBehavior>())
-                behavior.OnBulletReturnsToPlayer(hit);
+                     GetComponents<IHitBehavior>())
+                behavior.OnHit(hit);
 
-            ReturnToPlayer();
+            var returnAction = returnFilter.ShouldReturn(hit);
+
+            switch (returnAction)
+            {
+                case ReturnAction.Consume:
+                    Miss(false);
+                    break;
+                case ReturnAction.BecomePickup:
+                    Miss(true);
+                    break;
+                case ReturnAction.Return:
+                    foreach (var behavior in
+                             GetComponents<IReturnBehavior>())
+                        behavior.OnBulletReturnsToPlayer(hit);
+
+                    ReturnToPlayer();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
         }
 
         private void Despawn()

@@ -6,9 +6,11 @@ namespace GMTK25.Bullets.Return
     {
         private ColorType ownColor = null!;
 
-        public bool ShouldReturn(BulletHit hit)
+        public ReturnAction ShouldReturn(BulletHit hit)
         {
-            return ownColor == hit.TargetColor;
+            return ownColor == hit.TargetColor
+                ? ReturnAction.Return
+                : ReturnAction.BecomePickup;
         }
 
         private void Start()
