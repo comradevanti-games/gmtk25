@@ -4,10 +4,10 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GMTK25 {
-
-    public class QuitDisplay : MonoBehaviour {
-
+namespace GMTK25
+{
+    public class QuitDisplay : MonoBehaviour
+    {
         [SerializeField] private TextMeshProUGUI quitText = null!;
         [SerializeField] private Image leftBar = null!;
         [SerializeField] private Image rightBar = null!;
@@ -16,48 +16,47 @@ namespace GMTK25 {
         private TimeSpan timeToQuit = TimeSpan.FromSeconds(2);
         private Coroutine? quitRoutine;
 
-        private void Awake() {
+        private void Awake()
+        {
             Singletons.Require<InputHandler>().QuitInputHandled += OnQuitInput;
         }
 
-        private void OnQuitInput(bool quitting) {
-
+        private void OnQuitInput(bool quitting)
+        {
+            if (!this) return;
             isQuitting = quitting;
 
-            if (isQuitting) {
+            if (isQuitting)
+            {
                 quitRoutine = StartCoroutine(Quit());
             }
-            else {
+            else
+            {
                 StopCoroutine(quitRoutine);
                 quitText.gameObject.SetActive(false);
                 leftBar.fillAmount = 0;
                 rightBar.fillAmount = 0;
                 timeToQuit = TimeSpan.FromSeconds(2);
             }
-
         }
 
-        private IEnumerator Quit() {
-
+        private IEnumerator Quit()
+        {
             quitText.gameObject.SetActive(true);
 
-            while (isQuitting) {
-
+            while (isQuitting)
+            {
                 timeToQuit -= TimeSpan.FromSeconds(Time.deltaTime);
-                float t = Mathf.InverseLerp(2000,0, (float)timeToQuit.TotalMilliseconds);
+                var t = Mathf.InverseLerp(2000, 0,
+                    (float)timeToQuit.TotalMilliseconds);
                 leftBar.fillAmount = Mathf.Lerp(0, 1, t);
                 rightBar.fillAmount = Mathf.Lerp(0, 1, t);
 
-                if (timeToQuit.TotalMilliseconds <= 0) {
+                if (timeToQuit.TotalMilliseconds <= 0)
                     Singletons.Require<SceneHandler>().OnEsc();
-                }
 
                 yield return null;
-
             }
-
         }
-
     }
-
 }
