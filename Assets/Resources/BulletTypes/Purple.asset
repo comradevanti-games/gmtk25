@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prefab: {fileID: 1666268583958508479, guid: 8971882d94d8bcbe18cf2e9effb6496b, type: 3}
   backSprite: {fileID: -9053022328223612392, guid: 405f8a1140da2d94f9808fb7ee172918, type: 3}
-  initialSpeed: 16
+  initialSpeed: 8
   price: 2
   pickupSprite: {fileID: -581739249266215187, guid: 8a7b3872b6d01b0418a79335a712acd4, type: 3}
   colorType: {fileID: 11400000, guid: 2aeb99606db33d6d4a6be04aea9397a7, type: 2}
