@@ -18,6 +18,12 @@ namespace GMTK25.Shop
 
         private readonly IList<GameObject> shopObjects = new List<GameObject>();
 
+        private static void PreventPickupDespawn(GameObject pickup)
+        {
+            Destroy(pickup.GetComponent<RemainingTimeTransparency>());
+            Destroy(pickup.GetComponent<DelayedEvent>());
+        }
+
         private void OpenShop(int itemCount)
         {
             var offers = Enumerable.Range(0, itemCount)
@@ -28,6 +34,7 @@ namespace GMTK25.Shop
                 normalBulletType,
                 new Vector2(leftX, shopLocation.y),
                 normalBulletType.ColorType));
+            PreventPickupDespawn(free);
             var freeSign = Instantiate(priceCounterPrefab,
                 new Vector2(leftX, shopLocation.y) + Vector2.up * 2,
                 Quaternion.identity);
@@ -45,9 +52,7 @@ namespace GMTK25.Shop
                     new PickupSpawner.Request(offers[i - 1], pos,
                         offers[i - 1].ColorType));
 
-                // Prevent shop pickup from despawning
-                Destroy(pickup.GetComponent<RemainingTimeTransparency>());
-                Destroy(pickup.GetComponent<DelayedEvent>());
+                PreventPickupDespawn(pickup);
 
                 shopObjects.Add(pickup);
 
