@@ -13,8 +13,6 @@ namespace GMTK25.Bullets
             var jump = Instantiate(jumpBulletType.Prefab, transform.position,
                 rotation);
 
-            jump.GetComponent<BaseDamage>().Value /= 2;
-
             // When the jump bullet hits we want to get back an instance
             // of this link bullet
             jump.GetComponent<Bullet>().Type = GetComponent<Bullet>().Type;
