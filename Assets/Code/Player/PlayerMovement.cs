@@ -7,8 +7,6 @@ namespace GMTK25
     {
         [SerializeField] private Rigidbody2D body = null!;
         [SerializeField] private float movementSpeed = 10f;
-        [SerializeField] private float xClamp = 0f;
-        [SerializeField] private float yClamp = 0f;
 
         public event Action? Moved;
 

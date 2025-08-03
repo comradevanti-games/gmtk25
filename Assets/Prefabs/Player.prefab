@@ -264,8 +264,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   body: {fileID: 8847059097071604878}
   movementSpeed: 9
-  xClamp: 25.6
-  yClamp: 14
 --- !u!114 &4910977231910409874
 MonoBehaviour:
   m_ObjectHideFlags: 0
