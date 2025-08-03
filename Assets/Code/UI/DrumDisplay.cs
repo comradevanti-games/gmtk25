@@ -45,6 +45,7 @@ namespace GMTK25.UI
         {
             var display = inactiveDisplays[0];
             inactiveDisplays.RemoveAt(0);
+            display.T = ts[activeDisplays.Count];
             activeDisplays.Add(display);
 
             display.Display(bulletType);
