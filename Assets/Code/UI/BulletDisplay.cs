@@ -37,11 +37,9 @@ namespace GMTK25.UI
             if (bulletType != null)
             {
                 image.sprite = bulletType.BackSprite;
-
-                if (bulletType.ColorType != null)
-                    image.color = bulletType.ColorType.Color;
-                else
-                    image.color = Color.white;
+                image.color = bulletType.ColorType != null
+                    ? bulletType.ColorType.Color
+                    : Color.white;
             }
             else
             {
