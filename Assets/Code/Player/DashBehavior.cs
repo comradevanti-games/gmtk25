@@ -8,12 +8,17 @@ namespace GMTK25
     {
         [SerializeField] private float dashSpeed;
         [SerializeField] private float dashDurationSeconds;
+        [SerializeField] private float dashCooldownSeconds;
 
         private RevolverDrumKeeper drumKeeper = null!;
         private PlayerMovement movement = null!;
+        private bool isCoolingDown = false;
 
         private TimeSpan DashDuration =>
             TimeSpan.FromSeconds(dashDurationSeconds);
+
+        private TimeSpan DashCooldown =>
+            TimeSpan.FromSeconds(dashCooldownSeconds);
 
         private void Dash()
         {
@@ -25,12 +30,21 @@ namespace GMTK25
                 await Task.Delay(DashDuration, ct);
                 movement.SpeedOverride = null;
             });
+
+            isCoolingDown = true;
+            this.RunTask(async (ct) =>
+            {
+                await Task.Delay(DashCooldown, ct);
+                isCoolingDown = false;
+            });
         }
 
         private void OnDashInput()
         {
             // Prevent dash from standstill
             if (movement.MovementDirection == Vector2.zero) return;
+
+            if (isCoolingDown) return;
 
             Dash();
         }
