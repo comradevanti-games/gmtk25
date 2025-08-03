@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 3076376353164638498}
   - component: {fileID: 938795771096385991}
   - component: {fileID: 1417674559110576236}
+  - component: {fileID: 2956440871944197926}
+  - component: {fileID: 8700965291041424187}
   m_Layer: 10
   m_Name: Pickup
   m_TagString: Untagged
@@ -139,6 +141,46 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2956440871944197926
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427523892009127365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e295b9bf9be18745bf40d3dec45fd71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  delayReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8700965291041424187}
+        m_TargetAssemblyTypeName: GMTK25.Destroyer, GMTK25
+        m_MethodName: DestroyMePleaseThanks
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delaySeconds: 5
+--- !u!114 &8700965291041424187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427523892009127365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9895ca9b77a24116b210c2969b1be5f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1479446688936092647
 GameObject:
   m_ObjectHideFlags: 0
