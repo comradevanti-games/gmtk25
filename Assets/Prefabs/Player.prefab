@@ -298,6 +298,7 @@ MonoBehaviour:
   minMouseDistanceToShoot: 0.9
   shootCooldown: 0.28
   audioSrc: {fileID: 5802279955669795499}
+  bulletReturned: {fileID: 8300000, guid: b8cbf65a6f5465f719432aa1d4b0ad7d, type: 3}
   gamePadCrosshair: {fileID: 9218826876436834076}
 --- !u!114 &1455934946271646118
 MonoBehaviour:
