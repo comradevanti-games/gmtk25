@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1417674559110576236}
   - component: {fileID: 2956440871944197926}
   - component: {fileID: 8700965291041424187}
+  - component: {fileID: 6237027657374378255}
   m_Layer: 10
   m_Name: Pickup
   m_TagString: Untagged
@@ -168,6 +169,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  remainingDelayChanged:
+    m_PersistentCalls:
+      m_Calls: []
   delaySeconds: 5
 --- !u!114 &8700965291041424187
 MonoBehaviour:
@@ -181,6 +185,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9895ca9b77a24116b210c2969b1be5f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6237027657374378255
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1427523892009127365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c606993514484cbfa0b49e2c4d08df28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 1417674559110576236}
 --- !u!1 &1479446688936092647
 GameObject:
   m_ObjectHideFlags: 0

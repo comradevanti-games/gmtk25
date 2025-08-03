@@ -1,5 +1,4 @@
 using System;
-using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,13 +8,20 @@ namespace GMTK25
     {
         public UnityEvent delayReached = new UnityEvent();
 
-        [SerializeField] private float delaySeconds = 0f;
+        public UnityEvent<TimeSpan> remainingDelayChanged =
+            new UnityEvent<TimeSpan>();
+
+        [SerializeField] private float delaySeconds;
+
+        public TimeSpan Delay => TimeSpan.FromSeconds(delaySeconds);
 
         private void Start()
         {
             this.RunTask(async (ct) =>
             {
-                await Task.Delay(TimeSpan.FromSeconds(delaySeconds), ct);
+                await CustomTask.DelayWithUpdate(Delay,
+                    passedTime =>
+                        remainingDelayChanged.Invoke(Delay - passedTime), ct);
 
                 delayReached.Invoke();
                 Destroy(this);
