@@ -60,7 +60,8 @@ namespace GMTK25
             var shootDirection = inputHandler!.MouseScreenPosition -
                                  (Vector2)bulletSpawnPoint.transform.position;
             bulletBody.AddForce(newBullet.InitialSpeed *
-                                shootDirection.normalized);
+                                shootDirection.normalized, 
+                ForceMode2D.Impulse);
 
             audioSrc.Play();
             audioSrc.pitch = Random.Range(0.9f, 1.1f);

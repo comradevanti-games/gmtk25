@@ -42,7 +42,8 @@ namespace GMTK25.Bullets
             var clone = CreateClone(bulletRotation);
             clone.GetComponent<Rigidbody2D>().AddForce(
                 bullet.Type.InitialSpeed *
-                shootDirection.normalized);
+                shootDirection.normalized,
+                ForceMode2D.Impulse);
         }
 
         public void OnBulletReturnsToPlayer(BulletHit hit)
