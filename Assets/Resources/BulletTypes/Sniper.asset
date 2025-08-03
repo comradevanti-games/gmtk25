@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Sniper
   m_EditorClassIdentifier: 
   prefab: {fileID: 3739752243492040401, guid: 7fd2008121daa68e2a540cc6833dd50d, type: 3}
-  backSprite: {fileID: 7918834253498508119, guid: da231c3a3f2c4964cb26040b2030134a, type: 3}
+  backSprite: {fileID: 2261554708937243665, guid: be513e2bd16ae8b4c9b20db9f2e8d593, type: 3}
   initialSpeed: 16
   price: 3
-  pickupSprite: {fileID: 7918834253498508119, guid: da231c3a3f2c4964cb26040b2030134a, type: 3}
+  pickupSprite: {fileID: 5936633190492865269, guid: 18b1cf54e668fc6419368a47d89fb6ab, type: 3}
   colorType: {fileID: 0}
