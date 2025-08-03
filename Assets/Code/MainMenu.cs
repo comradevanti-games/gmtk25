@@ -13,6 +13,8 @@ namespace GMTK25 {
         [SerializeField] private Sprite muteIcon = null!;
         [SerializeField] private Sprite unmuteIcon = null!;
         [SerializeField] private GameObject firstSelected = null!;
+        [SerializeField] private GameObject leftPanel = null!;
+        [SerializeField] private GameObject rightPanel = null!;
 
         private void Awake() {
 
@@ -56,6 +58,11 @@ namespace GMTK25 {
             else {
                 Cursor.visible = true;
             }
+        }
+
+        public void OnHowToPlayButtonClicked() {
+            leftPanel.SetActive(!leftPanel.activeSelf);
+            rightPanel.SetActive(!rightPanel.activeSelf);
         }
 
     }
