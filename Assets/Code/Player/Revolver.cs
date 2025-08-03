@@ -87,7 +87,7 @@ namespace GMTK25
             LastSuccessColorType = color;
             drumKeeper.PushBullet(type);
 
-            audioSrc.PlayOneShot(bulletReturned);
+            audioSrc.PlayOneShot(bulletReturned, 0.25f);
         }
 
         private void OnFailHit()
