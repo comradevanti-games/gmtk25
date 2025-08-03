@@ -1007,7 +1007,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Loops back when hitting more and additional enemy.
+  m_text: 'Loops back when hitting an additional enemy.
 
     Damage: 1 -> 1'
   m_isRightToLeft: 0
