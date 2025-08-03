@@ -79,10 +79,10 @@ namespace GMTK25.UI
 
         private void Update()
         {
+            var speed = Time.deltaTime * 2;
             foreach (var display in activeDisplays)
             {
-                display.T = MoveDownTo(display.T, display.TargetT,
-                    Time.deltaTime);
+                display.T = MoveDownTo(display.T, display.TargetT, speed);
                 display.Position = PositionForT(display.T);
             }
         }
