@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Colored Bullet Base
       objectReference: {fileID: 0}
+    - target: {fileID: 3954308465593571959, guid: 84a0184a43c06f5099d2f8d63f83b2d1, type: 3}
+      propertyPath: value
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -99,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e312f6351272495b9668e21e37604d4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 2
+  multiplier: 4
 --- !u!114 &-2261578120604141018
 MonoBehaviour:
   m_ObjectHideFlags: 0
