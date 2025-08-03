@@ -8,12 +8,6 @@ namespace GMTK25.Bullets
     {
         [SerializeField] private BulletType jumpBulletType = null!;
 
-        private Revolver revolver = null!;
-
-        private void Awake()
-        {
-            revolver = FindAnyObjectByType<Revolver>();
-        }
 
         private GameObject CreateJumpBullet(Quaternion rotation)
         {
@@ -46,8 +40,6 @@ namespace GMTK25.Bullets
 
         public void OnBulletReturnsToPlayer(BulletHit hit)
         {
-            //           if (revolver.LastSuccessColorType != hit.TargetColor) return;
-
             var enemyPos = Singletons.Require<EnemyTracker>()
                 .GetClosestEnemyPosition(
                     hit.Target.transform.position, 2);
