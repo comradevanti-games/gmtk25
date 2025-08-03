@@ -28,8 +28,6 @@ namespace GMTK25.Bullets
             damageMultipliers = GetComponents<IDamageMultiplier>();
             returnFilters = GetComponents<IReturnFilter>();
             continueFilters = GetComponents<IContinueFilter>();
-
-            GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
 
         private void ReturnToPlayer()
@@ -56,7 +54,7 @@ namespace GMTK25.Bullets
             return baseDamage.Value * mult;
         }
 
-        private void OnDespawnTimeReached()
+        public void OnDespawnTimeReached()
         {
             Singletons.Require<BulletPickupHandler>()
                 .SpawnPickupLike(gameObject);
@@ -105,7 +103,6 @@ namespace GMTK25.Bullets
 
         private void Despawn()
         {
-            GetComponent<TimedDespawner>().Elapsed -= OnDespawnTimeReached;
             Destroy(gameObject);
         }
     }
