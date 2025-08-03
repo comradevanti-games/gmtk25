@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,6 +12,7 @@ namespace GMTK25 {
         [SerializeField] private Image muteIconRenderer = null!;
         [SerializeField] private Sprite muteIcon = null!;
         [SerializeField] private Sprite unmuteIcon = null!;
+        [SerializeField] private GameObject firstSelected = null!;
 
         private void Awake() {
 
@@ -42,6 +45,17 @@ namespace GMTK25 {
                 muteIconRenderer.sprite = unmuteIcon;
             }
 
+        }
+
+        public void OnControlsSwitched(PlayerInput updatedInputs) {
+
+            if (updatedInputs.currentControlScheme == "Gamepad") {
+                Cursor.visible = false;
+                EventSystem.current.SetSelectedGameObject(firstSelected);
+            }
+            else {
+                Cursor.visible = true;
+            }
         }
 
     }

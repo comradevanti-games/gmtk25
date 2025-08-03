@@ -526,8 +526,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -275}
-  m_SizeDelta: {x: 48, y: 87.5}
+  m_AnchoredPosition: {x: 0, y: -337}
+  m_SizeDelta: {x: 64, y: 87.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1070146649
 MonoBehaviour:
@@ -548,12 +548,12 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_SelectedColor: {r: 0.91194963, g: 0.91194963, b: 0.91194963, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1274,7 +1274,19 @@ MonoBehaviour:
       m_Calls: []
   m_ControlsChangedEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1836424390}
+        m_TargetAssemblyTypeName: GMTK25.MainMenu, GMTK25
+        m_MethodName: OnControlsSwitched
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls: []
@@ -1663,7 +1675,7 @@ Canvas:
   m_GameObject: {fileID: 1836424385}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 0
   m_Camera: {fileID: 1292884925}
   m_PlaneDistance: 100
   m_PixelPerfect: 1
@@ -1675,7 +1687,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1836424389
 RectTransform:
@@ -1691,8 +1703,8 @@ RectTransform:
   m_Children:
   - {fileID: 237037945}
   - {fileID: 874966727}
-  - {fileID: 1288799773}
   - {fileID: 1070146648}
+  - {fileID: 1288799773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1715,6 +1727,7 @@ MonoBehaviour:
   muteIconRenderer: {fileID: 1070146650}
   muteIcon: {fileID: 7918834253498508119, guid: da231c3a3f2c4964cb26040b2030134a, type: 3}
   unmuteIcon: {fileID: 7918834253498508119, guid: f85b4cdcbe95af84dac90f82675b9783, type: 3}
+  firstSelected: {fileID: 30626630}
 --- !u!1 &2054314196
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1773,7 @@ MonoBehaviour:
   m_ScrollWheelAction: {fileID: 0}
   m_TrackedDevicePositionAction: {fileID: 0}
   m_TrackedDeviceOrientationAction: {fileID: 0}
-  m_DeselectOnBackgroundClick: 1
+  m_DeselectOnBackgroundClick: 0
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
   m_ScrollDeltaPerTick: 6
@@ -1799,5 +1812,5 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1292884926}
-  - {fileID: 1836424389}
   - {fileID: 2054314199}
+  - {fileID: 1836424389}
