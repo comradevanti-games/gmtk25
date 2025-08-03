@@ -79,7 +79,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  delaySeconds: 4
+  remainingDelayChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  delaySeconds: 6
 --- !u!50 &8100467414083175091
 Rigidbody2D:
   serializedVersion: 5
