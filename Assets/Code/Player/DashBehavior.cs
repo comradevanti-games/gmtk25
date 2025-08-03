@@ -29,6 +29,9 @@ namespace GMTK25
 
         private void OnDashInput()
         {
+            // Prevent dash from standstill
+            if (movement.MovementDirection == Vector2.zero) return;
+
             Dash();
         }
 
