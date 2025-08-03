@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace GMTK25
 {
@@ -14,6 +15,8 @@ namespace GMTK25
 
         public Vector2 Velocity => MovementDirection * movementSpeed;
 
+        public Vector2? SpeedOverride { get; set; }
+
         private void Awake()
         {
             FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude)
@@ -23,9 +26,10 @@ namespace GMTK25
 
         private void FixedUpdate()
         {
-            body.linearVelocity = MovementDirection * movementSpeed;
+            body.linearVelocity =
+                SpeedOverride ?? MovementDirection * movementSpeed;
 
-            if (MovementDirection != Vector2.zero)
+            if (body.linearVelocity != Vector2.zero)
                 Moved?.Invoke();
         }
 
