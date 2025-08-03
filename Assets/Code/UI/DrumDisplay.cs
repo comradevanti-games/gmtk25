@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Collections.Immutable;
 using GMTK25.Bullets;
 using UnityEngine;
@@ -12,11 +13,10 @@ namespace GMTK25.UI
 
         private RectTransform container = null!;
 
-        private ImmutableArray<BulletDisplay> bulletDisplays =
-            ImmutableArray<BulletDisplay>.Empty;
+        private IList<BulletDisplay> activeDisplays = new List<BulletDisplay>();
 
-        private int firstIndex;
-        private int nextIndex;
+        private IList<BulletDisplay> inactiveDisplays =
+            new List<BulletDisplay>();
 
         private float Width => container.sizeDelta.x - 50;
 
@@ -31,64 +31,57 @@ namespace GMTK25.UI
             return new Vector2(x, y);
         }
 
-        private int Loop(int i)
-        {
-            return i switch
-            {
-                > 6 => Loop(i - 7),
-                < 0 => Loop(i + 7),
-                _ => i
-            };
-        }
-
-        private int IncLooping(int i)
-        {
-            return Loop(i + 1);
-        }
-
         private void UpdateTargets()
         {
-            for (var i = 0; i < 7; i++)
+            for (var i = 0; i < activeDisplays.Count; i++)
             {
                 var targetT = ts[i];
-                var display = bulletDisplays[Loop(firstIndex + i)];
+                var display = activeDisplays[i];
                 display.TargetT = targetT;
             }
         }
 
         public void Push(BulletType bulletType)
         {
-            bulletDisplays[nextIndex].Display(bulletType);
+            var display = inactiveDisplays[0];
+            inactiveDisplays.RemoveAt(0);
+            activeDisplays.Add(display);
 
-            nextIndex = IncLooping(nextIndex);
+            display.Display(bulletType);
             UpdateTargets();
         }
 
         public void RemoveFirst()
         {
-            bulletDisplays[firstIndex].Display(null);
+            var display = activeDisplays[0];
+            display.Display(null);
+            activeDisplays.RemoveAt(0);
+            inactiveDisplays.Add(display);
 
-            firstIndex = IncLooping(firstIndex);
             UpdateTargets();
         }
 
-        private float MoveDown(float f, float target, float maxDelta)
+        public void Cycle()
         {
-            if (f < target) f += 1;
-            var diff = target - f;
-            Debug.Assert(diff <= 0);
+            var display = activeDisplays[0];
+            activeDisplays.RemoveAt(0);
+            activeDisplays.Add(display);
 
-            if (-diff < maxDelta) return target;
-            return f - maxDelta;
+            UpdateTargets();
+        }
+
+        private static float MoveDownTo(float f, float target, float maxDelta)
+        {
+            return Mathf.Repeat(
+                Mathf.MoveTowards(f < target ? f + 1 : f, target, maxDelta),
+                1f);
         }
 
         private void Update()
         {
-            for (var i = 0; i < 7; i++)
+            foreach (var display in activeDisplays)
             {
-                var display = bulletDisplays[i];
-
-                display.T = MoveDown(display.T, display.TargetT,
+                display.T = MoveDownTo(display.T, display.TargetT,
                     Time.deltaTime);
                 display.Position = PositionForT(display.T);
             }
@@ -97,8 +90,9 @@ namespace GMTK25.UI
         private void Awake()
         {
             container = GetComponent<RectTransform>();
-            bulletDisplays = gameObject.GetComponentsInChildren<BulletDisplay>()
-                .ToImmutableArray();
+            foreach (var display in gameObject
+                         .GetComponentsInChildren<BulletDisplay>())
+                inactiveDisplays.Add(display);
         }
     }
 }
