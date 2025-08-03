@@ -2,11 +2,12 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace GMTK25 {
-
-    public sealed class HealthKeeper : MonoBehaviour {
-
+namespace GMTK25
+{
+    public sealed class HealthKeeper : MonoBehaviour
+    {
         public UnityEvent<float> changed = new UnityEvent<float>();
+        public UnityEvent tookDamage = new UnityEvent();
         public UnityEvent died = new UnityEvent();
 
         [SerializeField] private float initialHealth;
@@ -21,6 +22,7 @@ namespace GMTK25 {
                 var newHealth = Mathf.Max(value, 0);
 
                 if (Mathf.Approximately(newHealth, health)) return;
+                if (newHealth < health) tookDamage.Invoke();
                 health = newHealth;
 
                 changed.Invoke(health);
@@ -31,18 +33,19 @@ namespace GMTK25 {
             }
         }
 
-        public void TakeDamage(float amount) {
+        public void TakeDamage(float amount)
+        {
             Health -= amount;
         }
 
-        public void ResetHealth() {
+        public void ResetHealth()
+        {
             Health = initialHealth;
         }
 
-        private void Start() {
+        private void Start()
+        {
             ResetHealth();
         }
-
     }
-
 }

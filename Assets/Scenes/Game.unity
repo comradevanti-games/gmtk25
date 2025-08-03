@@ -2471,7 +2471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: died.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
@@ -2522,6 +2526,10 @@ PrefabInstance:
       value: PlayOneShot
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -2534,6 +2542,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1160842956}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: OnHealthChanged
       objectReference: {fileID: 0}
@@ -2543,6 +2555,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlayOneShot
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: PlayOneShot
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
@@ -2570,7 +2590,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: f866ff61857683e69a29b61784cde69c, type: 3}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.AudioSource, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 8300000, guid: a8686f994bc1a58a284ac6a71b5701b3, type: 3}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 8300000, guid: a8686f994bc1a58a284ac6a71b5701b3, type: 3}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
@@ -2591,6 +2619,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
       propertyPath: changed.m_PersistentCalls.m_Calls.Array.data[2].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.AudioClip, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 1455934946271646118, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
+      propertyPath: tookDamage.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.AudioClip, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 7846508905358984964, guid: 9d3c0c21d3330344589b2a9d2f87cdf8, type: 3}
