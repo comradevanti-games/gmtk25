@@ -263,7 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   body: {fileID: 8847059097071604878}
-  movementSpeed: 8.2
+  movementSpeed: 9
   xClamp: 25.6
   yClamp: 14
 --- !u!114 &4910977231910409874
@@ -343,7 +343,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8952723769476477827}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
@@ -507,6 +507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d77712cabe44dcbcdf164b0293d0c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dashDistance: 10
 --- !u!1 &9218826876436834076
 GameObject:
   m_ObjectHideFlags: 0

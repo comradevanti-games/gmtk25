@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-namespace GMTK25 {
-
-    public class PlayerMovement : MonoBehaviour {
-
+namespace GMTK25
+{
+    public class PlayerMovement : MonoBehaviour
+    {
         [SerializeField] private Rigidbody2D body = null!;
         [SerializeField] private float movementSpeed = 10f;
         [SerializeField] private float xClamp = 0f;
@@ -12,31 +12,28 @@ namespace GMTK25 {
 
         public event Action? Moved;
 
-        private Vector2 MovementDirection { get; set; }
+        public Vector2 MovementDirection { get; set; }
 
         public Vector2 Velocity => MovementDirection * movementSpeed;
 
-        private void Awake() {
-            FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude).GetComponent<InputHandler>()
+        private void Awake()
+        {
+            FindFirstObjectByType<InputHandler>(FindObjectsInactive.Exclude)
+                .GetComponent<InputHandler>()
                 .MovementInputHandled += OnMovementInput;
         }
 
-        private void FixedUpdate() {
-            if (MovementDirection == Vector2.zero) {
-                return;
-            }
+        private void FixedUpdate()
+        {
+            body.linearVelocity = MovementDirection * movementSpeed;
 
-            Vector2 nextPosition = body.position + MovementDirection * (Time.fixedDeltaTime * movementSpeed);
-            Vector2 clampedPosition = new Vector2(Mathf.Clamp(nextPosition.x, -xClamp, xClamp),
-                Mathf.Clamp(nextPosition.y, -yClamp, yClamp));
-            body.MovePosition(clampedPosition);
-            Moved?.Invoke();
+            if (MovementDirection != Vector2.zero)
+                Moved?.Invoke();
         }
 
-        private void OnMovementInput(Vector2 dir) {
+        private void OnMovementInput(Vector2 dir)
+        {
             MovementDirection = dir;
         }
-
     }
-
 }
