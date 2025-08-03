@@ -7,7 +7,7 @@ namespace GMTK25.Bullets
     public sealed class BulletJumpBehavior : MonoBehaviour, IReturnBehavior
     {
         [SerializeField] private BulletType jumpBulletType = null!;
-        
+
         private Revolver revolver = null!;
 
         private void Awake()
@@ -17,10 +17,14 @@ namespace GMTK25.Bullets
 
         private GameObject CreateJumpBullet(Quaternion rotation)
         {
-            var jump = Instantiate(jumpBulletType.Prefab, transform.position, rotation);
-            
+            var jump = Instantiate(jumpBulletType.Prefab, transform.position,
+                rotation);
+
             jump.GetComponent<BaseDamage>().Value /= 2;
             jump.GetComponent<Bullet>().Type = jumpBulletType;
+
+            // Prevent spawned bullet from returning to player
+            jump.AddComponent<ConstantReturnFilter>().Value = false;
 
             return jump;
         }
@@ -42,7 +46,7 @@ namespace GMTK25.Bullets
 
         public void OnBulletReturnsToPlayer(BulletHit hit)
         {
- //           if (revolver.LastSuccessColorType != hit.TargetColor) return;
+            //           if (revolver.LastSuccessColorType != hit.TargetColor) return;
 
             var enemyPos = Singletons.Require<EnemyTracker>()
                 .GetClosestEnemyPosition(
