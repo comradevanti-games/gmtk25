@@ -3,10 +3,10 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-namespace GMTK25 {
-
-    public class InputHandler : MonoBehaviour {
-
+namespace GMTK25
+{
+    public class InputHandler : MonoBehaviour
+    {
         [SerializeField] private PlayerInput playerInput = null!;
         [SerializeField] private GameObject firstSelectedUIElement = null!;
 
@@ -18,6 +18,8 @@ namespace GMTK25 {
 
         public event Action? ShootInputHandled;
 
+        public event Action? DashInput;
+
         public event Action<bool>? QuitInputHandled;
 
         public event Action<string>? ControlSchemeSwitched;
@@ -26,74 +28,70 @@ namespace GMTK25 {
 
         public string? CurrentControlScheme { get; private set; }
 
-        private void Awake() {
+        private void Awake()
+        {
             mainCamera = Camera.main;
             CurrentControlScheme = playerInput.currentControlScheme;
         }
 
-        public void OnMovementInputReceived(InputAction.CallbackContext ctx) {
-            Vector2 value = ctx.ReadValue<Vector2>();
+        public void OnDashInput(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started) DashInput?.Invoke();
+        }
+
+        public void OnMovementInputReceived(InputAction.CallbackContext ctx)
+        {
+            var value = ctx.ReadValue<Vector2>();
             MovementInputHandled?.Invoke(value);
         }
 
-        public void OnLookInputReceived(InputAction.CallbackContext ctx) {
+        public void OnLookInputReceived(InputAction.CallbackContext ctx)
+        {
+            if (ctx.performed)
+            {
+                var value = ctx.ReadValue<Vector2>();
 
-            if (ctx.performed) {
-                Vector2 value = ctx.ReadValue<Vector2>();
-
-                if (playerInput.currentControlScheme == "Gamepad") {
-
-                    if (value != Vector2.zero) {
+                if (playerInput.currentControlScheme == "Gamepad")
+                {
+                    if (value != Vector2.zero)
                         RotationInputHandled?.Invoke(value);
-                    }
                 }
-                else {
+                else
+                {
                     MouseScreenPosition = mainCamera!.ScreenToWorldPoint(value);
                     RotationInputHandled?.Invoke(MouseScreenPosition);
                 }
-
             }
         }
 
-        public void OnShootInputReceived(InputAction.CallbackContext ctx) {
-
-            if (ctx.started) {
-                ShootInputHandled?.Invoke();
-            }
-
+        public void OnShootInputReceived(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started) ShootInputHandled?.Invoke();
         }
 
-        public void OnQuitInputReceived(InputAction.CallbackContext ctx) {
+        public void OnQuitInputReceived(InputAction.CallbackContext ctx)
+        {
+            if (ctx.started) QuitInputHandled?.Invoke(true);
 
-            if (ctx.started) {
-                QuitInputHandled?.Invoke(true);
-            }
-
-            if (ctx.canceled) {
-                QuitInputHandled?.Invoke(false);
-            }
-
+            if (ctx.canceled) QuitInputHandled?.Invoke(false);
         }
 
-        public void SwitchActionMap(string actionMapName) {
+        public void SwitchActionMap(string actionMapName)
+        {
             playerInput.SwitchCurrentActionMap(actionMapName);
             EventSystem.current.SetSelectedGameObject(null!);
             EventSystem.current.SetSelectedGameObject(firstSelectedUIElement);
         }
 
-        public void OnControlsSwitched(PlayerInput updatedInputs) {
+        public void OnControlsSwitched(PlayerInput updatedInputs)
+        {
             ControlSchemeSwitched?.Invoke(updatedInputs.currentControlScheme);
             CurrentControlScheme = updatedInputs.currentControlScheme;
 
-            if (updatedInputs.currentControlScheme == "Gamepad") {
+            if (updatedInputs.currentControlScheme == "Gamepad")
                 Cursor.visible = false;
-            }
-            else {
+            else
                 Cursor.visible = true;
-            }
-
         }
-
     }
-
 }

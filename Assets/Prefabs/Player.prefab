@@ -223,6 +223,7 @@ GameObject:
   - component: {fileID: 8847059097071604878}
   - component: {fileID: 7174047176087027215}
   - component: {fileID: 5802279955669795499}
+  - component: {fileID: 3514173783614840983}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -313,6 +314,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changed:
+    m_PersistentCalls:
+      m_Calls: []
+  tookDamage:
     m_PersistentCalls:
       m_Calls: []
   died:
@@ -491,6 +495,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3514173783614840983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8952723769476477827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0d77712cabe44dcbcdf164b0293d0c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &9218826876436834076
 GameObject:
   m_ObjectHideFlags: 0

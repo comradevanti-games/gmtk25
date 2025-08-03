@@ -4,6 +4,7 @@ using GMTK25.Bullets;
 using GMTK25.UI;
 using TMPro;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace GMTK25
 {
@@ -55,6 +56,16 @@ namespace GMTK25
             }
         }
 
+        public void Spin()
+        {
+            var cycleCount = Random.Range(1, 10);
+            for (var i = 0; i < cycleCount; i++)
+            {
+                bullets.Cycle();
+                display.Cycle();
+            }
+        }
+
         private void Awake()
         {
             bullets = new LoopQueue<BulletType>(drumSize);
@@ -63,8 +74,8 @@ namespace GMTK25
 
         private void Start()
         {
-            for (var i = 0; i < drumSize; i++)
-                PushBullet(initialBulletTypes[i]);
+            foreach (var t in initialBulletTypes)
+                PushBullet(t);
         }
     }
 }

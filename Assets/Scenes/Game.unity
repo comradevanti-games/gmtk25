@@ -1885,6 +1885,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 7c47ab64-5b92-4306-a12d-b1939c086abf
     m_ActionName: 'UI/Cancel[/Keyboard/escape]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1795197697}
+        m_TargetAssemblyTypeName: GMTK25.InputHandler, GMTK25
+        m_MethodName: OnDashInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ca396431-c0ad-4651-b739-ce1321aae4d5
+    m_ActionName: 'Player/Dash[/Keyboard/space,/Gamepad/rightShoulder]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: MKB
   m_DefaultActionMap: Player
