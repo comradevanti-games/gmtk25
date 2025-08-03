@@ -64,7 +64,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e295b9bf9be18745bf40d3dec45fd71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 4
+  delayReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3821070658416339863}
+        m_TargetAssemblyTypeName: GMTK25.Bullets.Bullet, GMTK25
+        m_MethodName: OnDespawnTimeReached
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delaySeconds: 4
 --- !u!50 &8100467414083175091
 Rigidbody2D:
   serializedVersion: 5

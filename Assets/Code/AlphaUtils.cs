@@ -14,5 +14,10 @@ namespace GMTK25
         {
             image.color = image.color.WithAlpha(a);
         }
+
+        public static void SetAlpha(this SpriteRenderer renderer, float a)
+        {
+            renderer.color = renderer.color.WithAlpha(a);
+        }
     }
 }

@@ -22,5 +22,21 @@ namespace GMTK25
                 passedTime += TimeSpan.FromSeconds(Time.deltaTime);
             }
         }
+
+        public static async Task DelayWithUpdate(TimeSpan duration,
+            Action<TimeSpan> update, CancellationToken ct)
+        {
+            var passedTime = TimeSpan.Zero;
+
+            while (passedTime < duration)
+            {
+                ct.ThrowIfCancellationRequested();
+                await Task.Yield();
+
+                update(passedTime);
+
+                passedTime += TimeSpan.FromSeconds(Time.deltaTime);
+            }
+        }
     }
 }
