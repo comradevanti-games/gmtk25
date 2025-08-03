@@ -62,7 +62,7 @@ namespace GMTK25 {
 
         public void SwitchActionMap(string actionMapName) {
             playerInput.SwitchCurrentActionMap(actionMapName);
-            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(null!);
             EventSystem.current.SetSelectedGameObject(firstSelectedUIElement);
         }
 
