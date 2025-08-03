@@ -6,6 +6,10 @@ namespace GMTK25.Bullets
     {
         [SerializeField] private float value;
 
-        public float Value => value;
+        public float Value
+        {
+            get => value;
+            set => this.value = value;
+        }
     }
 }

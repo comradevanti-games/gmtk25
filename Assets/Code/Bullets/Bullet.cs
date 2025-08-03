@@ -14,6 +14,9 @@ namespace GMTK25.Bullets
         private IDamageMultiplier[] damageMultipliers =
             Array.Empty<IDamageMultiplier>();
 
+        private IContinueFilter[] continueFilters =
+            Array.Empty<IContinueFilter>();
+
         private IReturnFilter[] returnFilters =
             Array.Empty<IReturnFilter>();
 
@@ -24,6 +27,7 @@ namespace GMTK25.Bullets
             baseDamage = GetComponent<BaseDamage>();
             damageMultipliers = GetComponents<IDamageMultiplier>();
             returnFilters = GetComponents<IReturnFilter>();
+            continueFilters = GetComponents<IContinueFilter>();
 
             GetComponent<TimedDespawner>().Elapsed += OnDespawnTimeReached;
         }
@@ -75,6 +79,15 @@ namespace GMTK25.Bullets
             {
                 var damage = DamageFor(hit);
                 health.TakeDamage(damage);
+            }
+
+            var shouldContinue =
+                continueFilters.All(it => it.ShouldContinue(hit));
+            if (shouldContinue)
+            {
+                foreach (var it in GetComponents<IContinueBehavior>())
+                    it.OnBulletContinues(hit);
+                return;
             }
 
             if (!returnFilters.All(filter => filter.ShouldReturn(hit)))

@@ -6,29 +6,23 @@ namespace GMTK25.Bullets
 {
     public sealed class BulletJumpBehavior : MonoBehaviour, IReturnBehavior
     {
+        [SerializeField] private BulletType jumpBulletType = null!;
+        
         private Revolver revolver = null!;
-        private BulletJumpBehavior jumpCount = null!;
-        private Bullet bullet = null!;
-
-        public int JumpCount { get; private set; } = 1;
 
         private void Awake()
         {
-            jumpCount = GetComponent<BulletJumpBehavior>();
             revolver = FindAnyObjectByType<Revolver>();
-            bullet = GetComponent<Bullet>();
         }
 
-        private GameObject CreateClone(Quaternion rotation)
+        private GameObject CreateJumpBullet(Quaternion rotation)
         {
-            var clone = Instantiate(bullet.Type.Prefab,
-                transform.position, rotation);
+            var jump = Instantiate(jumpBulletType.Prefab, transform.position, rotation);
+            
+            jump.GetComponent<BaseDamage>().Value /= 2;
+            jump.GetComponent<Bullet>().Type = jumpBulletType;
 
-            clone.GetComponent<Bullet>().Type = bullet.Type;
-            clone.GetComponent<BulletJumpBehavior>().JumpCount =
-                jumpCount.JumpCount + 1;
-
-            return clone;
+            return jump;
         }
 
         private void ShootLinkBullet(Vector2 enemyPos)
@@ -39,16 +33,16 @@ namespace GMTK25.Bullets
                     Mathf.Atan2(shootDirection.y, shootDirection.x) *
                     Mathf.Rad2Deg - 90);
 
-            var clone = CreateClone(bulletRotation);
-            clone.GetComponent<Rigidbody2D>().AddForce(
-                bullet.Type.InitialSpeed *
+            var jump = CreateJumpBullet(bulletRotation);
+            jump.GetComponent<Rigidbody2D>().AddForce(
+                jumpBulletType.InitialSpeed *
                 shootDirection.normalized,
                 ForceMode2D.Impulse);
         }
 
         public void OnBulletReturnsToPlayer(BulletHit hit)
         {
-            if (revolver.LastSuccessColorType != hit.TargetColor) return;
+ //           if (revolver.LastSuccessColorType != hit.TargetColor) return;
 
             var enemyPos = Singletons.Require<EnemyTracker>()
                 .GetClosestEnemyPosition(
